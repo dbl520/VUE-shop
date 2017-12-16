@@ -10,6 +10,10 @@ import cart from '../pages/cart.vue'
 import header from '../pages/header.vue'
 import all_order from '../pages/all_order.vue'
 import news  from  '../pages/news.vue'
+import need  from  '../pages/need.vue'
+import qiangou  from  '../pages/qiangou.vue'
+import fabu  from  '../pages/fabu.vue'
+import mifenka  from  '../pages/mifenka.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -63,6 +67,26 @@ export default new Router({
       path: '/news',
       name: 'news',
       component: news
+    },
+    {
+      path: '/need',
+      name: 'need',
+      component: need
+    },
+    {
+      path: '/qiangou',
+      name: 'qiangou',
+      component: qiangou
+    },
+    {
+      path: '/fabu',
+      name: 'fabu',
+      component: fabu
+    },
+    {
+      path: '/mifenka',
+      name: 'mifenka',
+      component: mifenka
     }
 
   ]

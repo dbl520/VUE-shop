@@ -27,7 +27,7 @@ const store = new Vuex.Store({
     //加入订单
     addorder: function(state, data) {
       console.log(data);
-      state.carts.push(data);
+      state.addorders.push(data);
       console.log(state.addorders);
       localStorage.setItem("addorders", JSON.stringify(state.addorders));
     },

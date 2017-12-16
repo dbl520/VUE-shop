@@ -182,6 +182,7 @@ export default {
       };
       this.$store.commit("addorder", data);
       // 这里是存入模拟的订单
+      console.log(data)
     }
   }
 };

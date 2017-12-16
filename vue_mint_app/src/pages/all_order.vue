@@ -39,48 +39,25 @@
          </div>
          <!-- 内容  -->
             <div class="dingdans">
-              <div class="dingdans_item">
+              <div class="dingdans_item" v-for="(item,index) in orders">
                 <div class="dingdans_top">
                     <div class="dingdans_top_left">
-                        订单编号:123456789
+                        订单编号:{{item.number}}
                     </div>
                     <div class="dingdans_top_right">
-                        已发货
+                        数量 {{item.value}}
                     </div>
                 </div>
                 <div class="dingdans_con">
                     <div class="dingdans_con_left">
-                        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1512974244190&di=1b84568c3fb4a30be65430f05cb71d08&imgtype=0&src=http%3A%2F%2Fimage.9game.cn%2F2014%2F12%2F30%2F10143631.jpg" alt="">
+                        <img v-bind:src="item.image" alt="">
                     </div>
                     <div class="diangdans_con_right">
                         <div class="dingdans_con_right_top">
-                            纪念碑谷
+                            {{item.name}}
                         </div>
                         <div class="dingdans_con_right_down">
-                             ￥  <span class="price"> 2980</span>
-                        </div>
-                    </div>
-                </div>
-             </div>     
-             <div class="dingdans_item">
-                <div class="dingdans_top">
-                     <div class="dingdans_top_left">
-                        订单编号:123456789
-                    </div>
-                    <div class="dingdans_top_right">
-                        已发货
-                    </div>
-                </div>
-                <div class="dingdans_con">
-                    <div class="dingdans_con_left">
-                        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1512974244190&di=1b84568c3fb4a30be65430f05cb71d08&imgtype=0&src=http%3A%2F%2Fimage.9game.cn%2F2014%2F12%2F30%2F10143631.jpg" alt="">
-                    </div>
-                    <div class="diangdans_con_right">
-                        <div class="dingdans_con_right_top">
-                            纪念碑谷
-                        </div>
-                        <div class="dingdans_con_right_down">
-                             ￥  <span class="price"> 2980</span>
+                             ￥  <span class="price"> {{item.price}}</span>
                         </div>
                     </div>
                 </div>
@@ -89,7 +66,28 @@
   </div>
 </template>  
 <script>
-export default {};
+// import {mapState,mapMutations,mapGetters} from 'vuex'
+export default {
+    data (){
+        return {
+               orders:[]
+        }
+    },created:function(){
+     this.getData()
+    },computed:{
+        // orders(){
+        //     console.log(this.$store.state.addorders)
+        //     return this.$store.state.addorders
+        // }
+    },
+    methods: {
+        getData:function(){
+        this.orders= this.$store.state.addorders
+        console.log(this.orders)
+        }
+    }
+   
+};
 </script> 
 <style scoped>
 body {

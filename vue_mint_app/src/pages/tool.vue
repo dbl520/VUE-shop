@@ -1,7 +1,8 @@
 <template>  
   <div class="tool">  
        <div class="tool_header">
-         新闻信息
+            <i class="iconfont icon-fanhui" @click="fanhui"></i>
+            <span class="spas">新闻信息</span> 
        </div>
        <div class="tool_lists">
           <div class="tool_item" v-for="(item,index) in news" @click="newsdetails(item.id)" :id="item.id">
@@ -46,15 +47,19 @@ export default {
     newsdetails:function(id){
       var _this =this;
        _this.$router.push({path:"news",query:{id:id}})
+    },
+    fanhui:function(){
+      console.log(this.$router)
+      this.$router.go(-1);
     }
   }
 };
 </script> 
 <style scoped>
 .tool_header {
-  height: 0.88rem;
+  height: 1.2rem;
   background: #fff;
-  font-size: 0.3rem;
+  font-size: 0.4rem;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -64,8 +69,12 @@ export default {
   left: 0;
   width: 98%;
 }
+.spas{
+  display:inline-block;
+  padding-left: 0.2rem;
+}
 .tool_item {
-  margin-top: 0.2rem;
+  margin-top: 0.3rem;
   background: #fff;
 }
 .tool_lists {

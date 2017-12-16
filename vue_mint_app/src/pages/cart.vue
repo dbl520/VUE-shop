@@ -69,6 +69,7 @@ export default {
   computed: {
     carts() {
          console.log(this.$store.state.carts);
+         //这里是计算价格
          var sum=0;
          for(var i=0;i<this.$store.state.carts.length;i++){
            sum+=this.$store.state.carts[i].value*(this.$store.state.carts[i].price);
@@ -102,17 +103,18 @@ export default {
 <style scoped>
 .cards_top {
   background: #fff;
-  height: 0.88rem;
+  height: 1.3rem;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  line-height: 0.88rem;
-  font-size: 0.4rem;
+  line-height: 1.3rem;
+  font-size: 0.5rem;
   z-index: 999;
+  background: #eee;
 }
 .zanwu {
-  margin-top: 0.88rem;
+  margin-top: 1.2rem;
 }
 .cards_con {
   margin-top: 0.2rem;

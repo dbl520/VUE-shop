@@ -62,7 +62,7 @@ export default {
 </script> 
 <style scoped>
 .news_title {
-  height: 0.88rem;
+  height: 1.3rem;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -76,7 +76,7 @@ export default {
   width: 98%;
 }
 .details_con {
-  margin-top: 0.88rem;
+  margin-top: 1.2rem;
   padding: 0.2rem;
   background: #ffffff;
 }
