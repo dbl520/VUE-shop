@@ -32,10 +32,7 @@ body{
     justify-content: flex-start;
     padding: 0 .3rem;
 }
-/* .lists_items_left{
-    width: 1.8rem;
-    height: 1.32rem;
-} */
+
 .lists_items_left img{
     width: 2.15rem;
     height: 2.85rem;
@@ -61,9 +58,6 @@ body{
 }
 .item_up{
     font-size: .28rem;
-}
-.price_left{
-    font-size: 34px;
 }
 .gou{
     font-size: .26rem;
