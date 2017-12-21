@@ -1,0 +1,75 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: #eeeeee;
+}
+.top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 0.88rem;
+    background: #fff;
+    font-size: .32rem;
+}
+.top_item{
+    width: 2.5rem;
+    text-align: center;
+}
+.bg{
+    border-bottom: .04rem solid #ffad2d;
+    height: 0.88rem;
+    line-height: 0.88rem;
+}
+.lists_item{
+    margin-top: .2rem;
+    background: #fff;
+}
+.lists_items{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 .3rem;
+}
+/* .lists_items_left{
+    width: 1.8rem;
+    height: 1.32rem;
+} */
+.lists_items_left img{
+    width: 2.15rem;
+    height: 2.85rem;
+}
+.price{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.lists_items_right{
+    padding-left: 0.2rem;
+}
+.price_left{
+    color: #ffad2d;
+    font-size: 0.34rem;
+}
+.cuxiao{
+    display: inline-block;
+    font-size: 0.22rem;
+    color: #fff;
+    background: #ffad2d;
+    padding: 0.05rem 0.13rem;
+}
+.item_up{
+    font-size: .28rem;
+}
+.price_left{
+    font-size: 34px;
+}
+.gou{
+    font-size: .26rem;
+    padding: .12rem .17rem;
+    border: .02rem solid #cccccc;
+}
+.lists_items_right{
+    width: 5rem;
+}
