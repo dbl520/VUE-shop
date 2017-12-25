@@ -1,4 +1,5 @@
 <template>
+<div class="box">
 	<div class="main">
     <div class="lunbo">
    <mt-swipe :auto="4000">
@@ -47,11 +48,23 @@
          </div>
     </div>
     </div>
+    <!-- 底部组件 -->
+<footer-bar class="footer"></footer-bar>
+
+</div>
 
 </template>
 
+<!-- <footer-bar class="footer"></footer-bar> -->
 <script>
+// 引入组件
+import Footer from '../components/FooterBar'
 export default {
+  // 组件开始
+  components: {
+      'footer-bar': Footer
+    },
+  // 组件结束
   data() {
     return {
       items: [],
