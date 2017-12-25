@@ -1,0 +1,32 @@
+.flex{
+    display: flex;
+    flex-wrap:wrap;
+}
+.flex-column{
+    flex-direction:column;
+}
+.flex-item{
+    flex:1;
+}
+.flex-item-1{
+    flex-basis: 10%;
+}
+.flex-item-2{
+    flex-basis: 20%;
+}
+.flex-item-3{
+    flex-basis: 33.3333%;
+}
+.flex-item-4{
+    flex-basis: 40%;
+}
+.flex-item-5{
+    box-sizing: border-box;
+    flex-basis: 50%;
+}
+.flex-border-2{
+    border-bottom: 5px solid #fbf9fe;
+}
+.flex-border-2:not(:nth-child(2n)) {
+    border-right: 5px solid #fbf9fe;
+}
