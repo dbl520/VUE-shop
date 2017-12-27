@@ -109,14 +109,13 @@
 </script>
 <style scoped>
   .cards_top {
-    background: #fff;
-    height: 1.3rem;
+    height: 0.88rem;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    line-height: 1.3rem;
-    font-size: 0.5rem;
+    line-height: 0.88rem;
+    font-size: 0.32rem;
     z-index: 999;
     background: #eee;
   }

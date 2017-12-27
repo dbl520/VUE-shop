@@ -69,9 +69,9 @@
 </script>
 <style scoped>
   .tool_header {
-    height: 1.2rem;
+    height: 0.88rem;
     background: #fff;
-    font-size: 0.4rem;
+    font-size: 0.32rem;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -91,7 +91,7 @@
   }
   .tool_lists {
     padding: 0.2rem;
-    margin-top: 0.88rem;
+    margin-top: 0.68rem;
   }
   .tool_logo {
     width: 100%;

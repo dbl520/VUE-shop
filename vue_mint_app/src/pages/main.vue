@@ -95,20 +95,20 @@ export default {
       this.$router.push({ path: "details", query: { id: id } });
     },
     xuangou: function() {
-      this.$router.push({ path: "choose" });
+      this.$router.push({ path: "choose" ,query: { name: '选购' }});
     },
     need: function() {
-      this.$router.push({path:"need"})
+      this.$router.push({path:"need", query: {name:'真心想要'}})
       console.log(this);
     },
     qiangou:function(){
-      this.$router.push({path:'qiangou'})
+      this.$router.push({path:'qiangou',query:{name:'抢购'}})
     },
      fabu:function(){
-      this.$router.push({path:'fabu'})
+      this.$router.push({path:'fabu',query:{name:'发布'}})
     },
      mifenka:function(){
-      this.$router.push({path:'mifenka'})
+      this.$router.push({path:'mifenka',query:{name:'米粉卡'}})
     }
   }
 };

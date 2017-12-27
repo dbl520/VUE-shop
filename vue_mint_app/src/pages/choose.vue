@@ -1,5 +1,8 @@
 <template>
   <div class="xuangou">
+    <!-- 引入头部公用模板 -->
+ <v-header></v-header>
+   <!-- 引入公共模板结束 -->
     <mt-navbar v-model="selected">
       <mt-tab-item id="tab1">全部</mt-tab-item>
       <mt-tab-item id="tab2">Xplay系列</mt-tab-item>
@@ -63,7 +66,13 @@
   </div>
 </template>
 <script>
+// 引入共用头部组件
+import header from '../components/header.vue'
 export default {
+  // 初始化
+   components: {
+      'v-header': header
+    },
   data() {
     return {
       selected: "tab1",
@@ -132,6 +141,7 @@ export default {
 .prices{
   color: #fe498f;
   font-size: 0.1rem;
+  text-align: center;
 }
 .price{
   font-size: 0.4rem;
