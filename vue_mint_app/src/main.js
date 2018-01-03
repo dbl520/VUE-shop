@@ -13,15 +13,15 @@ import Mint from 'mint-ui';
 Vue.use(Mint);
 
 Vue.config.productionTip = true
-//引入请求
-import VueResource from 'vue-resource'
-Vue.use(VueResource);
-/* eslint-disable no-new */
+    //引入请求
+import axios from 'axios';
+Vue.prototype.$http = axios
+    /* eslint-disable no-new */
 new Vue({
-  el: '#app',
-  router,
-   store,
-  template: '<App/>',
-  render: h => h(App),
-  components: { App }
+    el: '#app',
+    router,
+    store,
+    template: '<App/>',
+    render: h => h(App),
+    components: { App }
 })

@@ -120,7 +120,7 @@
     background: #eee;
   }
   .zanwu {
-    margin-top: 1.2rem;
+    margin-top: 0.6rem;
   }
   .cards_con {
     margin-top: 0.2rem;
@@ -129,9 +129,6 @@
     justify-content: flex-start;
     padding: 0.2rem 0.2rem;
     background: #ffffff;
-  }
-  .all {
-    margin-top: 1.05rem;
   }
   .cards_con_left {
     width: 2.5rem;

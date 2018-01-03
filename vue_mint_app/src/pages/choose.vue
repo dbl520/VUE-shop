@@ -92,7 +92,7 @@ export default {
         response => {
           console.log(response);
           // get body data
-          _this.lists = response.body;
+          _this.lists = response.data;
         },
         response => {
           // error callback

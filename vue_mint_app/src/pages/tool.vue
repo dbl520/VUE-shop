@@ -48,7 +48,7 @@
         response => {
           console.log(response)
           // get body data
-          _this.news = response.body
+          _this.news = response.data
         },
         response => {
           // error callback

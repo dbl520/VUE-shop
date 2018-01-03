@@ -1,5 +1,5 @@
-<template>  
-  <div class="news_details">  
+<template>
+  <div class="news_details">
       <div class="news_title">新闻详情</div>
       <div class="details_con" v-for="(item,index) in newsdetails">
           <div class="details_p">
@@ -18,8 +18,8 @@
             </div> -->
           </div>
       </div>
-  </div>  
-</template>  
+  </div>
+</template>
 <script>
 export default {
   data() {
@@ -42,9 +42,9 @@ export default {
       _this.$http.get(_this.url).then(
         response => {
           console.log(response);
-          for (var i = 0; i < response.body.length; i++) {
-            if (response.body[i].id == id) {
-              _this.newsdetails.push(response.body[i]);
+          for (var i = 0; i < response.data.length; i++) {
+            if (response.data[i].id == id) {
+              _this.newsdetails.push(response.data[i]);
               //  _this.lists.push(response.body[i].boxs);
             }
           }
@@ -59,7 +59,7 @@ export default {
     }
   }
 };
-</script> 
+</script>
 <style scoped>
 .news_title {
   height: 1.3rem;
@@ -87,4 +87,4 @@ export default {
   width: 100%;
   height: 100%;
 }
-</style>  
+</style>

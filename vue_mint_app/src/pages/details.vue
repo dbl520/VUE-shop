@@ -23,7 +23,7 @@
                         <div class="goodDetailPaid">￥ {{goodDetail.price}}</div>
                          <!-- <div  class="goodDetailPaid" >￥{{paid}}</div> -->
                     </div>
-                    
+
                     <div class="goodDetailValue">
                         <div class="_Value">购买数量：</div>
                         <div class="_cartNumber" style="margin-left: 2rem;">
@@ -59,12 +59,12 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                </mt-tab-container-item>    
+                                </mt-tab-container-item>
 
                         </mt-tab-container>
 
                     </div>
-                    
+
 
                     <div class="goodDetailFooter">
                         <div class="add">
@@ -74,7 +74,7 @@
                              <a href="javascript:void(0);" @click="pay(index)">立即购买</a>
                         </div>
                     </div>
-                    
+
                 </li>
             </ul>
       </div>
@@ -116,9 +116,9 @@ export default {
       var id = this.$route.query.id;
       var _this = this;
       this.$http.get(_this.url).then(function(res) {
-        for (var i = 0; i < res.body.length; i++) {
-          if (res.body[i].id == id) {
-            _this.goodDetails.push(res.body[i]);
+        for (var i = 0; i < res.data.length; i++) {
+          if (res.data[i].id == id) {
+            _this.goodDetails.push(res.data[i]);
           }
         }
       });

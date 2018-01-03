@@ -79,16 +79,18 @@ export default {
   },
   created: function() {
     var _this = this;
-    _this.$http.get(_this.url).then(
-      response => {
-        console.log(response);
-        // get body data
-        _this.items = response.body;
-      },
-      response => {
-        // error callback
+    _this.$http.get(_this.url,{
+      params:{
+        // 请求参数
       }
-    );
+    })
+    .then(function(response){
+      console.log(response);
+        _this.items = response.data;
+    })
+    .catch(function(err){
+      console.log(err);
+    });
   },
   methods: {
     godetails: function(id) {
