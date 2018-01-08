@@ -23,16 +23,5 @@
   }
 </script>
 <style  scoped>
-  /* .need {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.32rem;
-    color: #353535;
-    background: #fff;
-  }
-  .cons{
-    margin-top: .88rem;
-  } */
 </style>
 

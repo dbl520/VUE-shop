@@ -55,7 +55,7 @@
       </div>
     </div>
     <!-- 底部组件 -->
-    <footer-bar class="footer"></footer-bar>
+    <!-- <footer-bar class="footer"></footer-bar> -->
   </div>
 </template>
 
@@ -63,12 +63,12 @@
   // 引入vuex快捷写法
   import { mapState, mapMutations, mapGetters } from 'vuex'
   // 引入组件
-  import Footer from '../components/FooterBar.vue'
+  // import Footer from '../components/FooterBar.vue'
   export default {
     // 开始
-    components: {
-      'footer-bar': Footer
-    },
+    // components: {
+    //   'footer-bar': Footer
+    // },
     data() {
       return {
         results: ''
@@ -199,11 +199,12 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 1.2rem;
+    height: 0.88rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     background: #ffffff;
+    border-top: 1px solid #eee;
   }
   .btn_left {
     width: 3rem;
@@ -213,8 +214,8 @@
     width: 3rem;
     background: #fe498f;
     color: #fff;
-    height: 1.2rem;
-    line-height: 1.2rem;
+    height: 0.88rem;
+    line-height: 0.88rem;
     font-size: 0.35rem;
     text-align: center;
   }
@@ -222,9 +223,9 @@
     width: 3rem;
     color: #fff;
     background: #ff9800;
-    height: 1.2rem;
-    line-height: 1.2rem;
-    font-size: 0.35rem;
+    height: 0.88rem;
+    line-height: 0.88rem;
+    font-size: 0.32rem;
     text-align: center;
   }
   .heji {
