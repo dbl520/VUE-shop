@@ -17,7 +17,7 @@
       </div>
       <div class="dingdan" @click="guanyu">
         <div class="dingdan_left">
-          <i class="iconfont icon-dingdan"></i>
+          <i class="iconfont icon-guanyu"></i>
         </div>
         <div class="dingdan_right">
           关于我们
@@ -90,6 +90,7 @@
   .logos_img img {
     width: 100%;
     height: 100%;
+    border-radius: 50%;
   }
   .dingdan {
     background: #fff;
