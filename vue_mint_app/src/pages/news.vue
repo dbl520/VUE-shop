@@ -1,6 +1,9 @@
 <template>
   <div class="news_details">
-    <div class="news_title">新闻详情</div>
+    <div class="news_title">
+      <i class="iconfont icon-fanhui" @click="fanhui"></i>
+      新闻详情
+      </div>
     <div class="details_con" v-for="(item,index) in newsdetails">
       <div class="details_p">
         {{item.title}}
@@ -56,13 +59,17 @@
             // error callback
           }
         )
+      },
+      fanhui:function(){
+          var _this = this
+        _this.$router.push({ path: 'main' })
       }
     }
   }
 </script>
 <style scoped>
   .news_title {
-    height: 1.3rem;
+    height: 0.88rem;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -70,7 +77,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    font-size: 0.4rem;
+    font-size: 0.3rem;
     z-index: 999;
     background: #ffffff;
     width: 98%;
@@ -81,7 +88,7 @@
     background: #ffffff;
   }
   .details_p {
-    font-size: 0.4rem;
+    font-size: 0.3rem;
   }
   .details_img img {
     width: 100%;
