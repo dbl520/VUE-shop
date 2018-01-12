@@ -1,5 +1,7 @@
 <template>
   <div class="all_orders">
+    <!-- 引入头部公用模板 -->
+     <v-header></v-header>
     <div class="all_orders_title">
        <!-- 如果tabindex==当前的index，showtab样式就会生效 -->
       <div v-for="(item,index) in tabs" wx:Key="index" :class="{showtab:tabindex==index}" @click="tab(index)">
@@ -44,7 +46,11 @@
 </template>
 <script>
   // import {mapState,mapMutations,mapGetters} from 'vuex'
+import header from '../components/header.vue'
   export default {
+    components: {
+      'v-header': header
+    },
     data() {
       return {
         orders: [],

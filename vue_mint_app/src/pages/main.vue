@@ -89,9 +89,9 @@
     },
     created: function() {
       // // 关闭动画
-      setTimeout(function(){
-    Indicator.close()
-      },2000)
+      setTimeout(function() {
+        Indicator.close()
+      }, 2000)
 
       console.log('created')
       var _this = this
@@ -110,12 +110,10 @@
         })
     },
     mounted: function() {
-
       console.log('mounted')
     },
     beforeUpdate: function() {
       console.log('beforeUpdate')
-
     },
     methods: {
       godetails: function(id) {
@@ -145,7 +143,7 @@
   .lunbo {
     height: 5rem;
   }
-  .mint-swipe-indicator{
+  .mint-swipe-indicator {
     background: deeppink !important;
     opacity: 0.6 !important;
   }
@@ -172,7 +170,8 @@
   .item_title {
     display: inline-block;
     margin-top: 0.2rem;
-    font-size: 0.1rem;
+    font-size: 0.3rem;
+    text-align: center;
   }
   .item img {
     width: 100%;

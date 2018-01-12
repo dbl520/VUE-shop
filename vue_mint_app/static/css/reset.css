@@ -82,7 +82,10 @@ video {
     background: transparent;
 }
 
-body {}
+* {
+    margin: 0;
+    padding: 0;
+}
 
 :focus {
     outline: 1;
