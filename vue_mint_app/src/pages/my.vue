@@ -15,6 +15,14 @@
           我的订单
         </div>
       </div>
+      <div class="dingdan" @click="address">
+        <div class="dingdan_left">
+          <i class="iconfont icon-guanyu"></i>
+        </div>
+        <div class="dingdan_right">
+          地址管理
+        </div>
+      </div>
       <div class="dingdan" @click="guanyu">
         <div class="dingdan_left">
           <i class="iconfont icon-guanyu"></i>
@@ -23,6 +31,16 @@
           关于我们
         </div>
       </div>
+      <!-- 分享组件 -->
+      <div class="social-share" data-disabled="google" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣" data-wechat-qrcode-title="请打开微信扫一扫"
+        data-initialized="true">
+        <a href="#" class="social-share-icon icon-weibo">
+        </a>
+        <a href="#" class="social-share-icon icon-qq"></a>
+        <a href="#" class="social-share-icon icon-qqkongjian"></a>
+
+      </div>
+
     </div>
     <!-- 底部组件 -->
     <footer-bar class="footer"></footer-bar>
@@ -64,6 +82,10 @@
           message: 'vue爬坑记?',
           showCancelButton: true
         })
+      },
+      //地址管理
+      address: function() {
+        var _this = this
       }
     }
   }

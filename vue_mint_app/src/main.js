@@ -16,6 +16,7 @@ Vue.config.productionTip = true
     //引入请求
 import axios from 'axios';
 Vue.prototype.$http = axios
+    // 分享组件
     /* eslint-disable no-new */
 new Vue({
     el: '#app',
