@@ -16,11 +16,13 @@
         </div>
       </div>
       <div class="dingdan" @click="dizhi">
-        <div class="dingdan_left">
+        <div class="dingdan_left dz">
           <i class="iconfont icon-guanyu"></i>
+           <span class="gl">选择地址</span> 
         </div>
         <div class="dingdan_right">
-          地址管理
+          <!-- 地址组件 -->
+               <div>{{myAddressProvince}} {{myAddressCity}} {{myAddresscounty}}</div>
         </div>
       </div>
       <div class="dingdan" @click="guanyu">
@@ -32,10 +34,19 @@
         </div>
       </div>
         <!-- 地址 -->
-        <mt-popup   v-model="popupVisible" position="bottom" >
-    <mt-picker :slots="myAddressSlots" @change="onMyAddressChange"></mt-picker>
-</mt-popup>
-  <p>地址3级联动：{{myAddressProvince}} {{myAddressCity}} {{myAddresscounty}}</p>
+        <div>
+        <mt-popup v-model="popupVisible" position="bottom" >
+             <div class="top">
+               <div class="top_left" @click="close">
+                    取消
+               </div>
+               <div class="top_tight" @click="close">
+                  确定
+               </div>
+             </div>
+            <mt-picker :slots="myAddressSlots" @change="onMyAddressChange"></mt-picker>
+       </mt-popup>
+        </div>
     </div>
     <!-- 底部组件 -->
     <footer-bar class="footer"></footer-bar>
@@ -45,11 +56,8 @@
 // 引入组件
 import Footer from "../components/FooterBar.vue";
 // 弹出框
-import Vue from "vue";
-import { Popup } from "mint-ui";
-Vue.component(Popup.name, Popup);
 // 地址三级联动json数据
-import { Toast, Indicator, MessageBox } from "mint-ui";
+import {  MessageBox ,Popup} from "mint-ui";
 import myaddress from "../../static/data/address3.json";
 // 引入地址picker
 export default {
@@ -60,6 +68,7 @@ export default {
   name: "my",
   data() {
     return {
+        popupVisible:false,
       myAddressSlots: [
         {
           flex: 1,
@@ -134,14 +143,13 @@ export default {
     //地址管理
     dizhi: function() {
       var _this = this;
-      console.log(_this.showhide);
-      _this.showhide == 0;
-      if (_this.showhide == 0) {
-        _this.showhide = 1;
-      } else {
-        console.log(_this.showhide);
-        _this.showhide = 0;
-      }
+      console.log(_this.popupVisible);
+      _this.popupVisible =true;
+    },
+    // 关闭
+    close:function(){
+      var _this = this;
+      _this.popupVisible =false;
     }
   },
   watch: {},
@@ -157,6 +165,27 @@ export default {
 };
 </script>
 <style scoped>
+.mint-popup-bottom{
+  width: 100%;
+}
+.top{
+  height: .88rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding:  0 .2rem;
+  background: #fff;
+  color: #353535;
+  font-size: .32rem;
+  border-bottom: 1px solid #eeeeee;
+}
+.dz{
+  display: flex;
+  align-items: center;
+}
+.gl{
+  padding-left: 0.2rem;
+}
 .logos_name {
   padding-left: 0.2rem;
 }
