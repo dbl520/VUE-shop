@@ -16,6 +16,7 @@
     "axios": "^0.17.1",
     "lib-flexible": "^0.3.2",
     "mint-ui": "^2.2.12",
+    "sosh": "^1.1.1",
     "vue": "^2.5.2",
     "vue-resource": "^1.3.4",
     "vue-router": "^3.0.1",
