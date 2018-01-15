@@ -1,5 +1,8 @@
 <template>
   <div class="box">
+      <!-- 下拉刷新上拉加载组件 -->
+     <xialashangla-bar></xialashangla-bar>
+      <!-- 下拉刷新上拉加载组件 -->
     <div class="main">
       <div class="lunbo">
         <mt-swipe :auto="4000">
@@ -33,9 +36,9 @@
       </div>
       <div class="shop_mall">
         <div class="mall_item" @click="godetails(item.id)" v-for="(item,index) in items" :id="item.id">
-          <!-- <img v-bind:src="item.img" v-lazy="item.img"/> -->
+          <img v-bind:src="item.img" v-lazy="item.img"/>
           <!-- 懒加载图片 -->
-          <img v-lazy="item.img" />
+          <!-- <img v-lazy="item.img" /> -->
           <p class="mall_title">
             {{item.name}}
           </p>
@@ -59,12 +62,21 @@
 <!-- <footer-bar class="footer"></footer-bar> -->
 <script>
   // 引入组件
+  import Vue from 'vue'
   import Footer from '../components/FooterBar'
+  import xialashangla from '../components/xialashangla'
   import { Indicator } from 'mint-ui' //引入mint ui
+  import { Lazyload } from 'mint-ui';//懒加载
+  Vue.use(Lazyload, {                //懒加载声明错误图和占位图
+      preLoad: 1,
+      error: 'http://www.iyaxi.com/wp-content/uploads/2017/10/20171025172038.gif',
+      loading: 'http://www.iyaxi.com/wp-content/uploads/2017/10/20171025172038.gif',
+  })
   export default {
     // 组件开始
     components: {
-      'footer-bar': Footer
+      'footer-bar': Footer,
+      'xialashangla-bar':xialashangla
     },
     // 组件结束
     data() {
@@ -81,20 +93,15 @@
     },
     beforeCreate: function() {
       console.log('beforeCreate')
+    },
+    created: function() {
+      console.log('created')
+      var _this = this
       // 创建动画mint-ui
       Indicator.open({
         text: '加载中...',
         spinnerType: 'fading-circle'
       })
-    },
-    created: function() {
-      // // 关闭动画
-      setTimeout(function() {
-        Indicator.close()
-      }, 2000)
-
-      console.log('created')
-      var _this = this
       _this.$http
         .get(_this.url, {
           params: {
@@ -104,6 +111,7 @@
         .then(function(response) {
           console.log(response)
           _this.items = response.data
+          Indicator.close() // // 关闭动画
         })
         .catch(function(err) {
           console.log(err)

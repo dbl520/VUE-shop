@@ -181,13 +181,13 @@
     justify-content: center;
   }
   .ic {
-    font-size: 3rem;
+    font-size: 2rem;
     color: #fe498f;
   }
   .go {
     text-align: center;
     margin: 0.2rem auto 0;
-    font-size: 0.4rem;
+    font-size: 0.2rem;
     color: #fff;
     background: #fe498f;
     padding: 0.2rem;

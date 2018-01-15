@@ -17,12 +17,12 @@
       </div>
       <div class="dingdan" @click="dizhi">
         <div class="dingdan_left dz">
-          <i class="iconfont icon-guanyu"></i>
-           <span class="gl">选择地址</span> 
+          <i class="iconfont icon-shouhuodizhi"></i>
+          <span class="gl">选择地址</span>
         </div>
         <div class="dingdan_right">
           <!-- 地址组件 -->
-               <div>{{myAddressProvince}} {{myAddressCity}} {{myAddresscounty}}</div>
+          <div>{{myAddressProvince}} {{myAddressCity}} {{myAddresscounty}}</div>
         </div>
       </div>
       <div class="dingdan" @click="guanyu">
@@ -35,246 +35,296 @@
       </div>
       <div class="dingdan" @click="share">
         <div class="dingdan_left">
-          <i class="iconfont icon-guanyu"></i>
+          <i class="iconfont icon-fenxiang-tianchong"></i>
         </div>
         <div class="dingdan_right">
           分享
         </div>
       </div>
-        <!-- 地址 -->
-        <div>
-        <mt-popup v-model="popupVisible" position="bottom" >
-             <div class="top">
-               <div class="top_left" @click="close">
-                  取消
-               </div>
-               <div class="top_tight" @click="close">
-                  确定
-               </div>
-             </div>
-            <mt-picker :slots="myAddressSlots" @change="onMyAddressChange"></mt-picker>
-       </mt-popup>
+      <!-- 地址 -->
+      <div>
+        <mt-popup v-model="popupVisible" position="bottom">
+          <div class="top">
+            <div class="top_left" @click="close">
+              取消
+            </div>
+            <div class="top_tight" @click="close">
+              确定
+            </div>
+          </div>
+          <mt-picker :slots="myAddressSlots" @change="onMyAddressChange"></mt-picker>
+        </mt-popup>
+      </div>
+      <!-- 分享 -->
+      <mt-popup v-model="shareVisible" position="bottom">
+        <!-- UY BEGIN -->
+        <div class="share_item">
+          <div class="share_items" @click="qqshare">
+            <div class="items_all">
+              <i class="iconfont icon-qq share_icon"></i>
+              <p class="share_title">QQ</p>
+            </div>
+          </div>
+          <div class="share_items">
+            <div class="items_all">
+              <i class="iconfont icon-weibo share_icon"></i>
+              <p class="share_title">微博</p>
+            </div>
+          </div>
+          <div class="share_items">
+            <div class="items_all">
+              <i class="iconfont icon-weixin share_icon"></i>
+              <p class="share_title">微信</p>
+            </div>
+          </div>
+          <div class="share_items">
+            <div class="items_all">
+              <i class="iconfont icon-qqkongjian share_icon"></i>
+              <p class="share_title">QQ空间</p>
+            </div>
+          </div>
         </div>
-        <!-- 分享 -->
-        <mt-popup v-model="shareVisible" position="bottom">
-         <!-- UY BEGIN -->
-          测试
-       </mt-popup>
+      </mt-popup>
     </div>
     <!-- 底部组件 -->
     <footer-bar class="footer"></footer-bar>
   </div>
 </template>
 <script>
-
-// 引入组件
-import Footer from "../components/FooterBar.vue";
-// 弹出框
-// 地址三级联动json数据
-import { MessageBox, Popup } from "mint-ui";
-import myaddress from "../../static/data/address3.json";
-// 引入地址picker
-export default {
-  // 开始
-  components: {
-    "footer-bar": Footer
-  },
-  name: "my",
-  data() {
-    return {
-      popupVisible: false,//这个是控制弹出框的显示隐藏
-      shareVisible:false,//分享
-      myAddressSlots: [
-        {
-          flex: 1,
-          defaultIndex: 1,
-          values: Object.keys(myaddress), //省份数组
-          className: "slot1",
-          textAlign: "center"
-        },
-        {
-          divider: true,
-          content: "-",
-          className: "slot2"
-        },
-        {
-          flex: 1,
-          values: [],
-          className: "slot3",
-          textAlign: "center"
-        },
-        {
-          divider: true,
-          content: "-",
-          className: "slot4"
-        },
-        {
-          flex: 1,
-          values: [],
-          className: "slot5",
-          textAlign: "center"
-        }
-      ],
-      myAddressProvince: "省",
-      myAddressCity: "市",
-      myAddresscounty: "区/县"
-    };
-  },
-  methods: {
-    //获取地区列表
-    onMyAddressChange(picker, values) {
-      if (myaddress[values[0]]) {
-        //这个判断类似于v-if的效果（可以不加，但是vue会报错，很不爽）
-        picker.setSlotValues(1, Object.keys(myaddress[values[0]])); // Object.keys()会返回一个数组，当前省的数组
-        picker.setSlotValues(2, myaddress[values[0]][values[1]]); // 区/县数据就是一个数组
-        this.myAddressProvince = values[0];
-        this.myAddressCity = values[1];
-        this.myAddresscounty = values[2];
+  // 引入组件
+  import Footer from '../components/FooterBar.vue'
+  // 弹出框
+  // 地址三级联动json数据
+  import { MessageBox, Popup } from 'mint-ui'
+  import myaddress from '../../static/data/address3.json'
+  // 引入地址picker
+  export default {
+    // 开始
+    components: {
+      'footer-bar': Footer
+    },
+    name: 'my',
+    data() {
+      return {
+        popupVisible: false, //这个是控制弹出框的显示隐藏
+        shareVisible: false, //分享
+        myAddressSlots: [
+          {
+            flex: 1,
+            defaultIndex: 1,
+            values: Object.keys(myaddress), //省份数组
+            className: 'slot1',
+            textAlign: 'center'
+          },
+          {
+            divider: true,
+            content: '-',
+            className: 'slot2'
+          },
+          {
+            flex: 1,
+            values: [],
+            className: 'slot3',
+            textAlign: 'center'
+          },
+          {
+            divider: true,
+            content: '-',
+            className: 'slot4'
+          },
+          {
+            flex: 1,
+            values: [],
+            className: 'slot5',
+            textAlign: 'center'
+          }
+        ],
+        myAddressProvince: '省',
+        myAddressCity: '市',
+        myAddresscounty: '区/县'
       }
     },
-    order: function() {
-      this.$router.push({ path: "all_order" });
-    },
-    index: function() {
-      console.log(this.$store.state.count);
-    },
-    jia: function() {
-      this.$store.commit("add");
-      console.log(this.$store.state.count);
-      // body...
-    },
-    jian: function() {
-      this.$store.commit("reduce");
-      console.log(this.$store.state.count);
-      // body...
-    },
-    guanyu: function() {
-      MessageBox({
-        title: "关于我",
-        message: "vue爬坑记?",
-        showCancelButton: true
-      });
-    },
-    //地址管理
-    dizhi: function() {
-      var _this = this;
-      console.log(_this.popupVisible);
-      _this.popupVisible = true;
-    },
-    // 关闭
-    close: function() {
-      var _this = this;
-      _this.popupVisible = false;
-    },
-    share:function(){
-      var _this =this
-        _this.shareVisible = true;
-            (function() {
-        var p = {
-            url: location.href,
-            /*获取URL，可加上来自分享到QQ标识，方便统计*/
-            desc: 'vue',
-            /*分享理由(风格应模拟用户对话),支持多分享语随机展现（使用|分隔）*/
-            title: 'vue',
-            /*分享标题(可选)*/
-            summary: 'vue',
-            /*分享摘要(可选)*/
-            pics: 'vue',
-            /*分享图片(可选)*/
-            flash: 'vue',
-            /*视频地址(可选)*/
-            site: 'vue',
-            /*分享来源(可选) 如：QQ分享*/
-            style: '201',
-            width: 32,
-            height: 32
-        };
-        var s = [];
-        for (var i in p) {
-            s.push(i + '=' + encodeURIComponent(p[i] || ''));
+    methods: {
+      //获取地区列表
+      onMyAddressChange(picker, values) {
+        if (myaddress[values[0]]) {
+          //这个判断类似于v-if的效果（可以不加，但是vue会报错，很不爽）
+          picker.setSlotValues(1, Object.keys(myaddress[values[0]])) // Object.keys()会返回一个数组，当前省的数组
+          picker.setSlotValues(2, myaddress[values[0]][values[1]]) // 区/县数据就是一个数组
+          this.myAddressProvince = values[0]
+          this.myAddressCity = values[1]
+          this.myAddresscounty = values[2]
         }
-        document.write(['<a class="qcShareQQDiv" href="http://connect.qq.com/widget/shareqq/index.html?', s.join('&'), '" target="_blank">分享到QQ</a>'].join(''));
-    })();
-    }
-  },
-  watch: {},
-  created() {},
-  mounted() {
-    this.$nextTick(() => {
-      //vue里面全部加载好了再执行的函数  （类似于setTimeout）
-      this.myAddressSlots[0].defaultIndex = 0;
-      // 这里的值需要和 data里面 defaultIndex 的值不一样才能够初始化
-      //因为我没有看过源码（我猜测是因为数据没有改变，不会触发更新）
-    });
-      // 分享
+      },
+      order: function() {
+        this.$router.push({ path: 'all_order' })
+      },
+      index: function() {
+        console.log(this.$store.state.count)
+      },
+      jia: function() {
+        this.$store.commit('add')
+        console.log(this.$store.state.count)
+        // body...
+      },
+      jian: function() {
+        this.$store.commit('reduce')
+        console.log(this.$store.state.count)
+        // body...
+      },
+      guanyu: function() {
+        MessageBox({
+          title: '关于我',
+          message: 'vue爬坑记?',
+          showCancelButton: true
+        })
+      },
+      //地址管理
+      dizhi: function() {
+        var _this = this
+        console.log(_this.popupVisible)
+        _this.popupVisible = true
+      },
+      // 关闭
+      close: function() {
+        var _this = this
+        _this.popupVisible = false
+      },
+      share: function() {
+        var _this = this
+        _this.shareVisible = true
 
-    
+      },
+      // qq分享
+      qqshare:function(){
+                (function() {
+            var p = {
+                url: location.href,
+                /*获取URL，可加上来自分享到QQ标识，方便统计*/
+                desc: 'vue',
+                /*分享理由(风格应模拟用户对话),支持多分享语随机展现（使用|分隔）*/
+                title: 'vue',
+                /*分享标题(可选)*/
+                summary: 'vue',
+                /*分享摘要(可选)*/
+                pics: 'vue',
+                /*分享图片(可选)*/
+                flash: 'vue',
+                /*视频地址(可选)*/
+                site: 'vue',
+                /*分享来源(可选) 如：QQ分享*/
+                style: '201',
+                width: 32,
+                height: 32
+            };
+            var s = [];
+            for (var i in p) {
+                s.push(i + '=' + encodeURIComponent(p[i] || ''));
+            }
+            document.write(['<a class="qcShareQQDiv" href="http://connect.qq.com/widget/shareqq/index.html?', s.join('&'), '" target="_blank">分享到QQ</a>'].join(''));
+        })();
+      }
+
+    },
+    watch: {},
+    created() {},
+    mounted() {
+      this.$nextTick(() => {
+        //vue里面全部加载好了再执行的函数  （类似于setTimeout）
+        this.myAddressSlots[0].defaultIndex = 0
+        // 这里的值需要和 data里面 defaultIndex 的值不一样才能够初始化
+        //因为我没有看过源码（我猜测是因为数据没有改变，不会触发更新）
+      })
+    }
   }
-};
 </script>
 <style scoped>
-.mint-popup-bottom {
-  width: 100%;
-}
-.top {
-  height: 0.88rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 0.2rem;
-  background: #fff;
-  color: #353535;
-  font-size: 0.32rem;
-  border-bottom: 1px solid #eeeeee;
-}
-.dz {
-  display: flex;
-  align-items: center;
-}
-.gl {
-  padding-left: 0.2rem;
-}
-.logos_name {
-  padding-left: 0.2rem;
-}
-body {
-  background: #eee;
-}
-.logos_all {
-  height: 3rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-bottom: 1px solid #eee;
-  background: #ffffff;
-}
-.logos_img {
-  height: 1.8rem;
-  width: 1.8rem;
-}
-.logos_img img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-}
-.dingdan {
-  background: #fff;
-  border-bottom: 1px solid #eee;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 0.2rem 0.5rem;
-}
-.dingdan_left i {
-  font-size: 0.65rem;
-}
-.dingdan_right {
-  padding-left: 0.3rem;
-}
-#index {
-  display: flex;
-  justify-content: center;
-  margin-top: 100px;
-}
+  .share_item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20rpx;
+    background: #fff;
+  }
+  .share_title {
+    font-size: 0.32rem;
+    text-align: center;
+  }
+  .share_icon {
+    font-size: 0.88rem;
+    color: #4cafe9;
+  }
+  .share_items {
+    width: 2rem;
+    height: 2rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .mint-popup-bottom {
+    width: 100%;
+    height: 30vh;
+  }
+  .top {
+    height: 0.88rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 0.2rem;
+    background: #fff;
+    color: #353535;
+    font-size: 0.32rem;
+    border-bottom: 1px solid #eeeeee;
+  }
+  .dz {
+    display: flex;
+    align-items: center;
+  }
+  .gl {
+    padding-left: 0.2rem;
+  }
+  .logos_name {
+    padding-left: 0.2rem;
+  }
+  body {
+    background: #eee;
+  }
+  .logos_all {
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #eee;
+    background: #ffffff;
+  }
+  .logos_img {
+    height: 1.8rem;
+    width: 1.8rem;
+  }
+  .logos_img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+  .dingdan {
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0.2rem 0.5rem;
+  }
+  .dingdan_left i {
+    font-size: 0.65rem;
+  }
+  .dingdan_right {
+    padding-left: 0.3rem;
+  }
+  #index {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+  }
 </style>
 

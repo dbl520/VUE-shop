@@ -28,6 +28,7 @@
 <script>
   // 引入组件
   import Footer from '../components/FooterBar.vue'
+  import { Indicator } from 'mint-ui' //引入mint ui
   export default {
     // 开始
     components: {
@@ -44,11 +45,17 @@
     },
     created: function() {
       var _this = this
+      // 创建动画mint-ui
+      Indicator.open({
+        text: '加载中...',
+        spinnerType: 'fading-circle'
+      })
       _this.$http.get(_this.url).then(
         response => {
           console.log(response)
           // get body data
           _this.news = response.data
+          Indicator.close() // // 关闭动画
         },
         response => {
           // error callback

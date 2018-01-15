@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "axios": "^0.17.1",
+    "fastclick": "^1.0.6",
     "lib-flexible": "^0.3.2",
     "mint-ui": "^2.2.12",
     "sosh": "^1.1.1",

@@ -11,7 +11,9 @@ Vue.use(Vuex)
 // import 'lib-flexible'
 import Mint from 'mint-ui';
 Vue.use(Mint);
-
+// 解决移动端300s延迟
+import fastclick from 'fastclick'
+fastclick.attach(document.body) //解决移动端点击事件200ms延迟
 Vue.config.productionTip = true
     //引入请求
 import axios from 'axios';
