@@ -22,8 +22,7 @@ import { Loadmore } from 'mint-ui';
         totalpage: 0,
         loading: false,
         bottomText: '',
-        url:
-          'https://www.easy-mock.com/mock/59e95287dd7e1a0a448c1102/example/todos'
+        url: 'https://www.easy-mock.com/mock/59e95287dd7e1a0a448c1102/example/todos'
       }
     },
     components: {
@@ -34,15 +33,12 @@ import { Loadmore } from 'mint-ui';
       this.loadPageList() //初次访问查询列表
     },
     methods: {
-      goto_detail(payload) {
-        //跳转到详情页
-        this.$router.push({ path: '/detail' })
-      },
       loadTop: function() {
         console.log('上拉')
         setTimeout(function(){
-          this.allLoaded=false;
-        },300)
+         this.scrollMode = 'touch';//静止下拉
+          console.log("上")
+        },3000)
       },
       loadBottom: function() {
         console.log('下')
