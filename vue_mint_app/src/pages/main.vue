@@ -1,7 +1,7 @@
 <template>
   <div class="box">
       <!-- 下拉刷新上拉加载组件 -->
-     <xialashangla-bar></xialashangla-bar>
+     <!-- <xialashangla-bar></xialashangla-bar> -->
       <!-- 下拉刷新上拉加载组件 -->
     <div class="main">
       <div class="lunbo">

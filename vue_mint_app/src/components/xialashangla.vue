@@ -49,7 +49,8 @@ import { Loadmore } from 'mint-ui';
       loadPageList: function() {
         // 查询数据
         this.$http
-          .get(this.url + '&page=' + this.pageNo + '&size=' + this.pageSize)
+        //  .get(this.url + '&page=' + this.pageNo + '&size=' + this.pageSize)
+          .get(this.url)
           .then(res => {
             console.log(res)
             this.proCopyright = res.data.result.PRODUCTCOPYRIGHT
