@@ -1,27 +1,27 @@
 @media screen and (max-width:321px) {
-  body {
-    font-size: 15px;
-    margin-bottom: 1.56rem;
-    background:#eeeeee;
-  }
+    body {
+        font-size: 15px;
+        /* margin-bottom: 1.56rem; */
+        background: #eeeeee;
+    }
 }
 
 @media screen and (min-width:321px) and (max-width:400px) {
-  body {
-    font-size: 16px;
-    margin-bottom: 1.56rem;
-    background:#eeeeee;
-  }
+    body {
+        font-size: 16px;
+        /* margin-bottom: 1.56rem; */
+        background: #eeeeee;
+    }
 }
 
 @media screen and (min-width:400px) {
-  body {
-    font-size: 18px;
-    margin-bottom: 1.56rem;
-    background:#eeeeee;
-  }
+    body {
+        font-size: 18px;
+        /* margin-bottom: 1.56rem; */
+        background: #eeeeee;
+    }
 }
 
 .mint-tab-item-label {
-  color: #353535 !important;
+    color: #353535 !important;
 }

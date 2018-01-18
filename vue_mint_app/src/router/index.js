@@ -15,6 +15,7 @@ import need from "../pages/need.vue";
 import qiangou from "../pages/qiangou.vue";
 import fabu from "../pages/fabu.vue";
 import mifenka from "../pages/mifenka.vue";
+import fenlei from "../pages/fenlei.vue";
 Vue.use(Router);
 
 export default new Router({
@@ -32,6 +33,11 @@ export default new Router({
             path: "/header",
             name: "header",
             component: header
+        },
+        {
+            path: "/fenlei",
+            name: "fenlei",
+            component: fenlei
         },
         {
             path: "/tool",

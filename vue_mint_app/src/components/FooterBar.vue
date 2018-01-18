@@ -4,7 +4,10 @@
         <i class="iconfont icon-shouye"></i>
         <div>首页</div>
       </router-link>
-
+      <router-link class="nav-item" :to="{name:'fenlei'}" tag="li">
+       <i class="iconfont icon-faxian"></i>
+        <div>分类</div>
+      </router-link>
       <router-link class="nav-item" :to="{name:'tool'}" tag="li">
        <i class="iconfont icon-faxian"></i>
         <div>发现</div>

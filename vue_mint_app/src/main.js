@@ -18,7 +18,9 @@ Vue.config.productionTip = true
     //引入请求
 import axios from 'axios';
 Vue.prototype.$http = axios
-    // 分享组件
+    //引入better-scroller
+    // import BScroll from 'better-scroll'
+    // let scroll = new BScroll('.fenlei_content_left,.fenlei_content_right')
     /* eslint-disable no-new */
 new Vue({
     el: '#app',

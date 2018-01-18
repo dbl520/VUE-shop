@@ -74,17 +74,21 @@ time,
 mark,
 audio,
 video {
-    margin: 0;
-    padding: 0;
     border: 0;
     outline: 0;
     vertical-align: baseline;
     background: transparent;
 }
 
-* {
+*,
+::before,
+::after {
     margin: 0;
     padding: 0;
+    /*清除移动端默认的点击高亮效果*/
+    -webkit-tap-highlight-color: transparent;
+    /*设置以边框开始计算宽度*/
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
 
@@ -174,4 +178,8 @@ hr {
 input,
 select {
     vertical-align: middle;
+    border: 0;
+    outline: none;
+    /*清除移动端默认的表单样式*/
+    -webkit-appearance: none;
 }
