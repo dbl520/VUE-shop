@@ -11,24 +11,21 @@
             <div class="fenlei_content">
               <div class="leftwrapper" ref="leftwrapper">
                 <div class="fenlei_content_left">
-                      <span :class="['xinpin' ,{showtab:tabindex==index}]" v-for="(item,index) in catelist" :key="index" @click="Switch(index)">
-                            {{item.category_name}}
-                     </span>
-
-
+                <span :class="['xinpin' ,{showtab:tabindex==index}]" v-for="(item,index) in catelist" :key="index" @click="Switch(index)">
+                      {{item.category_name}}
+                </span>
                 </div>
             </div>
              <div class="wrapper" ref="wrapper">
-              <div class="fenlei_content_right">
-                   <div class="fenlei_content_items" v-for="(imgs,index) in catelist[0].cateitems" :key="index" >
-                      <div class="imgs">
-                        <img v-bind:src="imgs" alt="" v-if="imgs">
-                      </div>
-                      <span class="items_name">
-                        小米手机
-                      </span>
-                   </div>
-
+              <div class="fenlei_content_right" v-if="catelist">
+                <div class="fenlei_content_items" v-for="(imgs,index) in catelist[0].cateitems" :key="index" >
+                  <div class="imgs">
+                    <img v-bind:src="imgs" alt="">
+                  </div>
+                  <span class="items_name">
+                    小米手机
+                  </span>
+                </div>
               </div>
           </div>
             </div>
@@ -38,6 +35,7 @@
   </template>
 
   <script>
+  // 引入better-scroll
 import Footer from "../components/FooterBar.vue";
 import BScroll from "better-scroll";
 export default {
@@ -49,7 +47,7 @@ export default {
   name: "fenlei",
   data: function() {
     return {
-      tabindex:"0",
+      tabindex: "0",
       url:
         "https://www.easy-mock.com/mock/59e95287dd7e1a0a448c1102/example/fenlei",
       catelist: ""
@@ -59,60 +57,78 @@ export default {
     //  切换
     Switch: function(index) {
       var _this = this;
-      _this.tabindex=index;
+      _this.tabindex = index;
       console.log(index, "index");
     }
   },
-  beforeCreate () {
-
-  },
+  beforeCreate() {},
   created: function() {
-    console.log("created")
+    console.log("created");
     var _this = this;
     this.$http.get(_this.url).then(function(res) {
       console.log(res.data);
       console.log(_this.catelist);
       _this.catelist = res.data;
-
+      //  $nextTick类似定时器
+      _this.$nextTick(function() {
+        _this.scroll = new BScroll(_this.$refs.wrapper, {});
+        _this.scroll = new BScroll(_this.$refs.leftwrapper, {});
+      });
     });
   },
   mounted() {
-    //  滚动条优化
-    const options = {
-      scrollY: true // 因为scrollY默认为true，其实可以省略
-    };
-console.log("mounted")
     //即定时器 20ms
-
-
-     this.$nextTick(() => {
-      //$refs绑定元素
-      if (!this.scroll) {
-        this.scroll = new BScroll(this.$refs.wrapper, {
-          //开启点击事件 默认为false
-          click: false
-        });
-        this.scroll = new BScroll(this.$refs.leftwrapper, {
-          //开启点击事件 默认为false
-          click: false
-        });
-
-        // console.log(this.scroll)
-      } else if (!this.$refs.leftwrapper) {
-        return;
-      } else {
-        this.scroll.refresh();
-      }
-    });
+    //  this.$nextTick(() => {
+    //   //$refs绑定元素
+    //   if (!this.scroll) {
+    //     this.scroll = new BScroll(this.$refs.wrapper, {
+    //       //开启点击事件 默认为false
+    //       click: false
+    //     });
+    //     this.scroll = new BScroll(this.$refs.leftwrapper, {
+    //       //开启点击事件 默认为false
+    //       click: false
+    //     });
+    //     // console.log(this.scroll)
+    //   } else if (!this.$refs.leftwrapper) {
+    //     return;
+    //   } else {
+    //     this.scroll.refresh();
+    //   }
+    // });
   }
 };
 </script>
 
   <style scoped>
-  .showtab{
-    color: red;
-    border-bottom: 1px solid red;
+.showtab {
+  color: red;
+  border-bottom: 1px solid red;
+  animation: mymove 1s 1;
+  background: #fff;
+  -moz-animation: mymove 1s 1; /* Firefox */
+  -webkit-animation: mymove 1s 1; /* Safari and Chrome */
+  -o-animation: mymove 1s 1; /* Opera */
+}
+
+@-webkit-keyframes mymove{
+ from {
+    font-size: 0.4rem;
   }
+  to {
+    font-size: 0.32rem;
+  }
+}
+
+@keyframes mymove {
+  from {
+    font-size: 0.4rem;
+  }
+  to {
+    font-size: 0.32rem;
+  }
+}
+
 body {
   background: #eee;
 }

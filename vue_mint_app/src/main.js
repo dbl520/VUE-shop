@@ -18,15 +18,35 @@ Vue.config.productionTip = true
     //引入请求
 import axios from 'axios';
 Vue.prototype.$http = axios
-    //引入better-scroller
-    // import BScroll from 'better-scroll'
-    // let scroll = new BScroll('.fenlei_content_left,.fenlei_content_right')
     /* eslint-disable no-new */
 new Vue({
-    el: '#app',
-    router,
-    store,
-    template: '<App/>',
-    render: h => h(App),
-    components: { App }
-})
+        el: '#app',
+        router,
+        store,
+        template: '<App/>',
+        render: h => h(App),
+        components: { App }
+    })
+    // 此处是funbug开始
+
+function formatComponentName(vm) {
+    if (vm.$root === vm) return 'root';
+
+    var name = vm._isVue ? (vm.$options && vm.$options.name) || (vm.$options && vm.$options._componentTag) : vm.name;
+    return (name ? 'component <' + name + '>' : 'anonymous component') + (vm._isVue && vm.$options && vm.$options.__file ? ' at ' + (vm.$options && vm.$options.__file) : '');
+
+}
+
+Vue.config.errorHandler = function(err, vm, info) {
+    var componentName = formatComponentName(vm);
+    var propsData = vm.$options && vm.$options.propsData;
+
+    fundebug.notifyError(err, {
+        metaData: {
+            componentName: componentName,
+            propsData: propsData,
+            info: info
+        }
+    });
+};
+// 此处是funbug结束

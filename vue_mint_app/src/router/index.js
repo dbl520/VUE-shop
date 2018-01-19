@@ -19,6 +19,7 @@ import fenlei from "../pages/fenlei.vue";
 Vue.use(Router);
 
 export default new Router({
+    // mode: "history", //改为history.路由中没有#号
     routes: [{
             path: "/",
             name: "main",
