@@ -49,7 +49,7 @@ export default {
       /* height: 1.5rem; */
     }
     .footer i{
-      font-size: 0.65rem;
+      font-size: 0.48rem;
     }
     .footer li{
       margin-top: 0.1rem;
