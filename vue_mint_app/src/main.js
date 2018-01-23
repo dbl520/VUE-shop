@@ -8,7 +8,7 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 // 导入自适应
-// import 'lib-flexible'
+// import 'soshm'
 import Mint from 'mint-ui';
 Vue.use(Mint);
 // 解决移动端300s延迟

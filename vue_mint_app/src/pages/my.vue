@@ -41,6 +41,8 @@
           分享
         </div>
       </div>
+      <!-- 分享组件 -->
+
       <!-- 时间选择 -->
       <div class="dingdan" @click="open('picker1')">
         <div class="dingdan_left dz">
@@ -52,8 +54,8 @@
              {{date1}}
         </div>
       </div>
-      <!-- 这是分享 -->
-      <div class="soshm" @click="fenxiang"></div>
+  <div id="nativeShare"></div>
+  <div class="soshm"></div>
 <!-- 这是分享 -->
     <mt-datetime-picker
           ref="picker1"
@@ -226,50 +228,18 @@ export default {
       var _this = this;
       _this.shareVisible = true;
     },
-    fenxiang:function(){
-      soshm('#share', {
-          // 分享的链接，默认使用location.href
-          url: '',
-          // 分享的标题，默认使用document.title
-          title: '',
-          // 分享的摘要，默认使用<meta name="description" content="">content的值
-          digest: '',
-          // 分享的图片，默认获取本页面第一个img元素的src
-          pic: '',
-          // 默认显示的网站为以下六个个,支持设置的网站有
-          // weixin,weixintimeline,qq,qzone,yixin,weibo,tqq,renren,douban,tieba
-          sites: ['weixin', 'weixintimeline', 'yixin', 'weibo', 'qq', 'qzone']
-        });
-    },
     // qq分享
     qqshare: function() {
       //分享到qq空间
-      (function() {
-        var p = {
-          url: location.href /*获取URL，可加上来自分享到QQ标识，方便统计*/,
-          desc:
-            "" /*分享理由(风格应模拟用户对话),支持多分享语随机展现（使用|分隔）*/,
-          title: "" /*分享标题(可选)*/,
-          summary: "" /*分享摘要(可选)*/,
-          pics: "" /*分享图片(可选)*/,
-          flash: "" /*视频地址(可选)*/,
-          site: "" /*分享来源(可选) 如：QQ分享*/,
-          style: "201",
-          width: 32,
-          height: 32
-        };
-        var s = [];
-        for (var i in p) {
-          s.push(i + "=" + encodeURIComponent(p[i] || ""));
-        }
-        document.write(
-          [
-            '<a class="qcShareQQDiv" href="http://connect.qq.com/widget/shareqq/index.html?',
-            s.join("&"),
-            '" target="_blank">分享到QQ</a>'
-          ].join("")
-        );
-      })();
+        var config = {
+        url:'http://blog.wangjunfeng.com',// 分享的网页链接
+        title:'王俊锋的个人博客',// 标题
+        desc:'王俊锋的个人博客',// 描述
+        img:'http://www.wangjunfeng.com/img/face.jpg',// 图片
+        img_title:'王俊锋的个人博客',// 图片标题
+        from:'王俊锋的博客' // 来源
+    };
+    var share_obj = new nativeShare('nativeShare',config);
     },
     // 日期
     open(picker) {
@@ -295,6 +265,20 @@ export default {
       // 这里的值需要和 data里面 defaultIndex 的值不一样才能够初始化
       //因为我没有看过源码（我猜测是因为数据没有改变，不会触发更新）
     });
+   soshm('#share', {
+    // 分享的链接，默认使用location.href
+    url: 'https://github.com/calledT/soshm',
+    // 分享的标题，默认使用document.title
+    title: '测试',
+    // 分享的摘要，默认使用<meta name="description" content="">content的值
+    digest: '',
+    // 分享的图片，默认获取本页面第一个img元素的src
+    pic: '',
+    // 默认显示的网站为以下六个个,支持设置的网站有
+    // weixin,weixintimeline,qq,qzone,yixin,weibo,tqq,renren,douban,tieba
+    sites: ['weixin', 'weixintimeline', 'yixin', 'weibo', 'qq', 'qzone']
+  });
+      console.log("测试")
   }
 };
 </script>
