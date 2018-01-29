@@ -55,7 +55,6 @@
         </div>
       </div>
   <div id="nativeShare"></div>
-  <div class="soshm"></div>
 <!-- 这是分享 -->
     <mt-datetime-picker
           ref="picker1"
@@ -233,11 +232,11 @@ export default {
       //分享到qq空间
         var config = {
         url:'http://blog.wangjunfeng.com',// 分享的网页链接
-        title:'王俊锋的个人博客',// 标题
-        desc:'王俊锋的个人博客',// 描述
+        title:'vue练习',// 标题
+        desc:'vue练习',// 描述
         img:'http://www.wangjunfeng.com/img/face.jpg',// 图片
-        img_title:'王俊锋的个人博客',// 图片标题
-        from:'王俊锋的博客' // 来源
+        img_title:'vue练习',// 图片标题
+        from:'vue练习' // 来源
     };
     var share_obj = new nativeShare('nativeShare',config);
     },
@@ -265,20 +264,6 @@ export default {
       // 这里的值需要和 data里面 defaultIndex 的值不一样才能够初始化
       //因为我没有看过源码（我猜测是因为数据没有改变，不会触发更新）
     });
-   soshm('#share', {
-    // 分享的链接，默认使用location.href
-    url: 'https://github.com/calledT/soshm',
-    // 分享的标题，默认使用document.title
-    title: '测试',
-    // 分享的摘要，默认使用<meta name="description" content="">content的值
-    digest: '',
-    // 分享的图片，默认获取本页面第一个img元素的src
-    pic: '',
-    // 默认显示的网站为以下六个个,支持设置的网站有
-    // weixin,weixintimeline,qq,qzone,yixin,weibo,tqq,renren,douban,tieba
-    sites: ['weixin', 'weixintimeline', 'yixin', 'weibo', 'qq', 'qzone']
-  });
-      console.log("测试")
   }
 };
 </script>
