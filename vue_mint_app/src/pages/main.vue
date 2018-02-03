@@ -1,8 +1,8 @@
 <template>
   <div class="box">
-      <!-- 下拉刷新上拉加载组件 -->
-     <!-- <xialashangla-bar></xialashangla-bar> -->
-      <!-- 下拉刷新上拉加载组件 -->
+    <!-- 下拉刷新上拉加载组件 -->
+    <!-- <xialashangla-bar></xialashangla-bar> -->
+    <!-- 下拉刷新上拉加载组件 -->
     <div class="main">
       <div class="lunbo">
         <mt-swipe :auto="4000">
@@ -14,29 +14,39 @@
       <div class="items">
 
         <div class="item" @click="xuangou">
-          <img src="../../static/images/SELECT.png">
+          <div class="item_img">
+            <img src="../../static/images/SELECT.png">
+          </div>
           <span class="item_title">选购</span>
         </div>
         <div class="item" @click="need">
-          <img src="../../static/images/lipin.png">
+          <div class="item_img">
+            <img src="../../static/images/lipin.png">
+          </div>
           <span class="item_title">真心想要</span>
         </div>
         <div class="item" @click="qiangou">
-          <img src="../../static/images/xianshi.png">
+          <div class="item_img">
+            <img src="../../static/images/xianshi.png">
+          </div>
           <span class="item_title">限时抢购</span>
         </div>
         <div class="item" @click="fabu">
-          <img src="../../static/images/news.png">
+          <div class="item_img">
+            <img src="../../static/images/news.png">
+          </div>
           <span class="item_title">新品发布</span>
         </div>
         <div class="item" @click="mifenka">
-          <img src="../../static/images/ka.png">
+          <div class="item_img">
+            <img src="../../static/images/ka.png">
+          </div>
           <span class="item_title">米粉卡</span>
         </div>
       </div>
       <div class="shop_mall">
         <div class="mall_item" @click="godetails(item.id)" v-for="(item,index) in items" :id="item.id">
-          <img v-bind:src="item.img" v-lazy="item.img"/>
+          <img v-bind:src="item.img" v-lazy="item.img" />
           <!-- 懒加载图片 -->
           <!-- <img v-lazy="item.img" /> -->
           <p class="mall_title">
@@ -53,6 +63,10 @@
         </div>
       </div>
     </div>
+    <!-- 上滑 -->
+    <div class="tops" v-if="showtop" @click="top">
+      <i class="iconfont icon-tubiao02  tops_size"></i>
+    </div>
     <!-- 底部组件 -->
     <footer-bar class="footer"></footer-bar>
 
@@ -66,21 +80,23 @@
   import Footer from '../components/FooterBar'
   import xialashangla from '../components/xialashangla'
   import { Indicator } from 'mint-ui' //引入mint ui
-  import { Lazyload } from 'mint-ui';//懒加载
-  Vue.use(Lazyload, {                //懒加载声明错误图和占位图
-      preLoad: 1,
-      error: 'http://www.iyaxi.com/wp-content/uploads/2017/10/20171025172038.gif',
-      loading: 'http://www.iyaxi.com/wp-content/uploads/2017/10/20171025172038.gif',
+  import { Lazyload } from 'mint-ui' //懒加载
+  Vue.use(Lazyload, {
+    //懒加载声明错误图和占位图
+    preLoad: 1,
+    error: 'http://www.iyaxi.com/wp-content/uploads/2017/10/20171025172038.gif',
+    loading: 'http://www.iyaxi.com/wp-content/uploads/2017/10/20171025172038.gif'
   })
   export default {
     // 组件开始
     components: {
       'footer-bar': Footer,
-      'xialashangla-bar':xialashangla
+      'xialashangla-bar': xialashangla
     },
     // 组件结束
     data() {
       return {
+        showtop: false, //top
         items: [],
         swipers: [
           'https://i8.mifile.cn/b2c-mimall-media/2fcbb6794e9f99d33bdf1f76cf380af0.jpg',
@@ -119,6 +135,55 @@
     },
     mounted: function() {
       console.log('mounted')
+      $(window).scroll(function() {
+        //判断是否滑动到页面底部
+        if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+          // TODO 滑动到底部时可请求下一页的数据并加载，加载可使用append方法
+          console.log('==')
+          let _this = this
+          console.log('_this.showtop', _this.showtop)
+          _this.showtop = true
+          // 滑到底部就跳转到顶部
+        }
+      })
+      // 触摸事件
+      document.addEventListener('touchstart', touch, false)
+      document.addEventListener('touchmove', touch, false)
+      document.addEventListener('touchend', touch, false)
+      function touch(event) {
+        var event = event || window.event
+        var oInp = document.getElementById('app')
+        switch (event.type) {
+          case 'touchstart':
+            console.log(
+              'Touch started (' +
+                event.touches[0].clientX +
+                ',' +
+                event.touches[0].clientY +
+                ')'
+            )
+            break
+          case 'touchend':
+            console.log(
+              '<br>Touch end (' +
+                event.changedTouches[0].clientX +
+                ',' +
+                event.changedTouches[0].clientY +
+                ')'
+            )
+            break
+          case 'touchmove':
+            event.preventDefault()
+            console.log(
+              '<br>Touch moved (' +
+                event.touches[0].clientX +
+                ',' +
+                event.touches[0].clientY +
+                ')'
+            )
+            break
+        }
+      }
     },
     beforeUpdate: function() {
       console.log('beforeUpdate')
@@ -142,12 +207,31 @@
       },
       mifenka: function() {
         this.$router.push({ path: 'mifenka', query: { name: '米粉卡' } })
+      },
+      // 滑到顶部事件
+      top: function() {
+        console.log('$(window).scrollTop()', $(window).scrollTop(0))
+        $(window).scrollTop(0)
+        var _this = this
+        _this.showtop = false
       }
     }
   }
 </script>
 
 <style lang="css" scoped>
+  .tops {
+    position: fixed;
+    bottom: 1.2rem;
+    right: 13px;
+    z-index: 99;
+    width: 0.88rem;
+    height: 0.88rem;
+  }
+  .tops i {
+    font-size: 0.65rem !important;
+    color: #fe498f;
+  }
   .lunbo {
     height: 5rem;
   }
@@ -181,16 +265,16 @@
     font-size: 0.3rem;
     text-align: center;
   }
-  .item img {
+  .item_img img {
     width: 100%;
     height: 100%;
   }
-  .item {
-    width: 1.2rem;
+  .item_img {
+    width: 0.8rem;
     text-align: center;
   }
   .mall_item {
-    width: 3.4rem;
+    width: 3.5rem;
     margin-top: 0.2rem;
     background: #fff;
   }
@@ -223,5 +307,11 @@
   }
   .price {
     font-size: 0.4rem;
+  }
+  .item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
   }
 </style>

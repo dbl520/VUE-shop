@@ -5,10 +5,13 @@ import App from './App'
 import router from './router'
 import store from './store'
 import Vuex from 'vuex'
-Vue.use(Vuex)
 
-// 导入自适应
-// import 'soshm'
+Vue.use(Vuex)
+    // 导入cordova打包
+    // import VueCordova from 'cordova'
+    // Vue.use(VueCordova)
+    // 导入自适应
+    // import 'soshm'
 import Mint from 'mint-ui';
 Vue.use(Mint);
 // 解决移动端300s延迟
