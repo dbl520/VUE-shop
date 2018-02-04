@@ -111,7 +111,7 @@
       console.log('beforeCreate')
     },
     created: function() {
-      console.log('created')
+      console.log('created',this)
       var _this = this
       // 创建动画mint-ui
       Indicator.open({
@@ -134,15 +134,16 @@
         })
     },
     mounted: function() {
-      console.log('mounted')
+      var _this =this;
+      console.log('mounted',this)
       $(window).scroll(function() {
         //判断是否滑动到页面底部
         if ($(window).scrollTop() == $(document).height() - $(window).height()) {
           // TODO 滑动到底部时可请求下一页的数据并加载，加载可使用append方法
-          console.log('==')
-          let _this = this
-          console.log('_this.showtop', _this.showtop)
-          _this.showtop = true
+          console.log("this",this)
+          // var _this= this;
+          _this.showtop=true;
+          console.log(_this.showtop)
           // 滑到底部就跳转到顶部
         }
       })
