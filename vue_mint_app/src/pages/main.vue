@@ -146,6 +146,9 @@
           console.log(_this.showtop)
           // 滑到底部就跳转到顶部
         }
+        setTimeout(function(){
+            _this.showtop=false;
+        },4000)
       })
       // 触摸事件
       document.addEventListener('touchstart', touch, false)
