@@ -7,12 +7,8 @@ import store from './store'
 import Vuex from 'vuex'
 
 Vue.use(Vuex)
-    // 导入cordova打包
-    // import VueCordova from 'cordova'
-    // Vue.use(VueCordova)
-    // 导入自适应
-    // import 'soshm'
 import Mint from 'mint-ui';
+import 'mint-ui/lib/style.css'
 Vue.use(Mint);
 // 解决移动端300s延迟
 import fastclick from 'fastclick'

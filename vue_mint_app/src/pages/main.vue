@@ -1,68 +1,68 @@
 <template>
   <div class="box">
     <!-- 下拉刷新上拉加载组件 -->
-    <!-- <xialashangla-bar></xialashangla-bar> -->
-    <!-- 下拉刷新上拉加载组件 -->
-    <div class="main">
-      <div class="lunbo">
-        <mt-swipe :auto="4000">
-          <mt-swipe-item v-for="(item,key,index) in swipers" :key="index">
-            <img v-bind:src="item">
-          </mt-swipe-item>
-        </mt-swipe>
-      </div>
-      <div class="items">
+    <mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" ref="loadmore">
+      <div class="main" style="">
+        <div class="lunbo">
+          <mt-swipe :auto="4000">
+            <mt-swipe-item v-for="(item,key,index) in swipers" :key="index">
+              <img v-bind:src="item">
+            </mt-swipe-item>
+          </mt-swipe>
+        </div>
+        <div class="items">
 
-        <div class="item" @click="xuangou">
-          <div class="item_img">
-            <img src="../../static/images/SELECT.png">
+          <div class="item" @click="xuangou">
+            <div class="item_img">
+              <img src="../../static/images/SELECT.png">
+            </div>
+            <span class="item_title">选购</span>
           </div>
-          <span class="item_title">选购</span>
+          <div class="item" @click="need">
+            <div class="item_img">
+              <img src="../../static/images/lipin.png">
+            </div>
+            <span class="item_title">真心想要</span>
+          </div>
+          <div class="item" @click="qiangou">
+            <div class="item_img">
+              <img src="../../static/images/xianshi.png">
+            </div>
+            <span class="item_title">限时抢购</span>
+          </div>
+          <div class="item" @click="fabu">
+            <div class="item_img">
+              <img src="../../static/images/news.png">
+            </div>
+            <span class="item_title">新品发布</span>
+          </div>
+          <div class="item" @click="mifenka">
+            <div class="item_img">
+              <img src="../../static/images/ka.png">
+            </div>
+            <span class="item_title">米粉卡</span>
+          </div>
         </div>
-        <div class="item" @click="need">
-          <div class="item_img">
-            <img src="../../static/images/lipin.png">
+        <div class="shop_mall">
+          <div class="mall_item" @click="godetails(item.id)" v-for="(item,index) in items" :id="item.id">
+            <img v-bind:src="item.img" v-lazy="item.img" />
+            <!-- 懒加载图片 -->
+            <!-- <img v-lazy="item.img" /> -->
+            <p class="mall_title">
+              {{item.name}}
+            </p>
+            <div class="mall_item_all">
+              <div class="mall_item_all_left">
+                ￥ <span class="price">{{item.Price}}</span>
+              </div>
+              <div class="mall_item_all_right">
+                1人喜欢
+              </div>
+            </div>
           </div>
-          <span class="item_title">真心想要</span>
-        </div>
-        <div class="item" @click="qiangou">
-          <div class="item_img">
-            <img src="../../static/images/xianshi.png">
-          </div>
-          <span class="item_title">限时抢购</span>
-        </div>
-        <div class="item" @click="fabu">
-          <div class="item_img">
-            <img src="../../static/images/news.png">
-          </div>
-          <span class="item_title">新品发布</span>
-        </div>
-        <div class="item" @click="mifenka">
-          <div class="item_img">
-            <img src="../../static/images/ka.png">
-          </div>
-          <span class="item_title">米粉卡</span>
         </div>
       </div>
-      <div class="shop_mall">
-        <div class="mall_item" @click="godetails(item.id)" v-for="(item,index) in items" :id="item.id">
-          <img v-bind:src="item.img" v-lazy="item.img" />
-          <!-- 懒加载图片 -->
-          <!-- <img v-lazy="item.img" /> -->
-          <p class="mall_title">
-            {{item.name}}
-          </p>
-          <div class="mall_item_all">
-            <div class="mall_item_all_left">
-              ￥ <span class="price">{{item.Price}}</span>
-            </div>
-            <div class="mall_item_all_right">
-              1人喜欢
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    </mt-loadmore>
     <!-- 上滑 -->
     <div class="tops" v-if="showtop" @click="top">
       <i class="iconfont icon-tubiao02  tops_size"></i>
@@ -78,7 +78,6 @@
   // 引入组件
   import Vue from 'vue'
   import Footer from '../components/FooterBar'
-  import xialashangla from '../components/xialashangla'
   import { Indicator } from 'mint-ui' //引入mint ui
   import { Lazyload } from 'mint-ui' //懒加载
   Vue.use(Lazyload, {
@@ -90,12 +89,13 @@
   export default {
     // 组件开始
     components: {
-      'footer-bar': Footer,
-      'xialashangla-bar': xialashangla
+      'footer-bar': Footer
     },
     // 组件结束
     data() {
       return {
+        allLoaded:'',
+         scrollMode:"touch", //移动端弹性滚动效果，touch为弹性滚动，auto是非弹性滚动
         showtop: false, //top
         items: [],
         swipers: [
@@ -111,7 +111,7 @@
       console.log('beforeCreate')
     },
     created: function() {
-      console.log('created',this)
+      console.log('created', this)
       var _this = this
       // 创建动画mint-ui
       Indicator.open({
@@ -134,21 +134,22 @@
         })
     },
     mounted: function() {
-      var _this =this;
-      console.log('mounted',this)
+      var _this = this
+
+      console.log('mounted', this)
       $(window).scroll(function() {
         //判断是否滑动到页面底部
         if ($(window).scrollTop() == $(document).height() - $(window).height()) {
           // TODO 滑动到底部时可请求下一页的数据并加载，加载可使用append方法
-          console.log("this",this)
+          console.log('this', this)
           // var _this= this;
-          _this.showtop=true;
+          _this.showtop = true
           console.log(_this.showtop)
           // 滑到底部就跳转到顶部
         }
-        setTimeout(function(){
-            _this.showtop=false;
-        },4000)
+        setTimeout(function() {
+          _this.showtop = false
+        }, 4000)
       })
       // 触摸事件
       document.addEventListener('touchstart', touch, false)
@@ -193,6 +194,29 @@
       console.log('beforeUpdate')
     },
     methods: {
+      // top
+      loadTop() {
+        console.log('top更多数据')
+        var _this =this;
+        // 加载更多数据
+        setTimeout(function(){
+          // 假设数据加载完
+           _this.$refs.loadmore.onTopLoaded()
+        },2000)
+
+      },
+      // bottom
+      loadBottom() {
+        var _this =this;
+        console.log('bottom加载更多数据')
+        // 加载更多数据
+         setTimeout(function(){
+          // 假设数据加载完
+           _this.allLoaded = true // 若数据已全部获取完毕
+        _this.$refs.loadmore.onBottomLoaded()
+        },2000)
+
+      },
       godetails: function(id) {
         this.$router.push({ path: 'details', query: { id: id } })
       },

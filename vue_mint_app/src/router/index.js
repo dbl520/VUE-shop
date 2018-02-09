@@ -1,7 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
 import FooterBar from "@/components/FooterBar";
-import xialashangla from "@/components/xialashangla";
 import main from "../pages/main.vue";
 import tool from "../pages/tool.vue";
 import my from "../pages/my.vue";
@@ -95,10 +94,6 @@ export default new Router({
             name: "mifenka",
             component: mifenka
         },
-        {
-            path: "/xialashangla",
-            name: "xialashangla",
-            component: xialashangla
-        }
+
     ]
 });
