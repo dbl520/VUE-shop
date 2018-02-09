@@ -11,14 +11,14 @@
             <div class="fenlei_content">
               <div class="leftwrapper" ref="leftwrapper">
                 <div class="fenlei_content_left">
-                <span :class="['xinpin' ,{showtab:tabindex==index}]" v-for="(item,index) in catelist" :key="index" @click="Switch(index)">
+                <span :class="['xinpin' ,{showtab:tabindex==index}]" v-for="(item,index) in tablists" :key="index" @click="Switch(index)">
                       {{item.category_name}}
                 </span>
                 </div>
             </div>
              <div class="wrapper" ref="wrapper">
               <div class="fenlei_content_right" v-if="catelist">
-                <div class="fenlei_content_items" v-for="(imgs,index) in catelist[0].cateitems" :key="index" >
+                <div class="fenlei_content_items" v-for="(imgs,index) in catelist" :key="index" >
                   <div class="imgs">
                     <img v-bind:src="imgs" alt="">
                   </div>
@@ -50,16 +50,9 @@ export default {
       tabindex: "0",
       url:
         "https://www.easy-mock.com/mock/59e95287dd7e1a0a448c1102/example/fenlei",
-      catelist: ""
+      catelist: "",
+      tablists:'',
     };
-  },
-  methods: {
-    //  切换
-    Switch: function(index) {
-      var _this = this;
-      _this.tabindex = index;
-      console.log(index, "index");
-    }
   },
   beforeCreate() {},
   created: function() {
@@ -67,8 +60,18 @@ export default {
     var _this = this;
     this.$http.get(_this.url).then(function(res) {
       console.log(res.data);
+
+      _this.tablists=res.data
       console.log(_this.catelist);
-      _this.catelist = res.data;
+      var imgs=[];
+      for(var i = 0;i<res.data.length;i++){
+        for(var j=0;j<res.data[i].cateitems.length;j++){
+         imgs.push(res.data[i].cateitems[j])
+        }
+
+      }
+      console.log("imgs",imgs)
+      _this.catelist = imgs;
       //  $nextTick类似定时器
       _this.$nextTick(function() {
         _this.scroll = new BScroll(_this.$refs.wrapper, {});
@@ -96,7 +99,26 @@ export default {
     //     this.scroll.refresh();
     //   }
     // });
-  }
+  },methods:{
+    //  切换tab
+    Switch: function(index) {
+      var _this = this;
+      _this.tabindex = index;
+      console.log(index, "index");
+      // getswitch(index);//tab切换
+      _this.$http.get(_this.url).then(function(res) {
+      // console.log(res.data);
+      // console.log(_this.catelist);
+      for(var i = 0 ;i<res.data.length ;i ++){
+         if(index == res.data[i].id){
+              console.log("index",res.data[index].cateitems)
+                _this.catelist = res.data[index].cateitems;
+        }
+      }
+
+    });
+    }
+  },
 };
 </script>
 
@@ -114,18 +136,22 @@ export default {
 @-webkit-keyframes mymove{
  from {
     font-size: 0.4rem;
+     transform: scale(0.8)
   }
   to {
     font-size: 0.32rem;
+     transform: scale(1)
   }
 }
 
 @keyframes mymove {
   from {
     font-size: 0.4rem;
+    transform: scale(0.3)
   }
   to {
     font-size: 0.32rem;
+      transform: scale(0.5)
   }
 }
 

@@ -2,7 +2,7 @@
   <div class="box">
     <!-- 下拉刷新上拉加载组件 -->
     <mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" ref="loadmore">
-      <div class="main" style="">
+      <div class="main" style="min-height: 1134px">
         <div class="lunbo">
           <mt-swipe :auto="4000">
             <mt-swipe-item v-for="(item,key,index) in swipers" :key="index">
@@ -94,7 +94,7 @@
     // 组件结束
     data() {
       return {
-        allLoaded:'',
+        allLoaded:false,
          scrollMode:"touch", //移动端弹性滚动效果，touch为弹性滚动，auto是非弹性滚动
         showtop: false, //top
         items: [],
@@ -149,7 +149,7 @@
         }
         setTimeout(function() {
           _this.showtop = false
-        }, 4000)
+        }, 10000)
       })
       // 触摸事件
       document.addEventListener('touchstart', touch, false)
@@ -212,8 +212,8 @@
         // 加载更多数据
          setTimeout(function(){
           // 假设数据加载完
-           _this.allLoaded = true // 若数据已全部获取完毕
-        _this.$refs.loadmore.onBottomLoaded()
+          //  _this.allLoaded = true // 若数据已全部获取完毕
+        // _this.$refs.loadmore.onBottomLoaded()
         },2000)
 
       },

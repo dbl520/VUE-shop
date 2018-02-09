@@ -102,7 +102,7 @@
   }
   .tool_logo {
     width: 100%;
-    height: 3rem;
+    /* height: 3rem; */
   }
   .tool_logo img {
     width: 100%;
