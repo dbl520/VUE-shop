@@ -152,43 +152,43 @@
         }, 10000)
       })
       // 触摸事件
-      document.addEventListener('touchstart', touch, false)
-      document.addEventListener('touchmove', touch, false)
-      document.addEventListener('touchend', touch, false)
-      function touch(event) {
-        var event = event || window.event
-        var oInp = document.getElementById('app')
-        switch (event.type) {
-          case 'touchstart':
-            console.log(
-              'Touch started (' +
-                event.touches[0].clientX +
-                ',' +
-                event.touches[0].clientY +
-                ')'
-            )
-            break
-          case 'touchend':
-            console.log(
-              '<br>Touch end (' +
-                event.changedTouches[0].clientX +
-                ',' +
-                event.changedTouches[0].clientY +
-                ')'
-            )
-            break
-          case 'touchmove':
-            event.preventDefault()
-            console.log(
-              '<br>Touch moved (' +
-                event.touches[0].clientX +
-                ',' +
-                event.touches[0].clientY +
-                ')'
-            )
-            break
-        }
-      }
+      // document.addEventListener('touchstart', touch, false)
+      // document.addEventListener('touchmove', touch, false)
+      // document.addEventListener('touchend', touch, false)
+      // function touch(event) {
+      //   var event = event || window.event
+      //   var oInp = document.getElementById('app')
+      //   switch (event.type) {
+      //     case 'touchstart':
+      //       console.log(
+      //         'Touch started (' +
+      //           event.touches[0].clientX +
+      //           ',' +
+      //           event.touches[0].clientY +
+      //           ')'
+      //       )
+      //       break
+      //     case 'touchend':
+      //       console.log(
+      //         '<br>Touch end (' +
+      //           event.changedTouches[0].clientX +
+      //           ',' +
+      //           event.changedTouches[0].clientY +
+      //           ')'
+      //       )
+      //       break
+      //     case 'touchmove':
+      //       event.preventDefault()
+      //       console.log(
+      //         '<br>Touch moved (' +
+      //           event.touches[0].clientX +
+      //           ',' +
+      //           event.touches[0].clientY +
+      //           ')'
+      //       )
+      //       break
+      //   }
+      // }
     },
     beforeUpdate: function() {
       console.log('beforeUpdate')

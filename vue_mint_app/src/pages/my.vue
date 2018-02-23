@@ -41,7 +41,6 @@
           分享
         </div>
       </div>
-      <!-- 分享组件 -->
 
       <!-- 时间选择 -->
       <div class="dingdan" @click="open('picker1')">
@@ -65,7 +64,7 @@
           date-format="{value} 日"
           :startDate="startDate"
           :endDate="endDate"
-          @confirm="handleChange">
+          @confirm="handleChange"  class="remember">
     </mt-datetime-picker>
       <!-- 地址 -->
       <div>
@@ -268,6 +267,7 @@ export default {
 };
 </script>
 <style scoped>
+
 .share_item {
   display: flex;
   align-items: center;

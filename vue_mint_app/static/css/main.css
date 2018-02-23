@@ -25,3 +25,7 @@
 .mint-tab-item-label {
     color: #353535 !important;
 }
+
+.picker-slot-wrapper {
+    /* transform: translate(0) translateZ(0px) !important; */
+}
