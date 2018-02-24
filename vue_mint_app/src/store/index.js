@@ -8,6 +8,7 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
   state: {
     //state访问状态对象
+    logindata:localStorage["logindata"] ? JSON.parse(localStorage["logindata"]) : [],
     count: 1,
     carts: localStorage["carts"] ? JSON.parse(localStorage["carts"]) : [],
     addorders: localStorage["addorders"]
@@ -63,23 +64,39 @@ const store = new Vuex.Store({
       localStorage.setItem("carts", JSON.stringify(state.carts));
       // localStorage注意是json对象转字符串，getitem时要字符串转对象
       //清除localstorage
+    },
+     // 设置登录的数据
+     setData:function(state){
+      this.state.logindata.push("111")
+      localStorage.setItem("logindata", JSON.stringify(state.logindata));
+        console.log(this.state.logindata,'state33333')
+    },
+    // 设置退出的数据
+    checkoutData:function(state){
+      state.logindata = [];
+      localStorage.setItem("logindata", JSON.stringify(state.logindata));
+      console.log(state,'state2222')
     }
+
   },
   //getters计算过滤操作
 
 
     // 购物车中常见的合计?数量改变时的合计
     getters:{
-      heji:state=>{
-          var sum=0;
-          state.carts.forEach((cart)=>{
-              sum+=cart.price*cart.value
-          })
-          return sum
-      },
+
+      // heji:state=>{
+      //     var sum=0;
+      //     state.carts.forEach((cart)=>{
+      //         sum+=cart.price*cart.value
+      //     })
+      //     return sum
+      // },
   },
 
   //actions异步修改状态
-  actions: {}
+  actions: {
+
+  }
 });
 export default store;

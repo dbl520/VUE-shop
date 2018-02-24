@@ -44,7 +44,7 @@
           </div>
         </div>
         <div class="shop_mall">
-          <div class="mall_item" @click="godetails(item.id)" v-for="(item,index) in items" :id="item.id">
+          <div class="mall_item" @click="godetails(item.id)" v-for="(item,index) in items" :id="item.id" :key="index">
             <img v-bind:src="item.img" v-lazy="item.img" />
             <!-- 懒加载图片 -->
             <!-- <img v-lazy="item.img" /> -->
@@ -83,8 +83,8 @@
   Vue.use(Lazyload, {
     //懒加载声明错误图和占位图
     preLoad: 1,
-    error: 'http://www.iyaxi.com/wp-content/uploads/2017/10/20171025172038.gif',
-    loading: 'http://www.iyaxi.com/wp-content/uploads/2017/10/20171025172038.gif'
+    error: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1519390533134&di=8fffb0fa229df0c0a2c1baf625353498&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01067e58edf49da8012049efa65a00.gif',
+    loading: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1519390533134&di=8fffb0fa229df0c0a2c1baf625353498&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01067e58edf49da8012049efa65a00.gif'
   })
   export default {
     // 组件开始
@@ -136,7 +136,6 @@
     mounted: function() {
       var _this = this
 
-      console.log('mounted', this)
       $(window).scroll(function() {
         //判断是否滑动到页面底部
         if ($(window).scrollTop() == $(document).height() - $(window).height()) {
@@ -242,6 +241,8 @@
         $(window).scrollTop(0)
         var _this = this
         _this.showtop = false
+        console.log("this",_this.$store.commit("checkoutData"))
+            _this.$store.commit("checkoutData");
       }
     }
   }

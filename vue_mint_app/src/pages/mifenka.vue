@@ -9,20 +9,19 @@
         </div>
     </template>
   <script>
-  // 引入共用头部组件
-  import header from '../components/header.vue'
-  export default {
-    components: {
-      'v-header': header
-    },
-    data() {
-      return {}
-    },created(){
-
-    },mounted(){
-    },methods: {
-    },
-  }
+// 引入共用头部组件
+import header from "../components/header.vue";
+export default {
+  components: {
+    "v-header": header
+  },
+  data() {
+    return {};
+  },
+  created() {},
+  mounted() {},
+  methods: {}
+};
 </script>
   <style scoped>
 

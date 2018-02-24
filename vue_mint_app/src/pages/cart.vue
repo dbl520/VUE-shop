@@ -5,7 +5,7 @@
     </div>
     <div class="zanwu"></div>
     <div class="all">
-      <div class="cards_con" v-for="(car,index) in carts">
+      <div class="cards_con" v-for="(car,index) in carts" :key="index">
         <div class="cards_con_left">
           <img v-bind:src="car.imgone" alt="">
         </div>
@@ -108,6 +108,10 @@
   }
 </script>
 <style scoped>
+.jian,.jia{
+  border: 1px solid #eee;
+  padding: 0 0.23rem;
+}
   .cards_top {
     height: 0.88rem;
     position: fixed;
@@ -120,7 +124,7 @@
     background: #eee;
   }
   .zanwu {
-    margin-top: 0.6rem;
+    margin-top: 0.9rem;
   }
   .cards_con {
     margin-top: 0.2rem;
@@ -155,7 +159,7 @@
     font-size: 0.4rem;
   }
   .ins {
-    font-size: 0.5rem;
+    font-size: 0.46rem;
   }
   .cards_cons_down {
     display: flex;
@@ -167,7 +171,7 @@
     width: 1rem;
     text-align: center;
     font-size: 0.4rem;
-    margin: 0 0.2rem;
+    /* margin: 0 0.2rem; */
   }
   .gwc {
     position: fixed;

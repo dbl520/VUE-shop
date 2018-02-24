@@ -38,6 +38,7 @@
   // 引入better-scroll
 import Footer from "../components/FooterBar.vue";
 import BScroll from "better-scroll";
+import { Indicator } from 'mint-ui' //引入mint ui
 export default {
   // 开始
   components: {
@@ -102,15 +103,19 @@ export default {
   },methods:{
     //  切换tab
     Switch: function(index) {
+       // 创建动画mint-ui
+      Indicator.open({
+        text: '加载中...',
+        spinnerType: 'fading-circle'
+      })
       var _this = this;
       _this.tabindex = index;
       console.log(index, "index");
       // getswitch(index);//tab切换
       _this.$http.get(_this.url).then(function(res) {
-      // console.log(res.data);
-      // console.log(_this.catelist);
       for(var i = 0 ;i<res.data.length ;i ++){
          if(index == res.data[i].id){
+                  Indicator.close() // // 关闭动画
               console.log("index",res.data[index].cateitems)
                 _this.catelist = res.data[index].cateitems;
         }

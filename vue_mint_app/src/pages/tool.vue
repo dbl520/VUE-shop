@@ -5,7 +5,7 @@
       <span class="spas">新闻信息</span>
     </div>
     <div class="tool_lists">
-      <div class="tool_item" v-for="(item,index) in news" @click="newsdetails(item.id)" :id="item.id">
+      <div class="tool_item" v-for="(item,index) in news" @click="newsdetails(item.id)" :id="item.id" :Key="index">
         <div class="tool_item_top">
           {{item.title}}
         </div>

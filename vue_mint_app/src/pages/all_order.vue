@@ -4,7 +4,7 @@
      <v-header></v-header>
     <div class="all_orders_title">
        <!-- 如果tabindex==当前的index，showtab样式就会生效 -->
-      <div v-for="(item,index) in tabs" wx:Key="index" :class="{showtab:tabindex==index}" @click="tab(index)">
+      <div v-for="(item,index) in tabs" :Key="index" :class="{showtab:tabindex==index}" @click="tab(index)">
         <div class="all_title_item_left ">
             <i class="iconfont icon-dingdan" v-if="index==0"></i>
             <i class="iconfont icon-fahuo" v-if="index==1"></i>
@@ -18,7 +18,7 @@
     </div>
     <!-- 内容  -->
     <div class="dingdans">
-      <div class="dingdans_item" v-for="(item,index) in orders">
+      <div class="dingdans_item" v-for="(item,index) in orders" :key="index">
         <div class="dingdans_top">
           <div class="dingdans_top_left">
             订单编号:{{item.number}}
@@ -115,7 +115,7 @@ import header from '../components/header.vue'
 
   .all_title_item_left i {
     border-bottom: 0;
-    font-size: 0.6rem;
+    font-size: 0.32rem;
   }
   .all_title_item_left {
     display: flex;

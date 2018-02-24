@@ -15,18 +15,30 @@ import qiangou from "../pages/qiangou.vue";
 import fabu from "../pages/fabu.vue";
 import mifenka from "../pages/mifenka.vue";
 import fenlei from "../pages/fenlei.vue";
+import login from "../pages/login.vue";
 Vue.use(Router);
 
 export default new Router({
     // mode: "history", //改为history.路由中没有#号
-    routes: [{
+    routes: [
+          {
             path: "/",
-            name: "main",
-            component: main
+            name: "login",
+            component: login,
+
         },
+        // {
+        //     path: "/",
+        //     name: "main",
+        //     component: main
+        // },
         {
             path: "/main",
             name: "main",
+            meta: {
+              // 添加该字段，表示进入这个路由是需要登录的
+               requireAuth: true,
+              },
             component: main
         },
         {
@@ -94,6 +106,11 @@ export default new Router({
             name: "mifenka",
             component: mifenka
         },
+        {
+          path: "/login",
+          name: "login",
+          component: login
+      },
 
     ]
 });
