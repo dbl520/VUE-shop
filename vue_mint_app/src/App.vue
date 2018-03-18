@@ -32,11 +32,6 @@
   transition: all .1s ease;
 }
 
-/* .slide-fade-enter, .slide-fade-leave-to
-{
-  transform: translateX(10px);
-  opacity: 0;
-} */
 .picker-items{
   display: flex !important;
   align-items: center !important;
