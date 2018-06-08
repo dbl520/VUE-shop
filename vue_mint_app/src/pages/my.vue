@@ -33,14 +33,6 @@
           关于我们
         </div>
       </div>
-      <div class="dingdan" @click="share">
-        <div class="dingdan_left">
-          <i class="iconfont icon-fenxiang-tianchong"></i>
-        </div>
-        <div class="dingdan_right">
-          分享
-        </div>
-      </div>
       <!-- 时间选择 -->
       <div class="dingdan" @click="open('picker1')">
         <div class="dingdan_left dz">
@@ -55,11 +47,10 @@
        <div class="getout" @click="$store.commit('checkoutData')">
           退出登陆
        </div>
-      <div id="nativeShare"></div>
       <!-- 这是分享 -->
-      <mt-datetime-picker ref="picker1" type="date" v-model="value1" year-format="{value} 年" month-format="{value} 月" date-format="{value} 日"
+      <!-- <mt-datetime-picker ref="picker1" type="date" v-model="value1" year-format="{value} 年" month-format="{value} 月" date-format="{value} 日"
         :startDate="startDate" :endDate="endDate" @confirm="handleChange" class="remember">
-      </mt-datetime-picker>
+      </mt-datetime-picker> -->
       <!-- 地址 -->
       <div>
         <mt-popup v-model="popupVisible" position="bottom">
@@ -75,9 +66,8 @@
         </mt-popup>
       </div>
       <!-- 分享 -->
-      <mt-popup v-model="shareVisible" position="bottom">
-        <!-- UY BEGIN -->
-        <div class="share_item">
+      <!-- <mt-popup v-model="shareVisible" position="bottom"> -->
+        <!-- <div class="share_item">
           <div class="share_items" @click="qqshare">
             <div class="items_all">
               <i class="iconfont icon-qq share_icon"></i>
@@ -102,8 +92,8 @@
               <p class="share_title">QQ空间</p>
             </div>
           </div>
-        </div>
-      </mt-popup>
+        </div> -->
+      <!-- </mt-popup> -->
     </div>
     <!-- 底部组件 -->
     <footer-bar class="footer"></footer-bar>
