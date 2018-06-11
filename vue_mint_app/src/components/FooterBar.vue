@@ -5,11 +5,11 @@
         <div>首页</div>
       </router-link>
       <router-link class="nav-item" :to="{name:'fenlei'}" tag="li">
-       <i class="iconfont icon-fenlei"></i>
+        <i class="iconfont icon-fenlei"></i>
         <div>分类</div>
       </router-link>
       <router-link class="nav-item" :to="{name:'tool'}" tag="li">
-       <i class="iconfont icon-faxian"></i>
+        <i class="iconfont icon-faxian"></i>
         <div>发现</div>
       </router-link>
      <router-link class="nav-item" :to="{name:'cart'}" tag="li">
@@ -17,7 +17,7 @@
         <div>购物车</div>
       </router-link>
       <router-link class="nav-item" :to="{name:'my'}" tag="li">
-       <i class="iconfont icon-wode"></i>
+        <i class="iconfont icon-wode"></i>
         <div>我的</div>
       </router-link>
     </div>
@@ -27,7 +27,6 @@
 export default {
 }
 </script>
-// @import "./font/iconfont.css";
 <style>
  * {
   margin: 0;

@@ -44,13 +44,6 @@
           {{date1}}
         </div>
       </div>
-       <div class="getout" @click="$store.commit('checkoutData')">
-          退出登陆
-       </div>
-      <!-- 这是分享 -->
-      <!-- <mt-datetime-picker ref="picker1" type="date" v-model="value1" year-format="{value} 年" month-format="{value} 月" date-format="{value} 日"
-        :startDate="startDate" :endDate="endDate" @confirm="handleChange" class="remember">
-      </mt-datetime-picker> -->
       <!-- 地址 -->
       <div>
         <mt-popup v-model="popupVisible" position="bottom">
@@ -65,35 +58,6 @@
           <mt-picker :slots="myAddressSlots" @change="onMyAddressChange"></mt-picker>
         </mt-popup>
       </div>
-      <!-- 分享 -->
-      <!-- <mt-popup v-model="shareVisible" position="bottom"> -->
-        <!-- <div class="share_item">
-          <div class="share_items" @click="qqshare">
-            <div class="items_all">
-              <i class="iconfont icon-qq share_icon"></i>
-              <p class="share_title">QQ</p>
-            </div>
-          </div>
-          <div class="share_items">
-            <div class="items_all">
-              <i class="iconfont icon-weibo share_icon"></i>
-              <p class="share_title">微博</p>
-            </div>
-          </div>
-          <div class="share_items">
-            <div class="items_all">
-              <i class="iconfont icon-weixin share_icon"></i>
-              <p class="share_title">微信</p>
-            </div>
-          </div>
-          <div class="share_items">
-            <div class="items_all">
-              <i class="iconfont icon-qqkongjian share_icon"></i>
-              <p class="share_title">QQ空间</p>
-            </div>
-          </div>
-        </div> -->
-      <!-- </mt-popup> -->
     </div>
     <!-- 底部组件 -->
     <footer-bar class="footer"></footer-bar>
@@ -214,19 +178,7 @@ export default {
       var _this = this;
       _this.shareVisible = true;
     },
-    // qq分享
-    qqshare: function() {
-      //分享到qq空间
-      var config = {
-        url: "http://blog.wangjunfeng.com", // 分享的网页链接
-        title: "vue练习", // 标题
-        desc: "vue练习", // 描述
-        img: "http://www.wangjunfeng.com/img/face.jpg", // 图片
-        img_title: "vue练习", // 图片标题
-        from: "vue练习" // 来源
-      };
-      var share_obj = new nativeShare("nativeShare", config);
-    },
+   
     // 日期
     open(picker) {
       this.$refs[picker].open();
@@ -257,29 +209,7 @@ export default {
 };
 </script>
 <style scoped>
-.share_item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20rpx;
-  background: #fff;
-}
-.share_title {
-  font-size: 0.32rem;
-  text-align: center;
-}
-.share_icon {
-  font-size: 0.88rem;
-  color: #4cafe9;
-}
-.share_items {
-  width: 2rem;
-  height: 2rem;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 .mint-popup-bottom {
   width: 100%;
   height: 30vh;

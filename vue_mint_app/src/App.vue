@@ -20,11 +20,13 @@
   }
 </script>
 
-<style scoped>
+<style>
+@import '../static/font/iconfont.css';
+@import '../static/css/main.css';
   body{
-  padding-bottom:1.56rem;
-  font-family: '微软雅黑';
-  background: #F4F4F4;;
+    padding-bottom:1.56rem;
+    font-family: '微软雅黑';
+    background: #F4F4F4;;
 }
 /* 可以设置不同的进入和离开动画 */
 /* 设置持续时间和动画函数 */

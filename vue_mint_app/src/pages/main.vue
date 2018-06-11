@@ -95,7 +95,7 @@
     data() {
       return {
         allLoaded:false,
-         scrollMode:"touch", //移动端弹性滚动效果，touch为弹性滚动，auto是非弹性滚动
+        scrollMode:"touch", //移动端弹性滚动效果，touch为弹性滚动，auto是非弹性滚动
         showtop: false, //top
         items: [],
         swipers: [
