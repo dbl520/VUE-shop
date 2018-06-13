@@ -77,7 +77,7 @@ export default {
       _this.$nextTick(function() {
         _this.scroll = new BScroll(_this.$refs.wrapper, {});
         _this.scroll = new BScroll(_this.$refs.leftwrapper, {});
-      });
+      },60);
     });
   },
   mounted() {
@@ -128,6 +128,14 @@ export default {
 </script>
 
   <style scoped>
+  .leftwrapper{
+    height:100vh;
+    overflow: hidden;
+  }
+  .wrapper{
+    height:100vh;
+    overflow: hidden;
+  }
 .showtab {
   color: red;
   border-bottom: 1px solid red;
