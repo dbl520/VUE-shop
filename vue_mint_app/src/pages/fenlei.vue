@@ -10,7 +10,6 @@
             </div>
          </div>
             <div>
-              <div>
             <div class="fenlei_content"  >
               <div class="leftwrapper" ref="menuWrapper">
                 <div class="fenlei_content_left">
@@ -20,17 +19,18 @@
                 </div>
             </div>
              <div class="wrapper" ref="foodsWrapper" >
-              <div class="fenlei_content_right" v-if="catelist">
-                <div class="fenlei_content_items" v-for="(imgs,index) in catelist" :key="index" >
-                  <div class="imgs">
-                    <img v-bind:src="imgs" alt="">
+               <div>
+                <div class="fenlei_content_right" v-if="catelist">
+                  <div class="fenlei_content_items" v-for="(imgs,index) in catelist" :key="index" >
+                    <div class="imgs">
+                      <img v-bind:src="imgs" alt="">
+                    </div>
+                    <span class="items_name">
+                      小米手机
+                    </span>
                   </div>
-                  <span class="items_name">
-                    小米手机
-                  </span>
                 </div>
               </div>
-          </div>
           </div>
           </div>
             </div>
@@ -41,10 +41,10 @@
   </template>
 
   <script>
-  // 引入better-scroll
+// 引入better-scroll
 import Footer from "../components/FooterBar.vue";
 import BScroll from "better-scroll";
-import { Indicator } from 'mint-ui' //引入mint ui
+import { Indicator } from "mint-ui"; //引入mint ui
 export default {
   // 开始
   components: {
@@ -58,110 +58,89 @@ export default {
       url:
         "https://www.easy-mock.com/mock/59e95287dd7e1a0a448c1102/example/fenlei",
       catelist: "",
-      tablists:'',
+      tablists: ""
     };
   },
   beforeCreate() {},
-  created: function() {
+  created() {
     console.log("created");
     var _this = this;
     this.$http.get(_this.url).then(function(res) {
       console.log(res.data);
 
-      _this.tablists=res.data
+      _this.tablists = res.data;
       console.log(_this.catelist);
-      var imgs=[];
-      for(var i = 0;i<res.data.length;i++){
-        for(var j=0;j<res.data[i].cateitems.length;j++){
-         imgs.push(res.data[i].cateitems[j])
+      var imgs = [];
+      for (var i = 0; i < res.data.length; i++) {
+        for (var j = 0; j < res.data[i].cateitems.length; j++) {
+          imgs.push(res.data[i].cateitems[j]);
         }
-
       }
-      console.log("imgs",imgs)
+      console.log("imgs", imgs);
       _this.catelist = imgs;
     });
   },
   mounted() {
-       this.scroll = new BScroll(this.$refs.menuWrapper, {
-          //开启点击事件 默认为false
-          click: false
-        });
-         this.scroll = new BScroll(this.$refs.foodsWrapper, {
-          //开启点击事件 默认为false
-          click: false
-        });
-    //即定时器 20ms
-    //  this.$nextTick(() => {
-    //   //$refs绑定元素
-    //   if (!this.scroll) {
-    //     this.scroll = new BScroll(this.$refs.wrapper, {
-    //       //开启点击事件 默认为false
-    //       click: false
-    //     });
-    //     this.scroll = new BScroll(this.$refs.leftwrapper, {
-    //       //开启点击事件 默认为false
-    //       click: false
-    //     });
-    //     // console.log(this.scroll)
-    //   } else if (!this.$refs.leftwrapper) {
-    //     return;
-    //   } else {
-    //     this.scroll.refresh();
-    //   }
-    // });
-  },methods:{
+    this.scroll = new BScroll(this.$refs.menuWrapper, {
+      //开启点击事件 默认为false
+      click: false
+    });
+    this.scroll = new BScroll(this.$refs.foodsWrapper, {
+      //开启点击事件 默认为false
+      click: false
+    });
+  },
+  methods: {
     //  切换tab
     Switch: function(index) {
-       // 创建动画mint-ui
+      // 创建动画mint-ui
       Indicator.open({
-        text: '加载中...',
-        spinnerType: 'fading-circle'
-      })
+        text: "加载中...",
+        spinnerType: "fading-circle"
+      });
       var _this = this;
       _this.tabindex = index;
       console.log(index, "index");
       // getswitch(index);//tab切换
       _this.$http.get(_this.url).then(function(res) {
-      for(var i = 0 ;i<res.data.length ;i ++){
-         if(index == res.data[i].id){
-                  Indicator.close() // // 关闭动画
-              console.log("index",res.data[index].cateitems)
-                _this.catelist = res.data[index].cateitems;
+        for (var i = 0; i < res.data.length; i++) {
+          if (index == res.data[i].id) {
+            Indicator.close(); // // 关闭动画
+            console.log("index", res.data[index].cateitems);
+            _this.catelist = res.data[index].cateitems;
+          }
         }
-      }
-
-    });
+      });
     }
-  },
+  }
 };
 </script>
 
   <style scoped>
-
-  .leftwrapper{
-    height:85vh;
-    overflow: hidden;
-  }
-  .wrapper{
-    height:85vh;
-    overflow: hidden;
-  }
+.leftwrapper {
+  height: 85vh;
+  overflow: hidden;
+}
+.wrapper {
+  height: 85vh;
+  overflow: hidden;
+}
 .showtab {
-    color: red;
-    border-bottom: 1px solid red;
-    /* animation: mymove 1s 1; */
-    background: #fff;
-    /* -webkit-animation: mymove 1s 1; */
+  color: red;
+  border-bottom: 1px solid red;
+  /* animation: mymove 1s 1; */
+  background: #fff;
+  /* -webkit-animation: mymove 1s 1; */
 }
 
 @keyframes mymove {
   from {
     font-size: 0.4rem;
-    transform: scale(0.3)
+    transform: scale(0.3);
   }
   to {
     font-size: 0.32rem;
-      transform: scale(0.5)
+    transform: scale(0.5);
   }
 }
 
