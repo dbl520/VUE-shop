@@ -1,5 +1,6 @@
   <template>
-     <div class="fenlei">
+     <div class="fenlei"  >
+         <div>
          <div class="fenlei_top">
             <div class="fenlei_top_left">
             <input type="text" placeholder="搜索商品" class="ins">
@@ -8,15 +9,16 @@
               搜索
             </div>
          </div>
-            <div class="fenlei_content">
-              <div class="leftwrapper" ref="leftwrapper">
+            <div ref="leftwrapper">
+            <div class="fenlei_content"  >
+              <div class="leftwrapper" >
                 <div class="fenlei_content_left">
                 <span :class="['xinpin' ,{showtab:tabindex==index}]" v-for="(item,index) in tablists" :key="index" @click="Switch(index)">
                       {{item.category_name}}
                 </span>
                 </div>
             </div>
-             <div class="wrapper" ref="wrapper">
+             <div class="wrapper" >
               <div class="fenlei_content_right" v-if="catelist">
                 <div class="fenlei_content_items" v-for="(imgs,index) in catelist" :key="index" >
                   <div class="imgs">
@@ -28,6 +30,8 @@
                 </div>
               </div>
           </div>
+          </div>
+            </div>
             </div>
          <!-- 底部组件 -->
     <footer-bar class="footer"></footer-bar>
@@ -73,14 +77,13 @@ export default {
       }
       console.log("imgs",imgs)
       _this.catelist = imgs;
-      //  $nextTick类似定时器
-      _this.$nextTick(function() {
-        _this.scroll = new BScroll(_this.$refs.wrapper, {});
-        _this.scroll = new BScroll(_this.$refs.leftwrapper, {});
-      },60);
     });
   },
   mounted() {
+       this.scroll = new BScroll(this.$refs.leftwrapper, {
+          //开启点击事件 默认为false
+          click: false
+        });
     //即定时器 20ms
     //  this.$nextTick(() => {
     //   //$refs绑定元素
@@ -128,33 +131,21 @@ export default {
 </script>
 
   <style scoped>
-  .leftwrapper{
-    height:100vh;
+
+  /* .leftwrapper{
+    height:85vh;
     overflow: hidden;
   }
   .wrapper{
-    height:100vh;
+    height:85vh;
     overflow: hidden;
-  }
+  } */
 .showtab {
-  color: red;
-  border-bottom: 1px solid red;
-  animation: mymove 1s 1;
-  background: #fff;
-  -moz-animation: mymove 1s 1; /* Firefox */
-  -webkit-animation: mymove 1s 1; /* Safari and Chrome */
-  -o-animation: mymove 1s 1; /* Opera */
-}
-
-@-webkit-keyframes mymove{
- from {
-    font-size: 0.4rem;
-     transform: scale(0.8)
-  }
-  to {
-    font-size: 0.32rem;
-     transform: scale(1)
-  }
+    color: red;
+    border-bottom: 1px solid red;
+    /* animation: mymove 1s 1; */
+    background: #fff;
+    /* -webkit-animation: mymove 1s 1; */
 }
 
 @keyframes mymove {
@@ -204,8 +195,9 @@ body {
 .fenlei_content {
   background: #fff;
   display: flex;
-  height: 83vh;
+  height: 85vh;
   margin-top: 1rem;
+  overflow: hidden;
 }
 .fenlei_content_left {
   width: 30vw;

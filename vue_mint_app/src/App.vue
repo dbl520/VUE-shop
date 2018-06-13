@@ -1,10 +1,8 @@
 <template>
   <div id="app">
-    <div class="content-div">
       <transition name="slide-fade">
         <router-view></router-view>
      </transition>
-    </div>
     <!-- <footer-bar class="footer"></footer-bar> -->
   </div>
 </template>
