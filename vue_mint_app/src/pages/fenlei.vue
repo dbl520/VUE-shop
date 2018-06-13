@@ -10,6 +10,7 @@
             </div>
          </div>
             <div ref="leftwrapper">
+              <div>
             <div class="fenlei_content"  >
               <div class="leftwrapper" >
                 <div class="fenlei_content_left">
@@ -29,6 +30,7 @@
                   </span>
                 </div>
               </div>
+          </div>
           </div>
           </div>
             </div>
