@@ -138,14 +138,14 @@ export default {
 
   <style scoped>
 
-  /* .leftwrapper{
+  .leftwrapper{
     height:85vh;
     overflow: hidden;
   }
   .wrapper{
     height:85vh;
     overflow: hidden;
-  } */
+  }
 .showtab {
     color: red;
     border-bottom: 1px solid red;
