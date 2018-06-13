@@ -9,17 +9,17 @@
               搜索
             </div>
          </div>
-            <div ref="leftwrapper">
+            <div>
               <div>
             <div class="fenlei_content"  >
-              <div class="leftwrapper" >
+              <div class="leftwrapper" ref="menuWrapper">
                 <div class="fenlei_content_left">
                 <span :class="['xinpin' ,{showtab:tabindex==index}]" v-for="(item,index) in tablists" :key="index" @click="Switch(index)">
                       {{item.category_name}}
                 </span>
                 </div>
             </div>
-             <div class="wrapper" >
+             <div class="wrapper" ref="foodsWrapper" >
               <div class="fenlei_content_right" v-if="catelist">
                 <div class="fenlei_content_items" v-for="(imgs,index) in catelist" :key="index" >
                   <div class="imgs">
@@ -82,7 +82,11 @@ export default {
     });
   },
   mounted() {
-       this.scroll = new BScroll(this.$refs.leftwrapper, {
+       this.scroll = new BScroll(this.$refs.menuWrapper, {
+          //开启点击事件 默认为false
+          click: false
+        });
+         this.scroll = new BScroll(this.$refs.foodsWrapper, {
           //开启点击事件 默认为false
           click: false
         });
