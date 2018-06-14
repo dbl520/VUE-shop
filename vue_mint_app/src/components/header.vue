@@ -1,7 +1,7 @@
 <template>
   <div>
     <header>
-      <i class="iconfont icon-fanhui fz" @click="fanhui"></i> <span class="title">
+      <i class="iconfont icon-fanhui fz" @click="this.$router.go(-1)"></i> <span class="title">
             {{name}}
          </span>
     </header>
@@ -22,10 +22,6 @@
       this.getName();
     },
     methods: {
-      // 返回
-      fanhui:function(){
-        this.$router.go(-1);
-      },
       // 接收名字
       getName:function(){
         console.log(this.$route.query.name)
