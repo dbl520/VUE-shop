@@ -53,7 +53,7 @@
             </p>
             <div class="mall_item_all">
               <div class="mall_item_all_left">
-                ￥ <span class="price">{{item.Price}}</span>
+                ￥<span class="price">{{item.Price}}</span>
               </div>
               <div class="mall_item_all_right">
                 1人喜欢
@@ -75,272 +75,322 @@
 
 <!-- <footer-bar class="footer"></footer-bar> -->
 <script>
-  // 引入组件
-  import Vue from 'vue'
-  import Footer from '../components/FooterBar'
-  import { Indicator } from 'mint-ui' //引入mint ui
-  import { Lazyload } from 'mint-ui' //懒加载
-  Vue.use(Lazyload, {
-    //懒加载声明错误图和占位图
-    preLoad: 1,
-    error: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1519390533134&di=8fffb0fa229df0c0a2c1baf625353498&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01067e58edf49da8012049efa65a00.gif',
-    loading: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1519390533134&di=8fffb0fa229df0c0a2c1baf625353498&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01067e58edf49da8012049efa65a00.gif'
-  })
-  export default {
-    // 组件开始
-    components: {
-      'footer-bar': Footer
-    },
-    // 组件结束
-    data() {
-      return {
-        allLoaded:false,
-        scrollMode:"touch", //移动端弹性滚动效果，touch为弹性滚动，auto是非弹性滚动
-        showtop: false, //top
-        items: [],
-        swipers: [
-          'https://i8.mifile.cn/b2c-mimall-media/2fcbb6794e9f99d33bdf1f76cf380af0.jpg',
-          'https://i8.mifile.cn/b2c-mimall-media/2be6be33c4131cfb2801ae41a2a84748.jpg',
-          'https://i8.mifile.cn/b2c-mimall-media/d77913ecf914900557c0f9befedfc9bc.jpg'
-        ],
-        url:
-          'https://www.easy-mock.com/mock/59e95287dd7e1a0a448c1102/example/todos'
-      }
-    },
-    beforeCreate: function() {
-      console.log('beforeCreate')
-    },
-    created: function() {
-      console.log('created', this)
-      var _this = this
-      // 创建动画mint-ui
-      Indicator.open({
-        text: '加载中...',
-        spinnerType: 'fading-circle'
-      })
-      _this.$http
-        .get(_this.url, {
-          params: {
-            // 请求参数
-          }
-        })
-        .then(function(response) {
-          console.log(response)
-          _this.items = response.data
-          Indicator.close() // // 关闭动画
-        })
-        .catch(function(err) {
-          console.log(err)
-        })
-    },
-    mounted: function() {
-      var _this = this
+    // 引入组件
+    import Vue from 'vue'
+    import Footer from '../components/FooterBar'
+    import {
+        Indicator
+    } from 'mint-ui' //引入mint ui
+    import {
+        Lazyload
+    } from 'mint-ui' //懒加载
+    Vue.use(Lazyload, {
+        //懒加载声明错误图和占位图
+        preLoad: 1,
+        error: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1519390533134&di=8fffb0fa229df0c0a2c1baf625353498&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01067e58edf49da8012049efa65a00.gif',
+        loading: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1519390533134&di=8fffb0fa229df0c0a2c1baf625353498&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01067e58edf49da8012049efa65a00.gif'
+    })
+    export default {
+        // 组件开始
+        components: {
+            'footer-bar': Footer
+        },
+        // 组件结束
+        data() {
+            return {
+                allLoaded: false,
+                scrollMode: "touch", //移动端弹性滚动效果，touch为弹性滚动，auto是非弹性滚动
+                showtop: false, //top
+                items: [],
+                swipers: [
+                    'https://i8.mifile.cn/b2c-mimall-media/2fcbb6794e9f99d33bdf1f76cf380af0.jpg',
+                    'https://i8.mifile.cn/b2c-mimall-media/2be6be33c4131cfb2801ae41a2a84748.jpg',
+                    'https://i8.mifile.cn/b2c-mimall-media/d77913ecf914900557c0f9befedfc9bc.jpg'
+                ],
+                url: 'https://www.easy-mock.com/mock/59e95287dd7e1a0a448c1102/example/todos'
+            }
+        },
+        beforeCreate: function() {
+            console.log('beforeCreate')
+        },
+        created: function() {
+            console.log('created', this)
+            var _this = this
+                // 创建动画mint-ui
+            Indicator.open({
+                text: '加载中...',
+                spinnerType: 'fading-circle'
+            })
+            _this.$http
+                .get(_this.url, {
+                    params: {
+                        // 请求参数
+                    }
+                })
+                .then(function(response) {
+                    console.log(response)
+                    _this.items = response.data
+                    Indicator.close() // // 关闭动画
+                })
+                .catch(function(err) {
+                    console.log(err)
+                })
+        },
+        mounted: function() {
+            var _this = this
 
-      $(window).scroll(function() {
-        //判断是否滑动到页面底部
-        if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-          // TODO 滑动到底部时可请求下一页的数据并加载，加载可使用append方法
-          console.log('this', this)
-          // var _this= this;
-          _this.showtop = true
-          console.log(_this.showtop)
-          // 滑到底部就跳转到顶部
+            $(window).scroll(function() {
+                    //判断是否滑动到页面底部
+                    if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+                        // TODO 滑动到底部时可请求下一页的数据并加载，加载可使用append方法
+                        console.log('this', this)
+                            // var _this= this;
+                        _this.showtop = true
+                        console.log(_this.showtop)
+                            // 滑到底部就跳转到顶部
+                    }
+                    setTimeout(function() {
+                        _this.showtop = false
+                    }, 10000)
+                })
+                // 触摸事件
+                // document.addEventListener('touchstart', touch, false)
+                // document.addEventListener('touchmove', touch, false)
+                // document.addEventListener('touchend', touch, false)
+                // function touch(event) {
+                //   var event = event || window.event
+                //   var oInp = document.getElementById('app')
+                //   switch (event.type) {
+                //     case 'touchstart':
+                //       console.log(
+                //         'Touch started (' +
+                //           event.touches[0].clientX +
+                //           ',' +
+                //           event.touches[0].clientY +
+                //           ')'
+                //       )
+                //       break
+                //     case 'touchend':
+                //       console.log(
+                //         '<br>Touch end (' +
+                //           event.changedTouches[0].clientX +
+                //           ',' +
+                //           event.changedTouches[0].clientY +
+                //           ')'
+                //       )
+                //       break
+                //     case 'touchmove':
+                //       event.preventDefault()
+                //       console.log(
+                //         '<br>Touch moved (' +
+                //           event.touches[0].clientX +
+                //           ',' +
+                //           event.touches[0].clientY +
+                //           ')'
+                //       )
+                //       break
+                //   }
+                // }
+        },
+        beforeUpdate: function() {
+            console.log('beforeUpdate')
+        },
+        methods: {
+            // top
+            loadTop() {
+                console.log('top更多数据')
+                var _this = this;
+                // 加载更多数据
+                setTimeout(function() {
+                    // 假设数据加载完
+                    _this.$refs.loadmore.onTopLoaded()
+                }, 2000)
+
+            },
+            // bottom
+            loadBottom() {
+                var _this = this;
+                console.log('bottom加载更多数据')
+                    // 加载更多数据
+                setTimeout(function() {
+                    // 假设数据加载完
+                    //  _this.allLoaded = true // 若数据已全部获取完毕
+                    // _this.$refs.loadmore.onBottomLoaded()
+                }, 2000)
+
+            },
+            godetails: function(id) {
+                this.$router.push({
+                    path: 'details',
+                    query: {
+                        id: id
+                    }
+                })
+            },
+            xuangou: function() {
+                this.$router.push({
+                    path: 'choose',
+                    query: {
+                        name: '选购'
+                    }
+                })
+            },
+            need: function() {
+                this.$router.push({
+                    path: 'need',
+                    query: {
+                        name: '真心想要'
+                    }
+                })
+                console.log(this)
+            },
+            qiangou: function() {
+                this.$router.push({
+                    path: 'qiangou',
+                    query: {
+                        name: '抢购'
+                    }
+                })
+            },
+            fabu: function() {
+                this.$router.push({
+                    path: 'fabu',
+                    query: {
+                        name: '发布'
+                    }
+                })
+            },
+            mifenka: function() {
+                this.$router.push({
+                    path: 'mifenka',
+                    query: {
+                        name: '米粉卡'
+                    }
+                })
+            },
+            // 滑到顶部事件
+            top: function() {
+                console.log('$(window).scrollTop()', $(window).scrollTop(0))
+                $(window).scrollTop(0)
+                var _this = this
+                _this.showtop = false
+                console.log("this", _this.$store.commit("checkoutData"))
+                _this.$store.commit("checkoutData");
+            }
         }
-        setTimeout(function() {
-          _this.showtop = false
-        }, 10000)
-      })
-      // 触摸事件
-      // document.addEventListener('touchstart', touch, false)
-      // document.addEventListener('touchmove', touch, false)
-      // document.addEventListener('touchend', touch, false)
-      // function touch(event) {
-      //   var event = event || window.event
-      //   var oInp = document.getElementById('app')
-      //   switch (event.type) {
-      //     case 'touchstart':
-      //       console.log(
-      //         'Touch started (' +
-      //           event.touches[0].clientX +
-      //           ',' +
-      //           event.touches[0].clientY +
-      //           ')'
-      //       )
-      //       break
-      //     case 'touchend':
-      //       console.log(
-      //         '<br>Touch end (' +
-      //           event.changedTouches[0].clientX +
-      //           ',' +
-      //           event.changedTouches[0].clientY +
-      //           ')'
-      //       )
-      //       break
-      //     case 'touchmove':
-      //       event.preventDefault()
-      //       console.log(
-      //         '<br>Touch moved (' +
-      //           event.touches[0].clientX +
-      //           ',' +
-      //           event.touches[0].clientY +
-      //           ')'
-      //       )
-      //       break
-      //   }
-      // }
-    },
-    beforeUpdate: function() {
-      console.log('beforeUpdate')
-    },
-    methods: {
-      // top
-      loadTop() {
-        console.log('top更多数据')
-        var _this =this;
-        // 加载更多数据
-        setTimeout(function(){
-          // 假设数据加载完
-           _this.$refs.loadmore.onTopLoaded()
-        },2000)
-
-      },
-      // bottom
-      loadBottom() {
-        var _this =this;
-        console.log('bottom加载更多数据')
-        // 加载更多数据
-         setTimeout(function(){
-          // 假设数据加载完
-          //  _this.allLoaded = true // 若数据已全部获取完毕
-        // _this.$refs.loadmore.onBottomLoaded()
-        },2000)
-
-      },
-      godetails: function(id) {
-        this.$router.push({ path: 'details', query: { id: id } })
-      },
-      xuangou: function() {
-        this.$router.push({ path: 'choose', query: { name: '选购' } })
-      },
-      need: function() {
-        this.$router.push({ path: 'need', query: { name: '真心想要' } })
-        console.log(this)
-      },
-      qiangou: function() {
-        this.$router.push({ path: 'qiangou', query: { name: '抢购' } })
-      },
-      fabu: function() {
-        this.$router.push({ path: 'fabu', query: { name: '发布' } })
-      },
-      mifenka: function() {
-        this.$router.push({ path: 'mifenka', query: { name: '米粉卡' } })
-      },
-      // 滑到顶部事件
-      top: function() {
-        console.log('$(window).scrollTop()', $(window).scrollTop(0))
-        $(window).scrollTop(0)
-        var _this = this
-        _this.showtop = false
-        console.log("this",_this.$store.commit("checkoutData"))
-            _this.$store.commit("checkoutData");
-      }
     }
-  }
 </script>
 
 <style lang="css" scoped>
-  .tops {
-    position: fixed;
-    bottom: 1.2rem;
-    right: 13px;
-    z-index: 99;
-    width: 0.88rem;
-    height: 0.88rem;
-  }
-  .tops i {
-    font-size: 0.65rem !important;
-    color: #fe498f;
-  }
-  .lunbo {
-    height: 5rem;
-  }
-  .mint-swipe-indicator {
-    background: deeppink !important;
-    opacity: 0.6 !important;
-  }
-  image[lazy="loading"] {
-    width: 100%;
-    height: 3.2rem;
-    margin: auto;
-  }
-  .items {
-    display: flex;
-    justify-content: space-between;
-    padding: 0.2rem 0.2rem;
-    align-items: center;
-    background: #fff;
-  }
-  .mint-swipe-item {
-    width: 100%;
-    height: 5rem;
-  }
-  .mint-swipe-item img {
-    width: 100%;
-    height: 100%;
-  }
-  .item_title {
-    display: inline-block;
-    margin-top: 0.2rem;
-    font-size: 0.3rem;
-    text-align: center;
-  }
-  .item_img img {
-    width: 100%;
-    height: 100%;
-  }
-  .item_img {
-    width: 0.8rem;
-    text-align: center;
-  }
-  .mall_item {
-    width: 3.5rem;
-    margin-top: 0.2rem;
-    background: #fff;
-  }
-  .mall_item img {
-    width: 100%;
-    height: 3.2rem;
-  }
-  .shop_mall {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    padding: 0 0.2rem;
-  }
-  .mall_title {
-    text-align: center;
-    font-size: 0.3rem;
-    margin-top: 0.2rem;
-  }
-  .mall_item_all {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 0.2rem;
-    padding: 0.2rem 0.1rem;
-  }
-  .mall_item_all_left {
-    font-size: 0.4rem;
-    color: red;
-  }
-  .price {
-    font-size: 0.4rem;
-  }
-  .item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  }
+    .tops {
+        position: fixed;
+        bottom: 1.2rem;
+        right: 13px;
+        z-index: 99;
+        width: 0.88rem;
+        height: 0.88rem;
+    }
+    
+    .tops i {
+        font-size: 0.65rem !important;
+        color: #fe498f;
+    }
+    
+    .lunbo {
+        height: 5rem;
+    }
+    
+    .mint-swipe-indicator {
+        background: deeppink !important;
+        opacity: 0.6 !important;
+    }
+    
+    image[lazy="loading"] {
+        width: 100%;
+        height: 3.2rem;
+        margin: auto;
+    }
+    
+    .items {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.2rem 0.2rem;
+        align-items: center;
+        background: #fff;
+    }
+    
+    .mint-swipe-item {
+        width: 100%;
+        height: 5rem;
+    }
+    
+    .mint-swipe-item img {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .item_title {
+        display: inline-block;
+        margin-top: 0.2rem;
+        font-size: 0.3rem;
+        text-align: center;
+    }
+    
+    .item_img img {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .item_img {
+        width: 0.8rem;
+        text-align: center;
+    }
+    
+    .mall_item {
+        width: 3.5rem;
+        margin-top: 0.2rem;
+        background: #fff;
+    }
+    
+    .mall_item img {
+        width: 100%;
+        height: 3.2rem;
+    }
+    
+    .shop_mall {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    
+    .mall_title {
+        text-align: center;
+        font-size: 0.3rem;
+        margin-top: 0.2rem;
+    }
+    
+    .mall_item_all {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 0.2rem;
+        padding: 0.2rem 0.1rem;
+    }
+    
+    .mall_item_all_left {
+        font-size: 0.4rem;
+        color: red;
+    }
+    
+    .price {
+        font-size: 0.4rem;
+    }
+    
+    .item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
 </style>

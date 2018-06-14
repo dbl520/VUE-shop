@@ -1,63 +1,118 @@
 <template>
-    <div class="footer" >
-      <router-link class="nav-item" :to="{name:'main'}"exact tag="li">
-        <i class="iconfont icon-shouye"></i>
-        <div>首页</div>
+  <div class="bottom">
+    <div class="bottom-ul"> 
+      <router-link  to="/main" tag="qq">
+        <div class="index">
+          <img src="../../static/images/tab_1.png" v-if="active ==='main'" class="img">
+          <!-- <i class="iconfont icon-shouye_xuanzhong" style="color:#179dfe" v-if="active ==='main'"></i> -->
+          <!-- <i class="iconfont icon-shouye2" v-else></i> -->
+          <img src="../../static/images/tab1.png" v-else class="img"/>
+        </div>
+        <span class="name"> 首页</span>
       </router-link>
-      <router-link class="nav-item" :to="{name:'fenlei'}" tag="li">
-        <i class="iconfont icon-fenlei"></i>
-        <div>分类</div>
+
+      <router-link to="/fenlei" tag="qq">
+        <div class="index">
+            <img src="../../static/images/tab_2.png" v-if="active ==='fenlei'" class="img" />
+            <img src="../../static/images/tab.png" v-else class="img" />
+        </div>
+        <span class="name">分类</span>
       </router-link>
-      <router-link class="nav-item" :to="{name:'tool'}" tag="li">
-        <i class="iconfont icon-faxian"></i>
-        <div>发现</div>
+
+      <router-link to="/tool" tag="qq">
+        <div class="index">
+            <img src="../../static/images/tab5_.png" v-if="active ==='tool'" class="img" />
+            <img src="../../static/images/tab5.png" v-else  class="img" />
+        </div>
+        <span class="name">新闻</span>
       </router-link>
-     <router-link class="nav-item" :to="{name:'cart'}" tag="li">
-        <i class="iconfont icon-gouwuche3"></i>
-        <div>购物车</div>
+      <router-link to="/cart" tag="qq">
+        <div class="index">
+          <!-- <i class="iconfont icon-dongtaixuanzhong" style="color:#179dfe" v-if="active ==='car'"></i>
+          <i class="iconfont icon-dongtai" v-else></i> -->
+          <img src="../../static/images/tab3_.png" v-if="active ==='cart'"  class="img"/>
+          <img src="../../static/images/tab3.png"  v-else  class="img" />
+        </div>
+        <span class="name">购物车</span>
       </router-link>
-      <router-link class="nav-item" :to="{name:'my'}" tag="li">
-        <i class="iconfont icon-wode"></i>
-        <div>我的</div>
+
+       <router-link to="/my" tag="qq">
+        <div class="index">
+            <img src="../../static/images/tab4_.png" v-if="active ==='my'" class="img" />
+            <img src="../../static/images/tab4.png" v-else  class="img" />
+        </div>
+        <span class="name">我的</span>
       </router-link>
     </div>
+  </div>
 </template>
 
 <script>
-export default {
-}
+    export default {
+        data() {
+            return {
+                active: 'home',
+            }
+        },
+        mounted() {
+            this.active = this.$route.path.slice(1);
+        }
+    }
 </script>
-<style>
- * {
-  margin: 0;
-  padding: 0;
-  text-decoration:none;
-  list-style: none;
-}
-  .footer{
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      text-align: center;
-      display: flex;
-      justify-content: space-around;
-      border-top: 1px solid #ccc;
-      background-color: #fff;
-      z-index: 100;
-      background: E6E6E6;
-      /* height: 1.5rem; */
-    }
-    .footer i{
-      font-size: 0.48rem;
-    }
-    .footer li{
-      margin-top: 0.1rem;
-    }
-    .nav-item:link,.nav-item:visited{
-      color: black
-    }
-    .router-link:hover,.router-link-active{
-      color: red;
-   }
 
+<style scoped>
+    .bottom {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        z-index: 99;
+        width: 100%;
+    }
+    
+    .index {
+        text-align: center;
+    }
+    
+    .bottom-ul {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #fff;
+        padding: 0.1rem 0.4rem;
+    }
+    
+    .qq {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        list-style: none;
+    }
+    
+    .name {
+        display: inline-block;
+    }
+    
+    .img {
+        width: .7rem;
+        height: .7rem;
+    }
+    /* #bottom width: 100%;
+    height: 1.4rem;
+    position: fixed;
+    bottom: 0;
+    color: #666;
+    background: white .bottom-ul display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1.45rem; */
+    /* li
+        width 25%
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align center
+        i 
+          font-size .55rem
+      .router-link:hover,.router-link-active
+        color: #25b5fe; */
 </style>
