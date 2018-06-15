@@ -93,8 +93,8 @@
     }
     
     .img {
-        width: .6rem;
-        height: .6rem;
+        width: .5rem;
+        height: .5rem;
     }
     /* #bottom width: 100%;
     height: 1.4rem;
