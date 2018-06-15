@@ -180,7 +180,6 @@ body {
 .fenlei_content {
   background: #fff;
   display: flex;
-  height: 85vh;
   margin-top: 1rem;
   overflow: hidden;
 }
