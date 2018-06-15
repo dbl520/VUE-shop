@@ -25,25 +25,24 @@
     @import '../static/font/iconfont.css';
     @import '../static/css/main.css';
     body {
-        /* padding-bottom: 1.56rem; */
         font-family: '微软雅黑';
         background: #F4F4F4;
         ;
     }
-    /* .slide-fade-enter-active {
-        transition: all .3s ease;
-    } */
     
-    .slide-fade-leave-active {
-        transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    .slide-fade-enter-active {
+        transition: all .3s ease;
     }
+    /* .slide-fade-leave-active {
+        transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    } */
     
     .slide-fade-enter,
     .slide-fade-leave-to
     /* .slide-fade-leave-active for below version 2.1.8 */
     
     {
-        transform: translateX(10px);
+        transform: translateX(2px);
         opacity: 0;
     }
     

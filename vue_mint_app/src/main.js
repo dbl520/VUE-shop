@@ -3,6 +3,7 @@ import App from "./App";
 import router from "./router";
 import store from "./store";
 import Vuex from "vuex";
+import 'babel-polyfill'
 
 Vue.use(Vuex);
 import Mint from "mint-ui";
@@ -24,6 +25,8 @@ new Vue({
     store,
     template: "<App/>",
     render: h => h(App),
-    components: { App },
+    components: {
+        App
+    },
 
 });
