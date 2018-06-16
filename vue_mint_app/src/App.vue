@@ -25,9 +25,8 @@
     @import '../static/font/iconfont.css';
     @import '../static/css/main.css';
     body {
-        font-family: '微软雅黑';
         background: #F4F4F4;
-        ;
+        font-family: '微软雅黑'
     }
     
     .slide-fade-enter-active {
@@ -42,7 +41,7 @@
     /* .slide-fade-leave-active for below version 2.1.8 */
     
     {
-        transform: translateX(2px);
+        /* transform: translateX(2px); */
         opacity: 0;
     }
     

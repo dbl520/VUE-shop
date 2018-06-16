@@ -65,8 +65,10 @@
         position: fixed;
         bottom: 0;
         left: 0;
-        z-index: 99;
+        z-index: 998;
         width: 100%;
+        background: #fff;
+        font-size: 0.34rem;
     }
     
     .index {

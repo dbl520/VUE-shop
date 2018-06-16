@@ -29,109 +29,145 @@
 </template>
 
 <script>
-import { Toast } from "mint-ui"; //引入mint ui
-// 引入vuex快捷写法
-export default {
-  name: "name",
-  data: function() {
-    return {
-      name: "",
-      password: ""
-    };
-  },
-  watch: {
-    $route: "checkLogin"
-  },
-  created() {
-    this.checkLogin();
-  },
-  methods: {
-    checkLogin() {
-      // 检查是否存在logindata
-      if (this.$store.state.logindata.length == 0) {
-        //如果没有登录状态则跳转到登录页
-        this.$router.push("/login");
-      } else {
-        //否则跳转到登录后的页面
-        this.$router.push("/main");
-      }
-    },
+    import {
+        Toast
+    } from "mint-ui"; //引入mint ui
+    // 引入vuex快捷写法
+    export default {
+        name: "name",
+        data: function() {
+            return {
+                name: "",
+                password: ""
+            };
+        },
+        computed: {
+            name: () => {
+                return this.name
+            },
+        },
+        watch: {
+            $route: "checkLogin"
+        },
+        beforeCreate() {
+            console.log('beforeCreate')
+        },
+        created() {
+            this.checkLogin();
+            console.log('created')
+        },
+        beforeMount() {
+            console.log('beforeMount')
+        },
+        mounted() {
+            console.log('mounted')
+        },
+        beforeUpdate() {
+            console.log('beforeUpdate')
+        },
+        updated() {
+            console.log('updated')
+        },
+        beforeDestroy() {
+            console.log('beforeDestroy')
+        },
+        destroyed() {
+            console.log('destroyed')
+        },
+        methods: {
+            checkLogin() {
+                // 检查是否存在logindata
+                if (this.$store.state.logindata.length == 0) {
+                    //如果没有登录状态则跳转到登录页
+                    this.$router.push("/login");
+                } else {
+                    //否则跳转到登录后的页面
+                    this.$router.push("/main");
+                }
+            },
 
-    //  登录验证
-    login: function() {
-      if (!this.name) {
-        Toast({
-          message: "请填写用户名",
-          iconClass: "iconfont icon-shanchu"
-        });
-      } else if (!/^[\u4E00-\u9FA5]{2,}$/.test(this.name)) {
-        Toast({
-          message: "用户名不合法",
-          iconClass: "iconfont icon-shanchu"
-        });
-      } else if (!this.password) {
-        Toast({
-          message: "请填写密码",
-          iconClass: "iconfont icon-shanchu"
-        });
-      } else {
-        // console.log('', this.$store.state.logindata)
-        // 这里改变vuex里的状态管理
-        this.$store.commit("setData");
-        this.$router.push("/main");
-      }
-    }
-  }
-};
+            //  登录验证
+            login: function() {
+                if (!this.name) {
+                    Toast({
+                        message: "请填写用户名",
+                        iconClass: "iconfont icon-shanchu"
+                    });
+                } else if (!/^[\u4E00-\u9FA5]{2,}$/.test(this.name)) {
+                    Toast({
+                        message: "用户名不合法",
+                        iconClass: "iconfont icon-shanchu"
+                    });
+                } else if (!this.password) {
+                    Toast({
+                        message: "请填写密码",
+                        iconClass: "iconfont icon-shanchu"
+                    });
+                } else {
+                    // console.log('', this.$store.state.logindata)
+                    // 这里改变vuex里的状态管理
+                    this.$store.commit("setData");
+                    this.$router.push("/main");
+                }
+            }
+        }
+    };
 </script>
 
 <style scoped>
-.checkout {
-  margin-top: 5vh !important;
-  background: red !important;
-}
-.admin_left {
-  width: 1.2rem;
-}
-.s_top {
-  margin-top: 5vh !important;
-}
-.login_admin {
-  height: 0.88rem;
-  font-size: 0.4rem;
-  text-align: center;
-  background: #26a2ff;
-  color: #fff;
-  line-height: 0.88rem;
-}
-.admin {
-  margin-top: 20vh;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  height: 0.88rem;
-  background: #fff;
-  font-size: 0.34rem;
-  padding: 0 0.2rem;
-}
-.admin_right {
-  padding-left: 0.2rem;
-}
-.quchu {
-  vertical-align: middle;
-  border: 0;
-  outline: none;
-  /*清除移动端默认的表单样式*/
-  -webkit-appearance: none;
-  font-size: 0.34rem;
-}
-.login_login {
-  height: 0.88rem;
-  line-height: 0.88rem;
-  font-size: 0.4rem;
-  text-align: center;
-  margin-top: 30vh;
-  color: #fff;
-  background: #26a2ff;
-}
+    .checkout {
+        margin-top: 5vh !important;
+        background: red !important;
+    }
+    
+    .admin_left {
+        width: 1.2rem;
+    }
+    
+    .s_top {
+        margin-top: 5vh !important;
+    }
+    
+    .login_admin {
+        height: 0.88rem;
+        font-size: 0.4rem;
+        text-align: center;
+        background: #26a2ff;
+        color: #fff;
+        line-height: 0.88rem;
+    }
+    
+    .admin {
+        margin-top: 20vh;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        height: 0.88rem;
+        background: #fff;
+        font-size: 0.34rem;
+        padding: 0 0.2rem;
+    }
+    
+    .admin_right {
+        padding-left: 0.2rem;
+    }
+    
+    .quchu {
+        vertical-align: middle;
+        border: 0;
+        outline: none;
+        /*清除移动端默认的表单样式*/
+        -webkit-appearance: none;
+        font-size: 0.34rem;
+    }
+    
+    .login_login {
+        height: 0.88rem;
+        line-height: 0.88rem;
+        font-size: 0.4rem;
+        text-align: center;
+        margin-top: 30vh;
+        color: #fff;
+        background: #26a2ff;
+    }
 </style>

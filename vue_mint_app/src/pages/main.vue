@@ -110,6 +110,12 @@
                 url: 'https://www.easy-mock.com/mock/59e95287dd7e1a0a448c1102/example/todos'
             }
         },
+        watch: {
+
+        },
+        computed: {
+
+        },
         beforeCreate: function() {
             console.log('beforeCreate')
         },
@@ -135,6 +141,9 @@
                 .catch(function(err) {
                     console.log(err)
                 })
+        },
+        beforeMount() {
+            console.log('beforeMount')
         },
         mounted: function() {
             var _this = this
@@ -194,6 +203,15 @@
         },
         beforeUpdate: function() {
             console.log('beforeUpdate')
+        },
+        updated() {
+            console.log('updated')
+        },
+        beforeDestroy() {
+            console.log('beforeDestroy')
+        },
+        destroyed() {
+            console.log('destroyed')
         },
         methods: {
             // top

@@ -36,7 +36,7 @@
 <style scoped>
     header {
         height: 0.88rem;
-        background: #f5f5f5;
+        background: #ffffff;
         font-size: 0.32rem;
         color: #353535;
         display: flex;
