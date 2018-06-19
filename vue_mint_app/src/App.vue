@@ -29,6 +29,10 @@
         font-family: '微软雅黑'
     }
     
+    a {
+        text-decoration: none;
+    }
+    
     .slide-fade-enter-active {
         transition: all .3s ease;
     }

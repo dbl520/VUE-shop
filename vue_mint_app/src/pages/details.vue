@@ -220,8 +220,8 @@
     .goodDetailHeader {
         width: 100%;
         z-index: 1;
-        height: 1.3rem;
-        line-height: 1.3rem;
+        height: 1rem;
+        line-height: 1rem;
         font-size: 12px;
         background: white;
         position: fixed;
@@ -281,7 +281,6 @@
         width: 100%;
         bottom: 0;
         left: 0;
-        height: 1.3rem;
         background: #f6f4f7;
         border-top: 1px solid #efefef;
     }
@@ -293,8 +292,8 @@
     .add a {
         display: block;
         width: 50%;
-        height: 1.3rem;
-        line-height: 1.3rem;
+        height: 1rem;
+        line-height: 1rem;
         text-align: center;
         background: #ff9800;
         color: white;
@@ -306,8 +305,8 @@
         float: left;
         display: block;
         width: 50%;
-        height: 1.3rem;
-        line-height: 1.3rem;
+        height: 1rem;
+        line-height: 1rem;
         text-align: center;
         color: white;
         font-size: 0.35rem;

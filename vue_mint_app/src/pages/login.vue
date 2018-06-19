@@ -170,9 +170,4 @@
         color: #fff;
         background: #26a2ff;
     }
-    
-    .router-link-active {
-        color: red;
-        background: red
-    }
 </style>

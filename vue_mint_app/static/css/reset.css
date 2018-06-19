@@ -85,6 +85,10 @@ video {
     padding: 0;
 }
 
+a {
+    text-decoration: none;
+}
+
 *,
 ::before,
 ::after {
@@ -187,21 +191,4 @@ select {
     outline: none;
     /*清除移动端默认的表单样式*/
     -webkit-appearance: none;
-}
-
-a:link {
-    text-decoration: none;
-}
-
-a:active {
-    text-decoration: none
-}
-
-;
-a:visited {
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: none;
 }
