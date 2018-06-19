@@ -34,7 +34,7 @@
     } from "mint-ui"; //引入mint ui
     // 引入vuex快捷写法
     export default {
-        name: "name",
+        name: "login",
         data: function() {
             return {
                 name: "",
@@ -169,5 +169,10 @@
         margin-top: 30vh;
         color: #fff;
         background: #26a2ff;
+    }
+    
+    .router-link-active {
+        color: red;
+        background: red
     }
 </style>

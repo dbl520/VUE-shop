@@ -98,6 +98,10 @@
         width: .5rem;
         height: .5rem;
     }
+    
+    .router-link-active {
+        color: red;
+    }
     /* #bottom width: 100%;
     height: 1.4rem;
     position: fixed;
