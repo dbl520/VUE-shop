@@ -79,12 +79,6 @@ video {
     background: transparent;
 }
 
-* {
-    touch-action: none;
-    margin: 0;
-    padding: 0;
-}
-
 a {
     text-decoration: none;
 }
@@ -136,15 +130,6 @@ q:before,
 q:after {
     content: '';
     content: none;
-}
-
-a {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    vertical-align: baseline;
-    background: transparent;
 }
 
 ins {
