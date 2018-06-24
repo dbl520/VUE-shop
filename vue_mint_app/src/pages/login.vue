@@ -19,7 +19,7 @@
       </div>
     </div>
     <!-- 登录 -->
-    <div class="login_login"  @click="login">
+    <div class="login_login" @click="login">
       登录
     </div>
     <div class="login_login checkout" @click="$store.commit('checkoutData')">
@@ -35,7 +35,7 @@
     // 引入vuex快捷写法
     export default {
         name: "login",
-        data: function() {
+        data() {
             return {
                 name: "",
                 password: ""

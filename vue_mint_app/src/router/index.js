@@ -103,12 +103,8 @@ export default new Router({
             path: "/mifenka",
             name: "mifenka",
             component: mifenka
-        },
-        {
-            path: "/login",
-            name: "login",
-            component: login
-        },
+        }
+
 
     ]
 

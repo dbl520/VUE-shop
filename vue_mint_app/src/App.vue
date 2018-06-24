@@ -4,7 +4,6 @@
       <keep-alive>
         <router-view></router-view>
       </keep-alive>
-
     </transition>
     <!-- <footer-bar class="footer"></footer-bar> -->
   </div>
