@@ -53,7 +53,8 @@
             </p>
             <div class="mall_item_all">
               <div class="mall_item_all_left">
-                ￥<span class="price">{{item.Price}}</span>
+                ￥
+                <span class="price">{{item.Price}}</span>
               </div>
               <div class="mall_item_all_right">
                 1人喜欢
@@ -147,59 +148,55 @@
         },
         mounted: function() {
             var _this = this
+            window.onscroll = function() { //监听事件内容 
+                if (_this.getScrollHeight() == _this.getWindowHeight() + _this.getDocumentTop()) { //当滚动条到底时,这里是触发内容
+                    console.log('this', this) //
+                    _this.showtop = true;
+                    console.log(_this.showtop)
+                }
+                setTimeout(function() {
+                    _this.showtop = false
+                }, 10000)
+            }
 
-            $(window).scroll(function() {
-                    //判断是否滑动到页面底部
-                    if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-                        // TODO 滑动到底部时可请求下一页的数据并加载，加载可使用append方法
-                        console.log('this', this)
-                            // var _this= this;
-                        _this.showtop = true
-                        console.log(_this.showtop)
-                            // 滑到底部就跳转到顶部
-                    }
-                    setTimeout(function() {
-                        _this.showtop = false
-                    }, 10000)
-                })
-                // 触摸事件
-                // document.addEventListener('touchstart', touch, false)
-                // document.addEventListener('touchmove', touch, false)
-                // document.addEventListener('touchend', touch, false)
-                // function touch(event) {
-                //   var event = event || window.event
-                //   var oInp = document.getElementById('app')
-                //   switch (event.type) {
-                //     case 'touchstart':
-                //       console.log(
-                //         'Touch started (' +
-                //           event.touches[0].clientX +
-                //           ',' +
-                //           event.touches[0].clientY +
-                //           ')'
-                //       )
-                //       break
-                //     case 'touchend':
-                //       console.log(
-                //         '<br>Touch end (' +
-                //           event.changedTouches[0].clientX +
-                //           ',' +
-                //           event.changedTouches[0].clientY +
-                //           ')'
-                //       )
-                //       break
-                //     case 'touchmove':
-                //       event.preventDefault()
-                //       console.log(
-                //         '<br>Touch moved (' +
-                //           event.touches[0].clientX +
-                //           ',' +
-                //           event.touches[0].clientY +
-                //           ')'
-                //       )
-                //       break
-                //   }
-                // }
+            // 触摸事件
+            // document.addEventListener('touchstart', touch, false)
+            // document.addEventListener('touchmove', touch, false)
+            // document.addEventListener('touchend', touch, false)
+            // function touch(event) {
+            //   var event = event || window.event
+            //   var oInp = document.getElementById('app')
+            //   switch (event.type) {
+            //     case 'touchstart':
+            //       console.log(
+            //         'Touch started (' +
+            //           event.touches[0].clientX +
+            //           ',' +
+            //           event.touches[0].clientY +
+            //           ')'
+            //       )
+            //       break
+            //     case 'touchend':
+            //       console.log(
+            //         '<br>Touch end (' +
+            //           event.changedTouches[0].clientX +
+            //           ',' +
+            //           event.changedTouches[0].clientY +
+            //           ')'
+            //       )
+            //       break
+            //     case 'touchmove':
+            //       event.preventDefault()
+            //       console.log(
+            //         '<br>Touch moved (' +
+            //           event.touches[0].clientX +
+            //           ',' +
+            //           event.touches[0].clientY +
+            //           ')'
+            //       )
+            //       break
+            //   }
+            // }
         },
         beforeUpdate: function() {
             console.log('beforeUpdate')
@@ -214,6 +211,48 @@
             console.log('destroyed')
         },
         methods: {
+            //文档高度
+            getDocumentTop() {
+                var scrollTop = 0,
+                    bodyScrollTop = 0,
+                    documentScrollTop = 0;
+                if (document.body) {
+                    bodyScrollTop = document.body.scrollTop;
+                }
+                if (document.documentElement) {
+                    documentScrollTop = document.documentElement.scrollTop;
+                }
+                scrollTop = (bodyScrollTop - documentScrollTop > 0) ? bodyScrollTop : documentScrollTop;
+                return scrollTop;
+            },
+
+            //可视窗口高度
+            getWindowHeight() {
+                var windowHeight = 0;
+                if (document.compatMode == "CSS1Compat") {
+                    windowHeight = document.documentElement.clientHeight;
+                } else {
+                    windowHeight = document.body.clientHeight;
+                }
+                return windowHeight;
+            },
+
+            //滚动条滚动高度
+            getScrollHeight() {
+                var scrollHeight = 0,
+                    bodyScrollHeight = 0,
+                    documentScrollHeight = 0;
+                if (document.body) {
+                    bodyScrollHeight = document.body.scrollHeight;
+                }
+                if (document.documentElement) {
+                    documentScrollHeight = document.documentElement.scrollHeight;
+                }
+                scrollHeight = (bodyScrollHeight - documentScrollHeight > 0) ? bodyScrollHeight : documentScrollHeight;
+                return scrollHeight;
+            },
+
+
             // top
             loadTop() {
                 console.log('top更多数据')
