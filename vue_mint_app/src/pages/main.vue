@@ -148,7 +148,7 @@
         },
         mounted: function() {
             var _this = this
-            window.onscroll = function() { //监听事件内容 
+            window.onscroll = function() { //监听事件内容
                 if (_this.getScrollHeight() == _this.getWindowHeight() + _this.getDocumentTop()) { //当滚动条到底时,这里是触发内容
                     console.log('this', this) //
                     _this.showtop = true;
@@ -339,6 +339,9 @@
 </script>
 
 <style lang="css" scoped>
+  .box{
+    padding-bottom:0.2rem;
+  }
     .tops {
         position: fixed;
         bottom: 1.2rem;
@@ -347,27 +350,27 @@
         width: 0.88rem;
         height: 0.88rem;
     }
-    
+
     .tops i {
         font-size: 0.65rem !important;
         color: #fe498f;
     }
-    
+
     .lunbo {
         height: 5rem;
     }
-    
+
     .mint-swipe-indicator {
         background: deeppink !important;
         opacity: 0.6 !important;
     }
-    
+
     image[lazy="loading"] {
         width: 100%;
         height: 3.2rem;
         margin: auto;
     }
-    
+
     .items {
         display: flex;
         justify-content: space-between;
@@ -375,58 +378,58 @@
         align-items: center;
         background: #fff;
     }
-    
+
     .mint-swipe-item {
         width: 100%;
         height: 5rem;
     }
-    
+
     .mint-swipe-item img {
         width: 100%;
         height: 100%;
     }
-    
+
     .item_title {
         display: inline-block;
         margin-top: 0.2rem;
         font-size: 0.3rem;
         text-align: center;
     }
-    
+
     .item_img img {
         width: 100%;
         height: 100%;
     }
-    
+
     .item_img {
         width: 0.8rem;
         text-align: center;
     }
-    
+
     .mall_item {
         width: 3.5rem;
         margin-top: 0.2rem;
         background: #fff;
     }
-    
+
     .mall_item img {
         width: 100%;
         height: 3.2rem;
     }
-    
+
     .shop_mall {
         display: flex;
         align-items: center;
         justify-content: space-between;
         flex-wrap: wrap;
     }
-    
+
     .mall_title {
         text-align: center;
         font-size: 0.3rem;
         margin-top: 0.2rem;
     }
-    
+
     .mall_item_all {
         display: flex;
         align-items: center;
@@ -434,16 +437,16 @@
         margin-top: 0.2rem;
         padding: 0.2rem 0.1rem;
     }
-    
+
     .mall_item_all_left {
         font-size: 0.4rem;
         color: red;
     }
-    
+
     .price {
         font-size: 0.4rem;
     }
-    
+
     .item {
         display: flex;
         align-items: center;

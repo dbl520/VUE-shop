@@ -38,7 +38,8 @@
     <!-- 没数据的时候 -->
     <div class="gwc" v-if="!carts.length">
       <div class="gwc_imgs">
-        <i class="iconfont icon-konggouwuche ic"></i>
+        <!-- <i class="iconfont icon-konggouwuche ic"></i> -->
+        <img src="../../static/images/no-order.png" class="no-img">
         <div class="go" @click="go">去逛逛</div>
       </div>
     </div>
@@ -108,6 +109,10 @@
   }
 </script>
 <style scoped>
+.no-img{
+     width: 3rem;
+    height: 4rem;
+}
 .jian,.jia{
   border: 1px solid #eee;
   padding: 0 0.23rem;
