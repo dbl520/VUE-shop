@@ -6,7 +6,7 @@
         用户名
       </div>
       <div class="admin_right">
-        <input type="text" placeholder="请填写用户名" class="quchu" v-model="name">
+        <input type="text" placeholder="请填写用户名" class="quchu" v-model="name1">
       </div>
     </div>
     <!-- 密码 -->
@@ -34,16 +34,15 @@
     } from "mint-ui"; //引入mint ui
     // 引入vuex快捷写法
     export default {
-        name: "login",
         data() {
             return {
-                name: "",
+                name1: "",
                 password: ""
             };
         },
         computed: {
-            name: () => {
-                return this.name
+            name1: () => {
+                return this.name1
             },
         },
         watch: {
@@ -56,24 +55,7 @@
             this.checkLogin();
             console.log('created')
         },
-        beforeMount() {
-            console.log('beforeMount')
-        },
-        mounted() {
-            console.log('mounted')
-        },
-        beforeUpdate() {
-            console.log('beforeUpdate')
-        },
-        updated() {
-            console.log('updated')
-        },
-        beforeDestroy() {
-            console.log('beforeDestroy')
-        },
-        destroyed() {
-            console.log('destroyed')
-        },
+
         methods: {
             checkLogin() {
                 // 检查是否存在logindata
@@ -88,12 +70,12 @@
 
             //  登录验证
             login: function() {
-                if (!this.name) {
+                if (!this.name1) {
                     Toast({
                         message: "请填写用户名",
                         iconClass: "iconfont icon-shanchu"
                     });
-                } else if (!/^[\u4E00-\u9FA5]{2,}$/.test(this.name)) {
+                } else if (!/^[\u4E00-\u9FA5]{2,}$/.test(this.name1)) {
                     Toast({
                         message: "用户名不合法",
                         iconClass: "iconfont icon-shanchu"
