@@ -109,14 +109,15 @@
   }
 </script>
 <style scoped>
-.no-img{
-     width: 3rem;
+  .no-img {
+    width: 3rem;
     height: 4rem;
-}
-.jian,.jia{
-  border: 1px solid #eee;
-  padding: 0 0.23rem;
-}
+  }
+  .jian,
+  .jia {
+    border: 1px solid #eee;
+    padding: 0 0.23rem;
+  }
   .cards_top {
     height: 0.88rem;
     position: fixed;
