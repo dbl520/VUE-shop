@@ -3,7 +3,7 @@
     <div class="bottom-ul"> 
       <router-link  to="/main" tag="div">
         <div class="index">
-          <img src="../../static/images/tab_1.png" v-if="active ==='main'" class="img">
+          <img src="../../static/images/tab_1.png" v-if="active =='main'" class="img">
           <!-- <i class="iconfont icon-shouye_xuanzhong" style="color:#179dfe" v-if="active ==='main'"></i> -->
           <!-- <i class="iconfont icon-shouye2" v-else></i> -->
           <img src="../../static/images/tab1.png" v-else class="img"/>
@@ -13,7 +13,7 @@
 
       <router-link to="/fenlei" tag="div">
         <div class="index">
-            <img src="../../static/images/tab_2.png" v-if="active ==='fenlei'" class="img" />
+            <img src="../../static/images/tab_2.png" v-if="active =='fenlei'" class="img" />
             <img src="../../static/images/tab.png" v-else class="img" />
         </div>
         <span class="name">分类</span>
@@ -21,7 +21,7 @@
 
       <router-link to="/tool" tag="div">
         <div class="index">
-            <img src="../../static/images/tab5_.png" v-if="active ==='tool'" class="img" />
+            <img src="../../static/images/tab5_.png" v-if="active =='tool'" class="img" />
             <img src="../../static/images/tab5.png" v-else  class="img" />
         </div>
         <span class="name">新闻</span>
@@ -30,7 +30,7 @@
         <div class="index">
           <!-- <i class="iconfont icon-dongtaixuanzhong" style="color:#179dfe" v-if="active ==='car'"></i>
           <i class="iconfont icon-dongtai" v-else></i> -->
-          <img src="../../static/images/tab3_.png" v-if="active ==='cart'"  class="img"/>
+          <img src="../../static/images/tab3_.png" v-if="active =='cart'"  class="img"/>
           <img src="../../static/images/tab3.png"  v-else  class="img" />
         </div>
         <span class="name">购物车</span>
@@ -38,7 +38,7 @@
 
        <router-link to="/my" tag="div">
         <div class="index">
-            <img src="../../static/images/tab4_.png" v-if="active ==='my'" class="img" />
+            <img src="../../static/images/tab4_.png" v-if="active =='my'" class="img" />
             <img src="../../static/images/tab4.png" v-else  class="img" />
         </div>
         <span class="name">我的</span>
@@ -55,7 +55,7 @@
             }
         },
         mounted() {
-            this.active = this.$route.path.slice(1);
+            this.active = this.$route.path.slice(1)
         }
     }
 </script>
