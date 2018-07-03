@@ -82,15 +82,7 @@
     import {
         Indicator
     } from 'mint-ui' //引入mint ui
-    import {
-        Lazyload
-    } from 'mint-ui' //懒加载
-    Vue.use(Lazyload, {
-        //懒加载声明错误图和占位图
-        preLoad: 1,
-        error: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1519390533134&di=8fffb0fa229df0c0a2c1baf625353498&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01067e58edf49da8012049efa65a00.gif',
-        loading: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1519390533134&di=8fffb0fa229df0c0a2c1baf625353498&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01067e58edf49da8012049efa65a00.gif'
-    })
+
     export default {
         // 组件开始
         components: {
@@ -339,9 +331,10 @@
 </script>
 
 <style lang="css" scoped>
-  .box{
-    padding-bottom:0.2rem;
-  }
+    .box {
+        padding-bottom: 0.2rem;
+    }
+    
     .tops {
         position: fixed;
         bottom: 1.2rem;
@@ -350,27 +343,27 @@
         width: 0.88rem;
         height: 0.88rem;
     }
-
+    
     .tops i {
         font-size: 0.65rem !important;
         color: #fe498f;
     }
-
+    
     .lunbo {
         height: 5rem;
     }
-
+    
     .mint-swipe-indicator {
         background: deeppink !important;
         opacity: 0.6 !important;
     }
-
+    
     image[lazy="loading"] {
         width: 100%;
         height: 3.2rem;
         margin: auto;
     }
-
+    
     .items {
         display: flex;
         justify-content: space-between;
@@ -378,58 +371,58 @@
         align-items: center;
         background: #fff;
     }
-
+    
     .mint-swipe-item {
         width: 100%;
         height: 5rem;
     }
-
+    
     .mint-swipe-item img {
         width: 100%;
         height: 100%;
     }
-
+    
     .item_title {
         display: inline-block;
         margin-top: 0.2rem;
         font-size: 0.3rem;
         text-align: center;
     }
-
+    
     .item_img img {
         width: 100%;
         height: 100%;
     }
-
+    
     .item_img {
         width: 0.8rem;
         text-align: center;
     }
-
+    
     .mall_item {
         width: 3.5rem;
         margin-top: 0.2rem;
         background: #fff;
     }
-
+    
     .mall_item img {
         width: 100%;
         height: 3.2rem;
     }
-
+    
     .shop_mall {
         display: flex;
         align-items: center;
         justify-content: space-between;
         flex-wrap: wrap;
     }
-
+    
     .mall_title {
         text-align: center;
         font-size: 0.3rem;
         margin-top: 0.2rem;
     }
-
+    
     .mall_item_all {
         display: flex;
         align-items: center;
@@ -437,16 +430,16 @@
         margin-top: 0.2rem;
         padding: 0.2rem 0.1rem;
     }
-
+    
     .mall_item_all_left {
         font-size: 0.4rem;
         color: red;
     }
-
+    
     .price {
         font-size: 0.4rem;
     }
-
+    
     .item {
         display: flex;
         align-items: center;

@@ -6,7 +6,7 @@
         用户名
       </div>
       <div class="admin_right">
-        <input type="text" placeholder="请填写用户名" class="quchu" v-model="name1">
+        <input type="text" placeholder="请填写用户名" class="quchu" v-model="names">
       </div>
     </div>
     <!-- 密码 -->
@@ -36,14 +36,12 @@
     export default {
         data() {
             return {
-                name1: "",
+                names: "",
                 password: ""
             };
         },
         computed: {
-            name1: () => {
-                return this.name1
-            },
+
         },
         watch: {
             $route: "checkLogin"
@@ -70,12 +68,12 @@
 
             //  登录验证
             login: function() {
-                if (!this.name1) {
+                if (!this.names) {
                     Toast({
                         message: "请填写用户名",
                         iconClass: "iconfont icon-shanchu"
                     });
-                } else if (!/^[\u4E00-\u9FA5]{2,}$/.test(this.name1)) {
+                } else if (!/^[\u4E00-\u9FA5]{2,}$/.test(this.names)) {
                     Toast({
                         message: "用户名不合法",
                         iconClass: "iconfont icon-shanchu"
