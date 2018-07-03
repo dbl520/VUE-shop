@@ -13,7 +13,7 @@
 
       <router-link to="/fenlei" tag="div" style="width:20%">
         <div class="index">
-          <img src="../../static/images/tab_2.png" v-if="active ==='fenlei'" class="img" />
+          <img src="../../static/images/tab_2.png" v-if="active =='fenlei'" class="img" />
           <img src="../../static/images/tab.png"  class="img" v-else/>
         </div>
         <span class="name">分类</span>
@@ -21,7 +21,7 @@
 
       <router-link to="/tool" tag="div" style="width:20%">
         <div class="index">
-          <img src="../../static/images/tab5_.png" v-if="active ==='tool'" class="img" />
+          <img src="../../static/images/tab5_.png" v-if="active =='tool'" class="img" />
           <img src="../../static/images/tab5.png"  class="img" v-else />
         </div>
         <span class="name">新闻</span>
@@ -30,7 +30,7 @@
         <div class="index">
           <!-- <i class="iconfont icon-dongtaixuanzhong" style="color:#179dfe" v-if="active ==='car'"></i>
           <i class="iconfont icon-dongtai" v-else></i> -->
-          <img src="../../static/images/tab3_.png" v-if="active ==='cart'" class="img" />
+          <img src="../../static/images/tab3_.png" v-if="active =='cart'" class="img" />
           <img src="../../static/images/tab3.png"  class="img" v-else />
         </div>
         <span class="name">购物车</span>
@@ -38,7 +38,7 @@
 
       <router-link to="/my" tag="div" style="width:20%">
         <div class="index">
-          <img src="../../static/images/tab4_.png" v-if="active ==='my'" class="img" />
+          <img src="../../static/images/tab4_.png" v-if="active =='my'" class="img" />
           <img src="../../static/images/tab4.png" class="img"   v-else/>     
         </div>
         <span class="name">我的</span>
@@ -51,13 +51,17 @@
     export default {
         data() {
             return {
-                active: 'main',
+                // active: 'main',
             }
         },
-         mounted(){
-             this.active = this.$route.path.slice(1);
-             console.log('gg',this.$route.path.slice(1),this.active)
-          }
+        computed: {
+            active: function() {
+                    return this.$route.path.slice(1)
+                    console.log('gg', this.$route.path.slice(1), this.active)
+                }
+                // this.active = this.$route.path.slice(1);
+
+        }
     }
 </script>
 
@@ -71,12 +75,12 @@
         background: #fff;
         font-size: 0.34rem;
     }
-
+    
     .index {
         text-align: center;
-        width:20%;
+        width: 20%;
     }
-
+    
     .bottom-ul {
         display: flex;
         align-items: center;
@@ -84,25 +88,25 @@
         background: #fff;
         padding: 0.1rem 0;
         width: 100%;
-        height:0.98rem;
+        height: 0.98rem;
     }
-
+    
     .bottom-ul div {
         display: flex;
         align-items: center;
         flex-direction: column;
         list-style: none;
     }
-
+    
     .name {
         display: inline-block;
     }
-
+    
     .img {
         width: .5rem;
         height: .5rem;
     }
-
+    
     .router-link-active {
         color: red;
     }
