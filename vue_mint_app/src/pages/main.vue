@@ -319,8 +319,10 @@
             },
             // 滑到顶部事件
             top: function() {
-                console.log('$(window).scrollTop()', $(window).scrollTop(0))
-                $(window).scrollTop(0)
+
+                 document.documentElement.scrollTop = 0
+
+                // window.scrollTop(0)
                 var _this = this
                 _this.showtop = false
                 console.log("this", _this.$store.commit("checkoutData"))

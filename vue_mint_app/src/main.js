@@ -3,6 +3,7 @@ import App from "./App";
 import router from "./router";
 import store from "./store";
 import Vuex from "vuex";
+import '../config/rem'
 // import 'babel-polyfill'
 import {
     Lazyload
