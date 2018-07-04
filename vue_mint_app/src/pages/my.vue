@@ -34,16 +34,24 @@
         </div>
       </div>
       <!-- 时间选择 -->
-      <!-- <div class="dingdan" @click="open('picker1')">
+      <div class="dingdan" @click="open('picker1')">
         <div class="dingdan_left dz">
           <i class="iconfont icon-shouhuodizhi"></i>
           <span class="gl">日期选择</span>
         </div>
         <div class="dingdan_right">
-          <!-- 日期组件 -->
-      <!-- {{date1}}
+          {{date1}}
         </div>
-      </div> -->
+      </div>
+      <!-- 时间 -->
+
+      <mt-datetime-picker  ref="picker1" v-model="pickerVisible" type="date" year-format="{value} 年" month-format="{value} 月" date-format="{value} 日" 
+   @confirm="
+  handleChange
+"
+>
+      </mt-datetime-picker>
+
       <!-- 地址 -->
       <div>
         <mt-popup v-model="popupVisible" position="bottom">
@@ -78,7 +86,8 @@ export default {
   name: "my",
   data() {
     return {
-      date1: new Date().toISOString(new Date()).slice(0, 10), //默认显示的日期
+      pickerVisible:'' ,
+           date1: new Date().toISOString(new Date()).slice(0, 10), //默认显示的日期
       value: null,
       value1: new Date().toISOString(new Date()).slice(0, 10), //默认选中的日期
       //show: true,
