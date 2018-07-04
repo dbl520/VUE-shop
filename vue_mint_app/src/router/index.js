@@ -21,10 +21,12 @@ export default new Router({
     // mode: "history", //改为history.路由中没有#号
     routes: [{
             path: "/",
+            name: "login",
             component: login,
 
         }, {
             path: "/login",
+            name: "login",
             component: login,
 
         },
