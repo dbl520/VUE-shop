@@ -1,7 +1,9 @@
 <template>
   <div class="bottom">
     <div class="bottom-ul">
-      <router-link to="/main" tag="div" style="width:20%">
+      <router-link to="/main" tag="div" style="width:20%" 
+  exact
+>
         <div class="index">
           <img src="../../static/images/tab_1.png" v-if="active ==='main'" class="img">
           <!-- <i class="iconfont icon-shouye_xuanzhong" style="color:#179dfe" v-if="active ==='main'"></i> -->
@@ -51,16 +53,19 @@
     export default {
         data() {
             return {
-                // active: 'main',
+                active: 'main',
             }
         },
         computed: {
-            active: function() {
-                    return this.$route.path.slice(1)
-                    console.log('gg', this.$route.path, this.active)
-                }
+            // active: function() {
+            //         return this.$route.path.slice(1)
+            //         console.log('gg', this.$route.path, this.active)
+            //     }
                 // this.active = this.$route.path.slice(1);
 
+        },
+        mounted(){
+           this.active = this.$route.path.slice(1);
         }
     }
 </script>
