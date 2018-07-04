@@ -87,7 +87,7 @@ export default {
   data() {
     return {
       pickerVisible:'' ,
-           date1: new Date().toISOString(new Date()).slice(0, 10), //默认显示的日期
+      date1: new Date().toISOString(new Date()).slice(0, 10), //默认显示的日期
       value: null,
       value1: new Date().toISOString(new Date()).slice(0, 10), //默认选中的日期
       //show: true,
