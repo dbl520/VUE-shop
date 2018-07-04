@@ -12,31 +12,31 @@
         </div>
         <div class="items">
 
-          <div class="item" @click="xuangou">
+          <div class="item" @click="xuangou('choose','选购')">
             <div class="item_img">
               <img src="../../static/images/SELECT.png">
             </div>
             <span class="item_title">选购</span>
           </div>
-          <div class="item" @click="need">
+          <div class="item" @click="xuangou('need','真心想要')">
             <div class="item_img">
               <img src="../../static/images/lipin.png">
             </div>
             <span class="item_title">真心想要</span>
           </div>
-          <div class="item" @click="qiangou">
+          <div class="item" @click="xuangou('qiangou','限时抢购')">
             <div class="item_img">
               <img src="../../static/images/xianshi.png">
             </div>
             <span class="item_title">限时抢购</span>
           </div>
-          <div class="item" @click="fabu">
+          <div class="item"  @click="xuangou('fabu','新品发布')">
             <div class="item_img">
               <img src="../../static/images/news.png">
             </div>
             <span class="item_title">新品发布</span>
           </div>
-          <div class="item" @click="mifenka">
+          <div class="item"  @click="xuangou('mifenka','米粉卡')">
             <div class="item_img">
               <img src="../../static/images/ka.png">
             </div>
@@ -280,47 +280,24 @@
                     }
                 })
             },
-            xuangou: function() {
+            xuangou: function(path,name) {
                 this.$router.push({
-                    path: 'choose',
+                    path: path,
                     query: {
-                        name: '选购'
+                        name: name
                     }
                 })
             },
-            need: function() {
-                this.$router.push({
-                    path: 'need',
-                    query: {
-                        name: '真心想要'
-                    }
-                })
-                console.log(this)
-            },
-            qiangou: function() {
-                this.$router.push({
-                    path: 'qiangou',
-                    query: {
-                        name: '抢购'
-                    }
-                })
-            },
-            fabu: function() {
-                this.$router.push({
-                    path: 'fabu',
-                    query: {
-                        name: '发布'
-                    }
-                })
-            },
-            mifenka: function() {
-                this.$router.push({
-                    path: 'mifenka',
-                    query: {
-                        name: '米粉卡'
-                    }
-                })
-            },
+            // need: function() {
+            //     this.$router.push({
+            //         path: 'need',
+            //         query: {
+            //             name: '真心想要'
+            //         }
+            //     })
+            //     console.log(this)
+            // },
+          
             // 滑到顶部事件
             top: function() {
 
