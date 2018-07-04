@@ -27,7 +27,6 @@ import axios from "axios";
 Vue.prototype.$http = axios;
 // 根据state状态判断是否缓存
 // 引入全局静态数据
-import global_ from './pages/Globaldata'
 /* eslint-disable no-new */
 new Vue({
     el: "#app",

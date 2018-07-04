@@ -106,8 +106,8 @@
                 url: 'https://www.easy-mock.com/mock/59e95287dd7e1a0a448c1102/example/todos'
             }
         },
+        props: [],
         watch: {
-
         },
         computed: {
 
@@ -117,7 +117,7 @@
         },
         created: function() {
             console.log('created', this)
-             console.log('created', global_) 
+             console.log('created', global_)
             var _this = this
                 // 创建动画mint-ui
             Indicator.open({
