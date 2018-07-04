@@ -34,16 +34,16 @@
         </div>
       </div>
       <!-- 时间选择 -->
-      <div class="dingdan" @click="open('picker1')">
+      <!-- <div class="dingdan" @click="open('picker1')">
         <div class="dingdan_left dz">
           <i class="iconfont icon-shouhuodizhi"></i>
           <span class="gl">日期选择</span>
         </div>
         <div class="dingdan_right">
           <!-- 日期组件 -->
-          {{date1}}
+      <!-- {{date1}}
         </div>
-      </div>
+      </div> -->
       <!-- 地址 -->
       <div>
         <mt-popup v-model="popupVisible" position="bottom">
@@ -178,7 +178,7 @@ export default {
       var _this = this;
       _this.shareVisible = true;
     },
-   
+
     // 日期
     open(picker) {
       this.$refs[picker].open();

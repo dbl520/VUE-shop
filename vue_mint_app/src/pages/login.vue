@@ -43,9 +43,6 @@
         computed: {
 
         },
-        watch: {
-            $route: "checkLogin"
-        },
         beforeCreate() {
             console.log('beforeCreate')
         },
@@ -73,12 +70,8 @@
                         message: "请填写用户名",
                         iconClass: "iconfont icon-shanchu"
                     });
-                } else if (!/^[\u4E00-\u9FA5]{2,}$/.test(this.names)) {
-                    Toast({
-                        message: "用户名不合法",
-                        iconClass: "iconfont icon-shanchu"
-                    });
-                } else if (!this.password) {
+                }
+                else if (!this.password) {
                     Toast({
                         message: "请填写密码",
                         iconClass: "iconfont icon-shanchu"
@@ -87,7 +80,8 @@
                     // console.log('', this.$store.state.logindata)
                     // 这里改变vuex里的状态管理
                     this.$store.commit("setData");
-                    this.$router.push("/main");
+                    alert(this.$router)
+                    this.$router.push({path:"/main"});
                 }
             }
         }
@@ -99,15 +93,15 @@
         margin-top: 5vh !important;
         background: red !important;
     }
-    
+
     .admin_left {
         width: 1.2rem;
     }
-    
+
     .s_top {
         margin-top: 5vh !important;
     }
-    
+
     .login_admin {
         height: 0.88rem;
         font-size: 0.4rem;
@@ -116,7 +110,7 @@
         color: #fff;
         line-height: 0.88rem;
     }
-    
+
     .admin {
         margin-top: 20vh;
         display: flex;
@@ -127,11 +121,11 @@
         font-size: 0.34rem;
         padding: 0 0.2rem;
     }
-    
+
     .admin_right {
         padding-left: 0.2rem;
     }
-    
+
     .quchu {
         vertical-align: middle;
         border: 0;
@@ -140,7 +134,7 @@
         -webkit-appearance: none;
         font-size: 0.34rem;
     }
-    
+
     .login_login {
         height: 0.88rem;
         line-height: 0.88rem;

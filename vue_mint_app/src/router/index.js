@@ -24,7 +24,8 @@ export default new Router({
             name: "login",
             component: login,
 
-        }, {
+        },
+        {
             path: "/login",
             name: "login",
             component: login,
@@ -38,10 +39,6 @@ export default new Router({
         {
             path: "/main",
             name: "main",
-            meta: {
-                // 添加该字段，表示进入这个路由是需要登录的
-                requireAuth: true,
-            },
             component: main
         },
         {
