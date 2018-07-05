@@ -72,11 +72,11 @@ const store = new Vuex.Store({
             console.log(this.state.logindata, 'state33333')
         },
         // 设置退出的数据
-        checkoutData: function(state) {
-            state.logindata = [];
-            localStorage.setItem("logindata", JSON.stringify(state.logindata));
-            console.log(state, 'state2222')
-        }
+        // checkoutData: function(state) {
+        //     state.logindata = [];
+        //     localStorage.setItem("logindata", JSON.stringify(state.logindata));
+        //     console.log(state, 'state2222')
+        // }
 
     },
     //getters计算过滤操作

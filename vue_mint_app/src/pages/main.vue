@@ -30,13 +30,13 @@
             </div>
             <span class="item_title">限时抢购</span>
           </div>
-          <div class="item"  @click="xuangou('fabu','新品发布')">
+          <div class="item" @click="xuangou('fabu','新品发布')">
             <div class="item_img">
               <img src="../../static/images/news.png">
             </div>
             <span class="item_title">新品发布</span>
           </div>
-          <div class="item"  @click="xuangou('mifenka','米粉卡')">
+          <div class="item" @click="xuangou('mifenka','米粉卡')">
             <div class="item_img">
               <img src="../../static/images/ka.png">
             </div>
@@ -65,7 +65,7 @@
       </div>
     </mt-loadmore>
     <!-- 上滑 -->
-    <div class="tops" v-if="showtop" @click="top">
+    <div class="tops" v-if="showtop" @click="top" id="btn">
       <i class="iconfont icon-tubiao02  tops_size"></i>
     </div>
     <!-- 底部组件 -->
@@ -80,7 +80,7 @@
     import Vue from 'vue'
     import Footer from '../components/FooterBar'
 
-  import global_ from './Globaldata'
+    import global_ from './Globaldata'
 
     import {
         Indicator
@@ -103,12 +103,14 @@
                     'https://i8.mifile.cn/b2c-mimall-media/2be6be33c4131cfb2801ae41a2a84748.jpg',
                     'https://i8.mifile.cn/b2c-mimall-media/d77913ecf914900557c0f9befedfc9bc.jpg'
                 ],
-                url: 'https://www.easy-mock.com/mock/59e95287dd7e1a0a448c1102/example/todos'
+                url: 'https://www.easy-mock.com/mock/59e95287dd7e1a0a448c1102/example/todos',
+                timer: null,
+                //定义一个定时器
+                isTop: true, //定义一个布尔值，用于判断是否到达顶部
             }
         },
         props: [],
-        watch: {
-        },
+        watch: {},
         computed: {
 
         },
@@ -117,7 +119,7 @@
         },
         created: function() {
             console.log('created', this)
-             console.log('created', global_)
+            console.log('created', global_)
             var _this = this
                 // 创建动画mint-ui
             Indicator.open({
@@ -144,15 +146,24 @@
         },
         mounted: function() {
             var _this = this
+            var obtn = document.getElementById('btn'); //获取回到顶部按钮的ID
+            var clientHeight = document.documentElement.clientHeight; //获取可视区域的高度
+
             window.onscroll = function() { //监听事件内容
-                if (_this.getScrollHeight() == _this.getWindowHeight() + _this.getDocumentTop()) { //当滚动条到底时,这里是触发内容
-                    console.log('this', this) //
+
+
+                //获取滚动条的滚动高度 
+                var osTop = document.documentElement.scrollTop || document.body.scrollTop;
+                if (osTop >= clientHeight) { //如果滚动高度大于可视区域高度，则显示回到顶部按钮
                     _this.showtop = true;
-                    console.log(_this.showtop)
-                }
-                setTimeout(function() {
+                } else { //否则隐藏
                     _this.showtop = false
-                }, 10000)
+                } //主要用于判断当 点击回到顶部按钮后 滚动条在回滚过程中，若手动滚动滚动条，则清除定时器
+                if (!_this.isTop) {
+                    clearInterval(_this.timer);
+                }
+                _this.isTop = false;
+
             }
 
             // 触摸事件
@@ -207,48 +218,6 @@
             console.log('destroyed')
         },
         methods: {
-            //文档高度
-            getDocumentTop() {
-                var scrollTop = 0,
-                    bodyScrollTop = 0,
-                    documentScrollTop = 0;
-                if (document.body) {
-                    bodyScrollTop = document.body.scrollTop;
-                }
-                if (document.documentElement) {
-                    documentScrollTop = document.documentElement.scrollTop;
-                }
-                scrollTop = (bodyScrollTop - documentScrollTop > 0) ? bodyScrollTop : documentScrollTop;
-                return scrollTop;
-            },
-
-            //可视窗口高度
-            getWindowHeight() {
-                var windowHeight = 0;
-                if (document.compatMode == "CSS1Compat") {
-                    windowHeight = document.documentElement.clientHeight;
-                } else {
-                    windowHeight = document.body.clientHeight;
-                }
-                return windowHeight;
-            },
-
-            //滚动条滚动高度
-            getScrollHeight() {
-                var scrollHeight = 0,
-                    bodyScrollHeight = 0,
-                    documentScrollHeight = 0;
-                if (document.body) {
-                    bodyScrollHeight = document.body.scrollHeight;
-                }
-                if (document.documentElement) {
-                    documentScrollHeight = document.documentElement.scrollHeight;
-                }
-                scrollHeight = (bodyScrollHeight - documentScrollHeight > 0) ? bodyScrollHeight : documentScrollHeight;
-                return scrollHeight;
-            },
-
-
             // top
             loadTop() {
                 console.log('top更多数据')
@@ -280,7 +249,7 @@
                     }
                 })
             },
-            xuangou: function(path,name) {
+            xuangou: function(path, name) {
                 this.$router.push({
                     path: path,
                     query: {
@@ -297,17 +266,25 @@
             //     })
             //     console.log(this)
             // },
-          
+
             // 滑到顶部事件
             top: function() {
+                console.log("滑到顶部事件")
+                let this_ = this
+                this_.timer = setInterval(function() { //获取滚动条的滚动高度
+                    var osTop = document.documentElement.scrollTop || document.body.scrollTop;
+                    //用于设置速度差，产生缓动的效果 
+                    var speed = Math.floor(-osTop / 6);
+                    document.documentElement.scrollTop = document.body.scrollTop = osTop + speed;
+                    this_.isTop = true; //用于阻止滚动事件清除定时器
+                    if (osTop == 0) {
+                        console.log('ggg')
+                        clearInterval(this_.timer);
+                    }
+                }, 30);
 
-                 document.documentElement.scrollTop = 0
-
-                // window.scrollTop(0)
-                var _this = this
-                _this.showtop = false
-                console.log("this", _this.$store.commit("checkoutData"))
-                _this.$store.commit("checkoutData");
+                // console.log("this", _this.$store.commit("checkoutData"))
+                // _this.$store.commit("checkoutData");
             }
         }
     }
@@ -317,7 +294,7 @@
     .box {
         padding-bottom: 0.2rem;
     }
-
+    
     .tops {
         position: fixed;
         bottom: 1.2rem;
@@ -326,27 +303,27 @@
         width: 0.88rem;
         height: 0.88rem;
     }
-
+    
     .tops i {
         font-size: 0.65rem !important;
         color: #fe498f;
     }
-
+    
     .lunbo {
         height: 5rem;
     }
-
+    
     .mint-swipe-indicator {
         background: deeppink !important;
         opacity: 0.6 !important;
     }
-
+    
     image[lazy="loading"] {
         width: 100%;
         height: 3.2rem;
         margin: auto;
     }
-
+    
     .items {
         display: flex;
         justify-content: space-between;
@@ -354,58 +331,58 @@
         align-items: center;
         background: #fff;
     }
-
+    
     .mint-swipe-item {
         width: 100%;
         height: 5rem;
     }
-
+    
     .mint-swipe-item img {
         width: 100%;
         height: 100%;
     }
-
+    
     .item_title {
         display: inline-block;
         margin-top: 0.2rem;
         font-size: 0.3rem;
         text-align: center;
     }
-
+    
     .item_img img {
         width: 100%;
         height: 100%;
     }
-
+    
     .item_img {
         width: 0.8rem;
         text-align: center;
     }
-
+    
     .mall_item {
         width: 3.5rem;
         margin-top: 0.2rem;
         background: #fff;
     }
-
+    
     .mall_item img {
         width: 100%;
         height: 3.2rem;
     }
-
+    
     .shop_mall {
         display: flex;
         align-items: center;
         justify-content: space-between;
         flex-wrap: wrap;
     }
-
+    
     .mall_title {
         text-align: center;
         font-size: 0.3rem;
         margin-top: 0.2rem;
     }
-
+    
     .mall_item_all {
         display: flex;
         align-items: center;
@@ -413,16 +390,16 @@
         margin-top: 0.2rem;
         padding: 0.2rem 0.1rem;
     }
-
+    
     .mall_item_all_left {
         font-size: 0.4rem;
         color: red;
     }
-
+    
     .price {
         font-size: 0.4rem;
     }
-
+    
     .item {
         display: flex;
         align-items: center;

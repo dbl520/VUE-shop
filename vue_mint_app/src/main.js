@@ -4,6 +4,7 @@ import router from "./router";
 import store from "./store";
 import Vuex from "vuex";
 import '../config/rem'
+
 // import 'babel-polyfill'
 import {
     Lazyload
@@ -25,6 +26,10 @@ Vue.config.productionTip = true;
 //引入请求
 import axios from "axios";
 Vue.prototype.$http = axios;
+/*vConsole */
+import Vconsole from 'vconsole'
+let vConsole = new Vconsole()
+export default vConsole
 // 根据state状态判断是否缓存
 // 引入全局静态数据
 /* eslint-disable no-new */
