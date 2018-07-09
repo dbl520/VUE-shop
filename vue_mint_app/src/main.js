@@ -5,7 +5,7 @@ import store from "./store";
 import Vuex from "vuex";
 import '../config/rem'
 
-// import 'babel-polyfill'
+import 'babel-polyfill'
 import {
     Lazyload
 } from 'mint-ui' //懒加载

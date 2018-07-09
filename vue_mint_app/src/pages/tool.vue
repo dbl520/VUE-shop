@@ -49,7 +49,7 @@ export default {
     Indicator.open({
       text: "加载中...",
       spinnerType: "fading-circle"
-    });
+    }); 
     _this.$http.get(_this.url).then(
       response => {
         console.log(response);
