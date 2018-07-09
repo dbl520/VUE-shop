@@ -77,12 +77,12 @@
         },
         mounted() {
             this.scroll = new BScroll(this.$refs.menuWrapper, {
-                //开启点击事件 默认为false
-                click: false
+                //开启点击事件 默认为false。有的真机为false触发不了点击
+                click: true
             });
             this.scroll = new BScroll(this.$refs.foodsWrapper, {
-                //开启点击事件 默认为false
-                click: false
+                //开启点击事件 默认为false。有的真机为false触发不了点击
+                click: true
             });
         },
         methods: {
