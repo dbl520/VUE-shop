@@ -36,8 +36,6 @@ Vue.prototype.$http = axios;
 import Vconsole from 'vconsole'
 let vConsole = new Vconsole()
 export default vConsole
-// 根据state状态判断是否缓存
-// 引入全局静态数据
 /* eslint-disable no-new */
 new Vue({
     el: "#app",
