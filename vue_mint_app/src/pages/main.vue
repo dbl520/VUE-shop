@@ -120,31 +120,31 @@
             //     text: '加载中...',
             //     spinnerType: 'fading-circle'
             // })
-            // _this.$http
-            //     .get(_this.url, {
-            //         params: {
-            //             // 请求参数
-            //         }
-            //     })
-            //     .then(function(response) {
-            //         console.log(response)
-            //         _this.items = response.data
-            //         // Indicator.close() // // 关闭动画
-            //     })
-            //     .catch(function(err) {
-            //         console.log(err)
-            //     })
+            _this.$http
+                .get(_this.url, {
+                    params: {
+                        // 请求参数
+                    }
+                })
+                .then(function(response) {
+                    console.log(response)
+                    _this.items = response.data
+                    // Indicator.close() // // 关闭动画
+                })
+                .catch(function(err) {
+                    console.log(err)
+                })
         },
         beforeMount() {
             console.log('beforeMount')
         },
         mounted: function() {
             var _this = this
-            _this.$getHttp('https://www.easy-mock.com/mock/59e95287dd7e1a0a448c1102/example/todos',)
-      .then((response) => {
-           _this.items = response
-        console.log(response,'gggg')
-      })
+      //       _this.$getHttp('https://www.easy-mock.com/mock/59e95287dd7e1a0a448c1102/example/todos',)
+      // .then((response) => {
+      //      _this.items = response
+      //   console.log(response,'gggg')
+      // })
          _this.$postHttp('https://www.easy-mock.com/mock/59e95287dd7e1a0a448c1102/example/demo',{})
       .then((response) => {
         console.log(response,'gggg')
