@@ -96,12 +96,15 @@ export function postHttp(url, data = {}) {
         axios.post(url, data)
             .then(response => {
                 resolve(response.data);
+                Indicator.close() // // 关闭动画
+
             }, err => {
                 reject(err)
                 MessageBox.alert('message', err);
+                Indicator.close() // // 关闭动画
+
             })
     })
-    Indicator.close() // // 关闭动画
 }
 
 /**
