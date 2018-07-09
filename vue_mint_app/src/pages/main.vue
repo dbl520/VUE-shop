@@ -111,9 +111,7 @@
         },
         props: [],
         watch: {},
-        computed: {
-
-        },
+        computed: {},
         beforeCreate: function() {
             console.log('beforeCreate')
         },
@@ -148,11 +146,8 @@
             var _this = this
             var obtn = document.getElementById('btn'); //获取回到顶部按钮的ID
             var clientHeight = document.documentElement.clientHeight; //获取可视区域的高度
-
             window.onscroll = function() { //监听事件内容
-
-
-                //获取滚动条的滚动高度 
+                //获取滚动条的滚动高度
                 var osTop = document.documentElement.scrollTop || document.body.scrollTop;
                 if (osTop >= clientHeight) { //如果滚动高度大于可视区域高度，则显示回到顶部按钮
                     _this.showtop = true;
@@ -273,7 +268,7 @@
                 let this_ = this
                 this_.timer = setInterval(function() { //获取滚动条的滚动高度
                     var osTop = document.documentElement.scrollTop || document.body.scrollTop;
-                    //用于设置速度差，产生缓动的效果 
+                    //用于设置速度差，产生缓动的效果
                     var speed = Math.floor(-osTop / 6);
                     document.documentElement.scrollTop = document.body.scrollTop = osTop + speed;
                     this_.isTop = true; //用于阻止滚动事件清除定时器
@@ -294,7 +289,7 @@
     .box {
         padding-bottom: 0.2rem;
     }
-    
+
     .tops {
         position: fixed;
         bottom: 1.2rem;
@@ -303,27 +298,27 @@
         width: 0.88rem;
         height: 0.88rem;
     }
-    
+
     .tops i {
         font-size: 0.65rem !important;
         color: #fe498f;
     }
-    
+
     .lunbo {
         height: 5rem;
     }
-    
+
     .mint-swipe-indicator {
         background: deeppink !important;
         opacity: 0.6 !important;
     }
-    
+
     image[lazy="loading"] {
         width: 100%;
         height: 3.2rem;
         margin: auto;
     }
-    
+
     .items {
         display: flex;
         justify-content: space-between;
@@ -331,58 +326,58 @@
         align-items: center;
         background: #fff;
     }
-    
+
     .mint-swipe-item {
         width: 100%;
         height: 5rem;
     }
-    
+
     .mint-swipe-item img {
         width: 100%;
         height: 100%;
     }
-    
+
     .item_title {
         display: inline-block;
         margin-top: 0.2rem;
         font-size: 0.3rem;
         text-align: center;
     }
-    
+
     .item_img img {
         width: 100%;
         height: 100%;
     }
-    
+
     .item_img {
         width: 0.8rem;
         text-align: center;
     }
-    
+
     .mall_item {
         width: 3.5rem;
         margin-top: 0.2rem;
         background: #fff;
     }
-    
+
     .mall_item img {
         width: 100%;
         height: 3.2rem;
     }
-    
+
     .shop_mall {
         display: flex;
         align-items: center;
         justify-content: space-between;
         flex-wrap: wrap;
     }
-    
+
     .mall_title {
         text-align: center;
         font-size: 0.3rem;
         margin-top: 0.2rem;
     }
-    
+
     .mall_item_all {
         display: flex;
         align-items: center;
@@ -390,16 +385,16 @@
         margin-top: 0.2rem;
         padding: 0.2rem 0.1rem;
     }
-    
+
     .mall_item_all_left {
         font-size: 0.4rem;
         color: red;
     }
-    
+
     .price {
         font-size: 0.4rem;
     }
-    
+
     .item {
         display: flex;
         align-items: center;

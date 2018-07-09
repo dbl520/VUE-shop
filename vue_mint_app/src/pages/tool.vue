@@ -16,7 +16,8 @@
           <img v-bind:src="item.img" alt="">
         </div>
         <div class="tool_more" @click="newsdetails(item.id)" :id="item.id">
-          阅读更多 <i class="iconfont icon-gengduo"></i>
+          阅读更多
+          <i class="iconfont icon-gengduo"></i>
         </div>
       </div>
     </div>
@@ -49,7 +50,7 @@ export default {
     Indicator.open({
       text: "加载中...",
       spinnerType: "fading-circle"
-    }); 
+    });
     _this.$http.get(_this.url).then(
       response => {
         console.log(response);
