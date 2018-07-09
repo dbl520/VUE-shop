@@ -112,18 +112,14 @@
         props: [],
         watch: {},
         computed: {},
-        beforeCreate: function() {
-            console.log('beforeCreate')
-        },
         created: function() {
-            console.log('created', this)
             console.log('created', global_)
             var _this = this
                 // 创建动画mint-ui
-            Indicator.open({
-                text: '加载中...',
-                spinnerType: 'fading-circle'
-            })
+            // Indicator.open({
+            //     text: '加载中...',
+            //     spinnerType: 'fading-circle'
+            // })
             _this.$http
                 .get(_this.url, {
                     params: {
@@ -133,7 +129,7 @@
                 .then(function(response) {
                     console.log(response)
                     _this.items = response.data
-                    Indicator.close() // // 关闭动画
+                    // Indicator.close() // // 关闭动画
                 })
                 .catch(function(err) {
                     console.log(err)
@@ -144,6 +140,11 @@
         },
         mounted: function() {
             var _this = this
+            _this.$getHttp('https://www.easy-mock.com/mock/59e95287dd7e1a0a448c1102/example/todos',)
+      .then((response) => {
+        console.log(response,'gggg')
+      })
+       
             var obtn = document.getElementById('btn'); //获取回到顶部按钮的ID
             var clientHeight = document.documentElement.clientHeight; //获取可视区域的高度
             window.onscroll = function() { //监听事件内容

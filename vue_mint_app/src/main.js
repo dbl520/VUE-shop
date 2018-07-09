@@ -4,7 +4,13 @@ import router from "./router";
 import store from "./store";
 import Vuex from "vuex";
 import '../config/rem'
-
+import {
+    getHttp,
+    postHttp,
+} from '../config/api'
+//定义全局变量
+Vue.prototype.$getHttp = getHttp;
+Vue.prototype.$postHttp = postHttp;
 import 'babel-polyfill'
 import {
     Lazyload
