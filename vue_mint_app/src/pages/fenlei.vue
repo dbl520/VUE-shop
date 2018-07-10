@@ -117,12 +117,12 @@ body{
   touch-action: none
 }
     .leftwrapper {
-        height: 85vh;
+        height: 76vh;
         overflow: hidden;
     }
 
     .wrapper {
-        height: 85vh;
+        height: 76vh;
         overflow: hidden;
     }
 
@@ -187,7 +187,7 @@ body{
     .fenlei_content {
         background: #fff;
         display: flex;
-        margin-top: 1rem;
+        margin-top: 2rem;
         overflow: hidden;
     }
 
