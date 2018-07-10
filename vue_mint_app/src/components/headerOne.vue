@@ -3,7 +3,7 @@
     <header>
       <i class="iconfont icon-fanhui fz" @click="$router.go(-1)"></i>
       <span class="title">
-        {{name}}
+        {{newTitle}}
       </span>
     </header>
     <!-- 此处是占位符 -->
@@ -19,17 +19,14 @@
                 name: '',
             }
         },
-        created() {
-            this.getName();
+        props:{
+          title:String
         },
-        methods: {
-            // 接收名字
-            getName: function() {
-                console.log(this.$route.query.name)
-                var name = this.$route.query.name;
-                this.name = name;
-            }
-        }
+       computed:{
+         newTitle(){
+           return this.title
+         }
+       }
     }
 </script>
 
@@ -52,6 +49,7 @@
     .fz {
         font-size: 0.48rem;
         color: #353535;
+        padding-left:0.2rem;
     }
     
     .title {

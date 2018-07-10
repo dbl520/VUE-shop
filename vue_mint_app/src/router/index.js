@@ -7,7 +7,6 @@ import my from "../pages/my.vue";
 import details from "../pages/details.vue";
 import choose from "../pages/choose.vue";
 import cart from "../pages/cart.vue";
-import header from "@/components/header";
 import all_order from "../pages/all_order.vue";
 import news from "../pages/news.vue";
 import need from "../pages/need.vue";
@@ -40,11 +39,6 @@ export default new Router({
             path: "/main",
             name: "main",
             component: main
-        },
-        {
-            path: "/header",
-            name: "header",
-            component: header
         },
         {
             path: "/fenlei",

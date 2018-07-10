@@ -1,6 +1,8 @@
 <template>
   <div class="box">
     <!-- 下拉刷新上拉加载组件 -->
+    <!-- 公共头部组件 -->
+    <header-two :title="newTitle"></header-two>
     <mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" ref="loadmore">
       <div class="main" style="min-height: 1134px">
         <div class="lunbo">
@@ -79,7 +81,7 @@
     // 引入组件
     import Vue from 'vue'
     import Footer from '../components/FooterBar'
-
+import headerTwo from "../components/headerTwo.vue";
     import global_ from './Globaldata'
 
     import {
@@ -89,11 +91,13 @@
     export default {
         // 组件开始
         components: {
-            'footer-bar': Footer
+            'footer-bar': Footer,
+            'header-two':headerTwo
         },
         // 组件结束
         data() {
             return {
+                newTitle:"首页",
                 allLoaded: false,
                 scrollMode: "touch", //移动端弹性滚动效果，touch为弹性滚动，auto是非弹性滚动
                 showtop: false, //top
@@ -312,6 +316,7 @@
 
     .lunbo {
         height: 5rem;
+        margin-top:0.2rem;
     }
 
     .mint-swipe-indicator {

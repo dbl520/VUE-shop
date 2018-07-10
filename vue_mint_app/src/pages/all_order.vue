@@ -46,7 +46,7 @@
 </template>
 <script>
   // import {mapState,mapMutations,mapGetters} from 'vuex'
-import header from '../components/header.vue'
+import header from '../components/headerOne.vue'
   export default {
     components: {
       'v-header': header

@@ -1,5 +1,7 @@
 <template>
   <div class="fenlei">
+    <!-- 头部公众组件 -->
+    <header-two :title="newTitle"></header-two>
     <div>
       <div class="fenlei_top">
         <div class="fenlei_top_left">
@@ -43,6 +45,7 @@
 <script>
     // 引入better-scroll
     import Footer from "../components/FooterBar.vue";
+      import headerTwo from "../components/headerTwo.vue";
     import BScroll from "better-scroll";
     import {
         Indicator
@@ -50,12 +53,14 @@
     export default {
         // 开始
         components: {
-            "footer-bar": Footer
+            "footer-bar": Footer,
+            'header-two':headerTwo
         },
         // 结束
         name: "fenlei",
         data: function() {
             return {
+                newTitle:'商品分类',
                 tabindex: "0",
                 url: "https://www.easy-mock.com/mock/59e95287dd7e1a0a448c1102/example/fenlei",
                 catelist: "",
@@ -68,22 +73,22 @@
             var _this = this;
             this.$http.get(_this.url).then(function(res) {
                 console.log(res.data);
-
                 _this.tablists = res.data;
-                console.log(_this.catelist);
-                console.log(res.data)
                 _this.catelist = res.data[0].cateitems;
             });
         },
         mounted() {
+          this.tabindex = 0;
             this.scroll = new BScroll(this.$refs.menuWrapper, {
                 //开启点击事件 默认为false。有的真机为false触发不了点击
-                click: true
+                click: true,
+                // bounce:false,
             });
             this.scroll = new BScroll(this.$refs.foodsWrapper, {
                 //开启点击事件 默认为false。有的真机为false触发不了点击
                 click: true
             });
+
         },
         methods: {
             //  切换tab
@@ -91,7 +96,6 @@
                 var _this = this;
                 _this.tabindex = index;
                 console.log(index, "index");
-                // getswitch(index);//tab切换
                 _this.catelist = _this.tablists[index].cateitems;
 
             },
@@ -109,16 +113,19 @@
 </script>
 
 <style scoped>
+body{
+  touch-action: none
+}
     .leftwrapper {
         height: 85vh;
         overflow: hidden;
     }
-    
+
     .wrapper {
         height: 85vh;
         overflow: hidden;
     }
-    
+
     .showtab {
         color: red;
         border-bottom: 1px solid red;
@@ -126,7 +133,7 @@
         background: #fff;
         /* -webkit-animation: mymove 1s 1; */
     }
-    
+
     @keyframes mymove {
         from {
             font-size: 0.4rem;
@@ -137,23 +144,24 @@
             transform: scale(0.5);
         }
     }
-    
+
     body {
         background: #eee;
     }
-    
+
     .ins {
         border: 0;
         outline: none;
         width: 5.5rem;
         padding: 0.2rem;
     }
-    
+
     .fenlei_top_left {
         width: 5.5rem;
         padding: 0.2rem 0;
+
     }
-    
+
     .fenlei_top {
         display: flex;
         align-items: center;
@@ -166,22 +174,23 @@
         top: 0;
         left: 0;
         z-index: 99;
+        margin-top:0.88rem;
     }
-    
+
     .fenlei_top_right {
         font-size: 0.32rem;
         color: #353535;
         width: 1rem;
         text-align: center;
     }
-    
+
     .fenlei_content {
         background: #fff;
         display: flex;
         margin-top: 1rem;
         overflow: hidden;
     }
-    
+
     .fenlei_content_left {
         width: 30vw;
         background: #eee;
@@ -193,7 +202,7 @@
         flex-wrap: wrap;
         /* overflow-x: scroll; */
     }
-    
+
     .fenlei_content_right {
         width: 65vw;
         background: #fff;
@@ -204,25 +213,25 @@
         padding: 0 0.2rem 0.2rem 0.2rem;
         /* overflow-x: scroll; */
     }
-    
+
     .fenlei_content_items {
         /* padding: 0.1rem; */
         border: 1px solid #eee;
         box-shadow: 0.1rem 0.1rem 0.1rem #353535;
         margin-top: 0.2rem;
     }
-    
+
     .imgs {
         width: 2.3rem;
         height: 3rem;
         padding: 0.2rem 0;
     }
-    
+
     .imgs img {
         width: 100%;
         height: 100%;
     }
-    
+
     .items_name {
         font-size: 0.32rem;
         color: #353535;
@@ -231,7 +240,7 @@
         display: inline-block;
         margin-top: 0.1rem;
     }
-    
+
     .xinpin {
         display: inline-block;
         text-align: center;

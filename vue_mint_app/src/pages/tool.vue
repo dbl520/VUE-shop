@@ -1,9 +1,8 @@
 <template>
   <div class="tool">
-    <div class="tool_header">
-      <i class="iconfont icon-fanhui" @click="fanhui"></i>
-      <span class="spas">新闻信息</span>
-    </div>
+     <!-- 公共头部 -->
+     <header-two :title="newTitle"></header-two>
+   
     <div class="tool_lists">
       <div class="tool_item" v-for="(item,index) in news" @click="newsdetails(item.id)" :id="item.id" :Key="index">
         <div class="tool_item_top">
@@ -29,16 +28,19 @@
 <script>
 // 引入组件
 import Footer from "../components/FooterBar.vue";
+import headerTwo from "../components/headerTwo.vue";
 import { Indicator } from "mint-ui"; //引入mint ui
 export default {
   // 开始
   components: {
-    "footer-bar": Footer
+    "footer-bar": Footer,
+    'header-two':headerTwo
   },
   // 结束
 
   data() {
     return {
+      newTitle:'新闻中心',
       news: [],
       url:
         "https://www.easy-mock.com/mock/59e95287dd7e1a0a448c1102/example/news"
@@ -98,8 +100,8 @@ export default {
   background: #fff;
 }
 .tool_lists {
-  padding: 0.2rem;
-  margin-top: 0.68rem;
+  padding: 0 0.2rem 0.2rem 0.2rem;
+  margin-top: 1rem;
 }
 .tool_logo {
   width: 100%;
@@ -122,7 +124,7 @@ export default {
   padding-left: 0.2rem;
   display: flex;
   align-items: center;
-  padding-top: 0.2rem;
+  padding-top: 0.1rem;
 }
 .tool_item_date {
   height: 0.88rem;

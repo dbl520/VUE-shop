@@ -1,4 +1,4 @@
-<template>
+    <template>
   <div class="goodDetail">
     <div class="goodDetailHeader">
       <a href="#" @click="fanhui">

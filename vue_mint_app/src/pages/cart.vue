@@ -1,8 +1,10 @@
 <template>
   <div class="cards">
-    <div class="cards_top">
+    <!-- <div class="cards_top">
       <i class="iconfont icon-fanhui" @click="fanhui"></i> 购物车
-    </div>
+    </div> -->
+    <!-- 公共部分 -->
+    <header-one :title="newTitle"></header-one>
     <div class="zanwu"></div>
     <div class="all">
       <div class="cards_con" v-for="(car,index) in carts" :key="index">
@@ -64,15 +66,16 @@
   // 引入vuex快捷写法
   import { mapState, mapMutations, mapGetters } from 'vuex'
   // 引入组件
-  // import Footer from '../components/FooterBar.vue'
+  import header from '../components/headerOne.vue'
   export default {
     // 开始
-    // components: {
-    //   'footer-bar': Footer
-    // },
+    components: {
+      'header-one': header
+    },
     data() {
       return {
-        results: ''
+        results: '',
+        newTitle:'购物车'
       }
     },
     computed: {

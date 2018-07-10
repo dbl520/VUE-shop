@@ -3,7 +3,7 @@
 
     <!-- 引入头部公用模板 -->
 
-    <v-header></v-header>
+    <v-header :title="newTitle"></v-header>
 
     <!-- 引入公共模板结束 -->
 
@@ -96,7 +96,7 @@
 <script>
     // 引入共用头部组件
 
-    import header from "../components/header.vue";
+    import header from "../components/headerOne.vue";
 
     export default {
         // 初始化
@@ -108,7 +108,7 @@
         data() {
             return {
                 selected: "tab1",
-
+                newTitle:'选购',
                 url: "https://www.easy-mock.com/mock/59e95287dd7e1a0a448c1102/example/choose",
 
                 lists: [],

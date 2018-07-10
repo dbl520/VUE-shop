@@ -1,5 +1,7 @@
 <template>
   <div class="me">
+    <herder-two :title='newTitle'></herder-two>
+    <!-- 头部公共组件 -->
     <div class="logos">
       <div class="logos_all">
         <div class="logos_img">
@@ -45,11 +47,9 @@
       </div>
       <!-- 时间 -->
 
-      <mt-datetime-picker  ref="picker1" v-model="pickerVisible" type="date" year-format="{value} 年" month-format="{value} 月" date-format="{value} 日" 
-   @confirm="
+      <mt-datetime-picker ref="picker1" v-model="pickerVisible" type="date" year-format="{value} 年" month-format="{value} 月" date-format="{value} 日" @confirm="
   handleChange
-"
->
+">
       </mt-datetime-picker>
 
       <!-- 地址 -->
@@ -74,6 +74,8 @@
 <script>
 // 引入组件
 import Footer from "../components/FooterBar.vue";
+// 引入组件
+import headerTwo from "../components/headerTwo.vue";
 // 弹出框
 // 地址三级联动json数据
 import { MessageBox, Popup } from "mint-ui";
@@ -81,11 +83,13 @@ import myaddress from "../../static/data/address3.json";
 export default {
   // 开始
   components: {
-    "footer-bar": Footer
+    "footer-bar": Footer,
+    'herder-two':headerTwo
   },
   name: "my",
   data() {
     return {
+      newTitle:'个人中心',
       pickerVisible:'' ,
       date1: new Date().toISOString(new Date()).slice(0, 10), //默认显示的日期
       value: null,
@@ -254,6 +258,7 @@ body {
   justify-content: center;
   border-bottom: 1px solid #eee;
   background: #ffffff;
+  margin-top:1rem;
 }
 .logos_img {
   height: 1.8rem;
