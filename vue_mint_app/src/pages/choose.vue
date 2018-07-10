@@ -155,6 +155,9 @@
     };
 </script>
 <style scoped>
+.mint-navbar{
+  margin-top:1rem
+}
     .tab_phone {
         display: flex;
         align-items: center;

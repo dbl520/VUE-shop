@@ -1,7 +1,7 @@
 <template>
   <div class="all_orders">
     <!-- 引入头部公用模板 -->
-     <v-header></v-header>
+     <v-header :title="newTitle"></v-header>
     <div class="all_orders_title">
        <!-- 如果tabindex==当前的index，showtab样式就会生效 -->
       <div v-for="(item,index) in tabs" :Key="index" :class="{showtab:tabindex==index}" @click="tab(index)">
@@ -54,6 +54,7 @@ import header from '../components/headerOne.vue'
     data() {
       return {
         orders: [],
+        newTitle:'订单中心',
         tabs:
         [
           {
@@ -108,6 +109,7 @@ import header from '../components/headerOne.vue'
     justify-content: space-between;
     padding: 0.3rem 0.2rem;
     background: #fff;
+    margin-top:1rem;
   }
   .all_title_wz {
     font-size: 0.3rem;
