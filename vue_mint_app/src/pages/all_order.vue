@@ -4,12 +4,12 @@
      <v-header :title="newTitle"></v-header>
     <div class="all_orders_title">
        <!-- 如果tabindex==当前的index，showtab样式就会生效 -->
-      <div v-for="(item,index) in tabs" :Key="index" :class="{showtab:tabindex==index}" @click="tab(index)">
+      <div v-for="(item,index) in tabs" :Key="index" :class="[tabindex==index?'showtab':'' ]" @click="tab(index)">
         <div class="all_title_item_left ">
-            <i class="iconfont icon-dingdan" v-if="index==0"></i>
-            <i class="iconfont icon-fahuo" v-if="index==1"></i>
-            <i class="iconfont icon-daishouhuo" v-if="index==2"></i>
-            <i class="iconfont icon-icon3" v-if="index==3"></i>
+            <i class="iconfont icon-dingdan" v-show="index==0"></i>
+            <i class="iconfont icon-fahuo" v-show="index==1"></i>
+            <i class="iconfont icon-daishouhuo" v-show="index==2"></i>
+            <i class="iconfont icon-icon3" v-show="index==3"></i>
           <span class="all_title_wz">
           {{item.name}}
           </span>
