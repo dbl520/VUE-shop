@@ -412,4 +412,7 @@ import headerTwo from "../components/headerTwo.vue";
         justify-content: center;
         flex-direction: column;
     }
+    .mall_item_all_right{
+       font-size: 0.4rem;   
+       }
 </style>

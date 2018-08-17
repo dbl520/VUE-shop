@@ -118,6 +118,7 @@ export default {
   align-items: center;
   justify-content: flex-end;
   padding-right: 0.2rem;
+  font-size: 0.4rem;
 }
 .tool_item_top {
   height: 0.88rem;
@@ -125,6 +126,7 @@ export default {
   display: flex;
   align-items: center;
   padding-top: 0.1rem;
+  font-size: 0.4rem;
 }
 .tool_item_date {
   height: 0.88rem;
