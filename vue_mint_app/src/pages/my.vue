@@ -1,76 +1,77 @@
 <template>
-  <div class="me">
-    <herder-two :title='newTitle'></herder-two>
-    <!-- 头部公共组件 -->
-    <div class="logos">
-      <div class="logos_all">
-        <div class="logos_img">
-          <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1512968835725&di=4771d4a3d2e6efb0760d4394f5da7603&imgtype=0&src=http%3A%2F%2Fimage.9game.cn%2F2014%2F12%2F30%2F10143631.jpg">
-        </div>
-        <div class="logos_name">木木</div>
+<div class="me">
+  <herder-two :title='newTitle'></herder-two>
+  <!-- 头部公共组件 -->
+  <div class="logos">
+    <div class="logos_all">
+      <div class="logos_img">
+        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1512968835725&di=4771d4a3d2e6efb0760d4394f5da7603&imgtype=0&src=http%3A%2F%2Fimage.9game.cn%2F2014%2F12%2F30%2F10143631.jpg">
       </div>
-      <div class="dingdan" @click="order">
-        <div class="dingdan_left">
-          <i class="iconfont icon-dingdan"></i>
-        </div>
-        <div class="dingdan_right">
-          我的订单
-        </div>
+      <div class="logos_name">木木</div>
+    </div>
+    <div class="dingdan" @click="order">
+      <div class="dingdan_left">
+        <i class="iconfont icon-dingdan"></i>
       </div>
-      <div class="dingdan" @click="dizhi">
-        <div class="dingdan_left dz">
-          <i class="iconfont icon-shouhuodizhi"></i>
-          <span class="gl">选择地址</span>
-        </div>
-        <div class="dingdan_right">
-          <!-- 地址组件 -->
-          <div>{{myAddressProvince}} {{myAddressCity}} {{myAddresscounty}}</div>
-        </div>
-      </div>
-      <div class="dingdan" @click="guanyu">
-        <div class="dingdan_left">
-          <i class="iconfont icon-guanyu"></i>
-        </div>
-        <div class="dingdan_right">
-          关于我们
-        </div>
-      </div>
-      <!-- 时间选择 -->
-      <div class="dingdan" @click="open('picker1')">
-        <div class="dingdan_left dz">
-          <i class="iconfont icon-shouhuodizhi"></i>
-          <span class="gl">日期选择</span>
-        </div>
-        <div class="dingdan_right">
-          {{date1}}
-        </div>
-      </div>
-      <!-- 时间 -->
-
-      <mt-datetime-picker ref="picker1" v-model="pickerVisible" type="date" year-format="{value} 年" month-format="{value} 月" date-format="{value} 日" @confirm="
-  handleChange
-">
-      </mt-datetime-picker>
-
-      <!-- 地址 -->
-      <div>
-        <mt-popup v-model="popupVisible" position="bottom">
-          <div class="top">
-            <div class="top_left" @click="close">
-              取消
-            </div>
-            <div class="top_tight" @click="close">
-              确定
-            </div>
-          </div>
-          <mt-picker :slots="myAddressSlots" @change="onMyAddressChange"></mt-picker>
-        </mt-popup>
+      <div class="dingdan_right">
+        我的订单
       </div>
     </div>
-    <!-- 底部组件 -->
-    <footer-bar class="footer"></footer-bar>
+    <div class="dingdan" @click="dizhi">
+      <div class="dingdan_left dz">
+        <i class="iconfont icon-shouhuodizhi"></i>
+        <span class="gl">选择地址</span>
+      </div>
+      <div class="dingdan_right">
+        <!-- 地址组件 -->
+        <div>{{myAddressProvince}} {{myAddressCity}} {{myAddresscounty}}</div>
+      </div>
+    </div>
+    <div class="dingdan" @click="guanyu">
+      <div class="dingdan_left">
+        <i class="iconfont icon-guanyu"></i>
+      </div>
+      <div class="dingdan_right">
+        联系我
+      </div>
+    </div>
+    <!-- 时间选择 -->
+    <div class="dingdan" @click="open('picker1')">
+      <div class="dingdan_left dz">
+        <i class="iconfont icon-shouhuodizhi"></i>
+        <span class="gl">日期选择</span>
+      </div>
+      <div class="dingdan_right">
+        {{date1}}
+      </div>
+    </div>
+    <!-- 时间 -->
+
+    <mt-datetime-picker ref="picker1" v-model="pickerVisible" type="date" year-format="{value} 年" month-format="{value} 月" date-format="{value} 日" @confirm="
+  handleChange
+">
+    </mt-datetime-picker>
+
+    <!-- 地址 -->
+    <div>
+      <mt-popup v-model="popupVisible" position="bottom">
+        <div class="top">
+          <div class="top_left" @click="close">
+            取消
+          </div>
+          <div class="top_tight" @click="close">
+            确定
+          </div>
+        </div>
+        <mt-picker :slots="myAddressSlots" @change="onMyAddressChange"></mt-picker>
+      </mt-popup>
+    </div>
   </div>
+  <!-- 底部组件 -->
+  <footer-bar class="footer"></footer-bar>
+</div>
 </template>
+
 <script>
 // 引入组件
 import Footer from "../components/FooterBar.vue";
@@ -78,19 +79,22 @@ import Footer from "../components/FooterBar.vue";
 import headerTwo from "../components/headerTwo.vue";
 // 弹出框
 // 地址三级联动json数据
-import { MessageBox, Popup } from "mint-ui";
+import {
+  MessageBox,
+  Popup
+} from "mint-ui";
 import myaddress from "../../static/data/address3.json";
 export default {
   // 开始
   components: {
     "footer-bar": Footer,
-    'herder-two':headerTwo
+    'herder-two': headerTwo
   },
   name: "my",
   data() {
     return {
-      newTitle:'个人中心',
-      pickerVisible:'' ,
+      newTitle: '个人中心',
+      pickerVisible: '',
       date1: new Date().toISOString(new Date()).slice(0, 10), //默认显示的日期
       value: null,
       value1: new Date().toISOString(new Date()).slice(0, 10), //默认选中的日期
@@ -100,8 +104,7 @@ export default {
       popupVisible: false, //这个是控制弹出框的显示隐藏
       shareVisible: false, //分享
       // 地址
-      myAddressSlots: [
-        {
+      myAddressSlots: [{
           flex: 1,
           defaultIndex: 1,
           values: Object.keys(myaddress), //省份数组
@@ -152,7 +155,9 @@ export default {
     },
     //订单
     order: function() {
-      this.$router.push({ path: "all_order" });
+      this.$router.push({
+        path: "all_order"
+      });
     },
     // index: function() {
     //   console.log(this.$store.state.count);
@@ -170,8 +175,8 @@ export default {
     // 关于
     guanyu: function() {
       MessageBox({
-        title: "关于我",
-        message: "vue爬坑记?",
+        title: "微信",
+        message: "dbl2239146847",
         showCancelButton: true
       });
     },
@@ -219,14 +224,15 @@ export default {
       //因为我没有看过源码（我猜测是因为数据没有改变，不会触发更新）
     });
   }
-};
+}
 </script>
-<style scoped>
 
+<style scoped>
 .mint-popup-bottom {
   width: 100%;
   height: 30vh;
 }
+
 .top {
   height: 0.88rem;
   display: flex;
@@ -238,19 +244,24 @@ export default {
   font-size: 0.32rem;
   border-bottom: 1px solid #eeeeee;
 }
+
 .dz {
   display: flex;
   align-items: center;
 }
+
 .gl {
   padding-left: 0.2rem;
 }
+
 .logos_name {
   padding-left: 0.2rem;
 }
+
 body {
   background: #eee;
 }
+
 .logos_all {
   height: 3rem;
   display: flex;
@@ -258,17 +269,20 @@ body {
   justify-content: center;
   border-bottom: 1px solid #eee;
   background: #ffffff;
-  margin-top:1rem;
+  margin-top: 1rem;
 }
+
 .logos_img {
   height: 1.8rem;
   width: 1.8rem;
 }
+
 .logos_img img {
   width: 100%;
   height: 100%;
   border-radius: 50%;
 }
+
 .dingdan {
   background: #fff;
   border-bottom: 1px solid #eee;
@@ -277,18 +291,22 @@ body {
   justify-content: flex-start;
   padding: 0.2rem 0.5rem;
 }
+
 .dingdan_left i {
   font-size: 0.65rem;
   color: #fe498f;
 }
+
 .dingdan_right {
   padding-left: 0.3rem;
 }
+
 #index {
   display: flex;
   justify-content: center;
   margin-top: 100px;
 }
+
 .getout {
   height: 0.88rem;
   display: flex;

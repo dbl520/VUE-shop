@@ -23,10 +23,7 @@
 <style>
     @import '../static/font/iconfont.css';
     @import '../static/css/main.css';
-    body {
-        background: #F4F4F4;
-        font-family: '微软雅黑'
-    }
+  
     
     a {
         text-decoration: none;
