@@ -6,7 +6,7 @@ import {
     Indicator
 } from 'mint-ui' //引入mint ui
 
-axios.defaults.timeout = 5000;
+axios.defaults.timeout = 50000;
 axios.defaults.baseURL = '';
 
 
