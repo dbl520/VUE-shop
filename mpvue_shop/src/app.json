@@ -1,0 +1,33 @@
+{
+  "pages": [
+    "pages/index/main",
+    "pages/logs/main",
+    "pages/counter/main",
+    "pages/home/main"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#4667f6",
+    "color": "#B2B2B2",
+    "list": [
+      {
+        "pagePath": "pages/index/main",
+        "text": "我的名片",
+        "iconPath": "static/images/youxiang.png",
+        "selectedIconPath": "static/images/youxiang.png"
+      },
+     
+      {
+        "pagePath": "pages/home/main",
+        "text": "通讯录",
+        "iconPath": "static/images/youxiang.png",
+        "selectedIconPath": "static/images/youxiang.png"
+      }
+    ]
+  }
+}
