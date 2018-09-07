@@ -2,53 +2,49 @@
   <div class="box">
     <!-- 公共头部组件 -->
     <!-- <header-two :title="newTitle"></header-two> -->
-      <div class="main" style="min-height: 1134px">
-        <div class="lunbo">
-            <swiper class="swiper" indicator-dots="true" autoplay="true" interval="5000" duration="1000">
-                <block v-for="(item, index) in swipers" :index="index" :key="index">
-                    <swiper-item>
-                        <image :src="item" class="slide-image" mode="aspectFill"/>
-                    </swiper-item>
-                </block>
-            </swiper>
-        </div>
+      <div class="main">
+        <swiper :indicator-dots="indicatorDots"
+          :autoplay="autoplay" :interval="interval" :duration="duration">
+            <swiper-item v-for="(item,index) in imgUrls" :key="index">
+              <image :src="item" class="slide-image" width="100%" height="200" style='width:100%;height250rpx' />
+            </swiper-item>
+        </swiper>
         <div class="items">
 
           <div class="item" @click="xuangou('choose','选购')">
             <div class="item_img">
-              <img src="/static/images/SELECT.png">
+              <image src="/static/images/SELECT.png" />
             </div>
             <span class="item_title">选购</span>
           </div>
           <div class="item" @click="xuangou('need','真心想要')">
             <div class="item_img">
-              <img src="/static/images/lipin.png">
+              <image src="/static/images/lipin.png" />
             </div>
             <span class="item_title">真心想要</span>
           </div>
           <div class="item" @click="xuangou('qiangou','限时抢购')">
             <div class="item_img">
-              <img src="/static/images/xianshi.png">
+              <image src="/static/images/xianshi.png" />
             </div>
             <span class="item_title">限时抢购</span>
           </div>
           <div class="item" @click="xuangou('fabu','新品发布')">
             <div class="item_img">
-              <img src="/static/images/news.png">
+              <image src="/static/images/news.png" />
             </div>
             <span class="item_title">新品发布</span>
           </div>
           <div class="item" @click="xuangou('mifenka','米粉卡')">
             <div class="item_img">
-              <img src="/static/images/ka.png">
+              <image src="/static/images/ka.png" />
             </div>
             <span class="item_title">米粉卡</span>
           </div>
         </div>
-        <div class="shop_mall">
+        <!-- <div class="shop_mall">
           <div class="mall_item" @click="godetails(item.id)" v-for="(item,index) in items" :id="item.id" :key="index">
             <img :src="item.img" />
-            <!-- 懒加载图片 -->
             <p class="mall_title">
               {{item.name}}
             </p>
@@ -62,38 +58,29 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     <!-- 上滑 -->
-    <div class="tops" v-if="showtop" @click="top" id="btn">
+    <!-- <div class="tops" v-if="showtop" @click="top" id="btn">
       <i class="iconfont icon-tubiao02  tops_size"></i>
-    </div>
+    </div> -->
     <!-- 底部组件 -->
 
   </div>
 </template>
-
-<!-- <footer-bar class="footer"></footer-bar> -->
 <script>
 // 引入组件
-// import headerTwo from "../components/headerTwo.vue";
-// import global_ from './Globaldata'
 
 export default {
   // 组件开始
   components: {
-    // 'header-two':headerTwo
   },
   // 组件结束
   data () {
     return {
-      newTitle: '首页',
-      allLoaded: false,
-      scrollMode: 'touch', // 移动端弹性滚动效果，touch为弹性滚动，auto是非弹性滚动
       showtop: false, // top
       items: [],
-      swipers: [
-        'https://i8.mifile.cn/b2c-mimall-media/2fcbb6794e9f99d33bdf1f76cf380af0.jpg',
+      imgUrls: ['https://i8.mifile.cn/b2c-mimall-media/2fcbb6794e9f99d33bdf1f76cf380af0.jpg',
         'https://i8.mifile.cn/b2c-mimall-media/2be6be33c4131cfb2801ae41a2a84748.jpg',
         'https://i8.mifile.cn/b2c-mimall-media/d77913ecf914900557c0f9befedfc9bc.jpg'
       ],
@@ -120,19 +107,19 @@ export default {
     console.log('beforeMount')
   },
   mounted: function () {
-    var _this = this
-    _this.$http
-      .get(
-        'https://www.easy-mock.com/mock/59e95287dd7e1a0a448c1102/example/demo',
-        {}
-      )
-      .then(d => {
-        // 输出请求数据
-        console.log(d.data)
-      })
-      .catch(err => {
-        console.log(err.status, err.message)
-      })
+    // var _this = this
+    // _this.$http
+    //   .get(
+    //     'https://www.easy-mock.com/mock/59e95287dd7e1a0a448c1102/example/demo',
+    //     {}
+    //   )
+    //   .then(d => {
+    //     // 输出请求数据
+    //     console.log(d.data)
+    //   })
+    //   .catch(err => {
+    //     console.log(err.status, err.message)
+    //   })
 
     // var clientHeight = document.documentElement.clientHeight // 获取可视区域的高度
     // window.onscroll = function () { // 监听事件内容
@@ -149,18 +136,7 @@ export default {
     //   _this.isTop = false
     // }
   },
-  beforeUpdate: function () {
-    console.log('beforeUpdate')
-  },
-  updated () {
-    console.log('updated')
-  },
-  beforeDestroy () {
-    console.log('beforeDestroy')
-  },
-  destroyed () {
-    console.log('destroyed')
-  },
+
   methods: {
     godetails: function (id) {
       this.$router.push({
@@ -171,31 +147,32 @@ export default {
       })
     },
     xuangou: function (path, name) {
+      console.log(path, name)
       this.$router.push({
         path: path,
         query: {
           name: name
         }
       })
-    },
-    // 滑到顶部事件
-    top: function () {
-      console.log('滑到顶部事件')
-      let this_ = this
-      this_.timer = setInterval(function () {
-        // 获取滚动条的滚动高度
-        var osTop =
-          document.documentElement.scrollTop || document.body.scrollTop
-        // 用于设置速度差，产生缓动的效果
-        var speed = Math.floor(-osTop / 6)
-        document.documentElement.scrollTop = document.body.scrollTop =
-          osTop + speed
-        this_.isTop = true // 用于阻止滚动事件清除定时器
-        if (osTop === 0) {
-          clearInterval(this_.timer)
-        }
-      }, 30)
     }
+    // 滑到顶部事件
+    // top: function () {
+    //   console.log('滑到顶部事件')
+    //   let this_ = this
+    //   this_.timer = setInterval(function () {
+    //     // 获取滚动条的滚动高度
+    //     var osTop =
+    //       document.documentElement.scrollTop || document.body.scrollTop
+    //     // 用于设置速度差，产生缓动的效果
+    //     var speed = Math.floor(-osTop / 6)
+    //     document.documentElement.scrollTop = document.body.scrollTop =
+    //       osTop + speed
+    //     this_.isTop = true // 用于阻止滚动事件清除定时器
+    //     if (osTop === 0) {
+    //       clearInterval(this_.timer)
+    //     }
+    //   }, 30)
+    // }
   }
 }
 </script>
@@ -248,7 +225,7 @@ image[lazy="loading"] {
   height: 5rem;
 }
 
-.mint-swipe-item img {
+.mint-swipe-item image {
   width: 100%;
   height: 100%;
 }
@@ -259,16 +236,17 @@ image[lazy="loading"] {
   font-size: 0.3rem;
   text-align: center;
 }
+.item_img {
+  width: 0.8rem;
+  height: 0.66rem;
+  text-align: center;
+}
 
-.item_img img {
+.item_img image {
   width: 100%;
   height: 100%;
 }
 
-.item_img {
-  width: 0.8rem;
-  text-align: center;
-}
 
 .mall_item {
   width: 3.5rem;
@@ -276,7 +254,7 @@ image[lazy="loading"] {
   background: #fff;
 }
 
-.mall_item img {
+.mall_item image {
   width: 100%;
   height: 3.2rem;
 }
