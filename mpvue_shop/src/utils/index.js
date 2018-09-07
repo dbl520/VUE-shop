@@ -18,7 +18,20 @@ export function formatTime (date) {
   return `${t1} ${t2}`
 }
 
+const ERR_OK = 200
+const request = (url, data = {}, method) => new Promise((resolve, reject) => {
+  wx.request({
+    url,
+    data,
+    method,
+    success: res => resolve(res.data),
+    fail: res => reject(res)
+  })
+})
+
 export default {
   formatNumber,
-  formatTime
+  formatTime,
+  request,
+  ERR_OK
 }

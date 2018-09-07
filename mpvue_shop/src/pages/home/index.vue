@@ -4,9 +4,9 @@
     <!-- <header-two :title="newTitle"></header-two> -->
       <div class="main">
         <swiper :indicator-dots="indicatorDots"
-          :autoplay="autoplay" :interval="interval" :duration="duration">
-            <swiper-item v-for="(item,index) in imgUrls" :key="index">
-              <image :src="item" class="slide-image" width="100%" height="200" style='width:100%;height250rpx' />
+          :autoplay="autoplay" :interval="interval" :duration="duration" style='height:44vh;'>
+            <swiper-item v-for="(item,index) in imgUrls" :key="index" >
+              <image :src="item" class="slide-image" style='width:100%;height250rpx' />
             </swiper-item>
         </swiper>
         <div class="items">
@@ -42,7 +42,7 @@
             <span class="item_title">米粉卡</span>
           </div>
         </div>
-        <!-- <div class="shop_mall">
+        <div class="shop_mall">
           <div class="mall_item" @click="godetails(item.id)" v-for="(item,index) in items" :id="item.id" :key="index">
             <img :src="item.img" />
             <p class="mall_title">
@@ -58,7 +58,7 @@
               </div>
             </div>
           </div>
-        </div> -->
+        </div> 
       </div>
     <!-- 上滑 -->
     <!-- <div class="tops" v-if="showtop" @click="top" id="btn">
@@ -92,35 +92,16 @@ export default {
     }
   },
   created: function () {
-    var _this = this
-    _this.$http
-      .get(_this.url, {})
-      .then(d => {
-        // 输出请求数据
-        console.log(d.data)
-      })
-      .catch(err => {
-        console.log(err.status, err.message)
-      })
-  },
-  beforeMount () {
-    console.log('beforeMount')
+    this.$http.get(this.url, {}).then((d) => {
+      // 输出响应头
+      console.log(d, d.header, d.data)
+      this.items = d.data
+    }).catch(err => {
+      console.log(err)
+    })
   },
   mounted: function () {
     // var _this = this
-    // _this.$http
-    //   .get(
-    //     'https://www.easy-mock.com/mock/59e95287dd7e1a0a448c1102/example/demo',
-    //     {}
-    //   )
-    //   .then(d => {
-    //     // 输出请求数据
-    //     console.log(d.data)
-    //   })
-    //   .catch(err => {
-    //     console.log(err.status, err.message)
-    //   })
-
     // var clientHeight = document.documentElement.clientHeight // 获取可视区域的高度
     // window.onscroll = function () { // 监听事件内容
     //   // 获取滚动条的滚动高度
@@ -139,15 +120,13 @@ export default {
 
   methods: {
     godetails: function (id) {
-      this.$router.push({
-        path: 'details',
-        query: {
-          id: id
-        }
+      wx.navigateTo({
+        url: '/pages/details/main?id=' + id
       })
     },
     xuangou: function (path, name) {
       console.log(path, name)
+
       this.$router.push({
         path: path,
         query: {
