@@ -8,9 +8,13 @@
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
     "build": "node build/build.js",
-    "lint": "eslint --ext .js,.vue src"
+    "lint": "eslint --fix --ext .js,.vue src"
   },
   "dependencies": {
+    "axios": "^0.18.0",
+    "babel-polyfill": "^6.26.0",
+    "flyio": "^0.6.1",
+    "mint-ui": "^2.2.13",
     "mpvue": "^1.0.11",
     "vuex": "^3.0.1"
   },

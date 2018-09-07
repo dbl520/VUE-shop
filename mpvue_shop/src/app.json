@@ -8,23 +8,22 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "shop",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "selectedColor": "#4667f6",
-    "color": "#B2B2B2",
+    "color": "#444",
     "list": [
       {
-        "pagePath": "pages/index/main",
-        "text": "我的名片",
+        "pagePath": "pages/home/main",
+        "text": "首页",
         "iconPath": "static/images/youxiang.png",
         "selectedIconPath": "static/images/youxiang.png"
       },
-     
       {
-        "pagePath": "pages/home/main",
-        "text": "通讯录",
+        "pagePath": "pages/index/main",
+        "text": "分类",
         "iconPath": "static/images/youxiang.png",
         "selectedIconPath": "static/images/youxiang.png"
       }
