@@ -1,6 +1,8 @@
 {
     "pages": [
         "pages/home/main",
+        "pages/fenlei/main",
+        "pages/news/main",
         "pages/details/main",
         "pages/index/main",
         "pages/logs/main",
@@ -23,8 +25,14 @@
                 "selectedIconPath": "static/images/youxiang.png"
             },
             {
-                "pagePath": "pages/index/main",
+                "pagePath": "pages/fenlei/main",
                 "text": "分类",
+                "iconPath": "static/images/youxiang.png",
+                "selectedIconPath": "static/images/youxiang.png"
+            },
+            {
+                "pagePath": "pages/news/main",
+                "text": "新闻",
                 "iconPath": "static/images/youxiang.png",
                 "selectedIconPath": "static/images/youxiang.png"
             }
