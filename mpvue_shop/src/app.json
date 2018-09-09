@@ -1,41 +1,42 @@
 {
-    "pages": [
-        "pages/home/main",
-        "pages/fenlei/main",
-        "pages/news/main",
-        "pages/details/main",
-        "pages/index/main",
-        "pages/logs/main",
-        "pages/counter/main"
+  "pages": [
+    "pages/home/main",
+    "pages/fenlei/main",
+    "pages/news/main",
+    "pages/newsdetails/main",
+    "pages/details/main",
+    "pages/index/main",
+    "pages/logs/main",
+    "pages/counter/main"
 
-    ],
-    "window": {
-        "backgroundTextStyle": "light",
-        "navigationBarBackgroundColor": "#fff",
-        "navigationBarTitleText": "shop",
-        "navigationBarTextStyle": "black"
-    },
-    "tabBar": {
-        "selectedColor": "#4667f6",
-        "color": "#444",
-        "list": [{
-                "pagePath": "pages/home/main",
-                "text": "首页",
-                "iconPath": "static/images/youxiang.png",
-                "selectedIconPath": "static/images/youxiang.png"
-            },
-            {
-                "pagePath": "pages/fenlei/main",
-                "text": "分类",
-                "iconPath": "static/images/youxiang.png",
-                "selectedIconPath": "static/images/youxiang.png"
-            },
-            {
-                "pagePath": "pages/news/main",
-                "text": "新闻",
-                "iconPath": "static/images/youxiang.png",
-                "selectedIconPath": "static/images/youxiang.png"
-            }
-        ]
-    }
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "shop",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#4667f6",
+    "color": "#444",
+    "list": [{
+        "pagePath": "pages/home/main",
+        "text": "首页",
+        "iconPath": "static/images/youxiang.png",
+        "selectedIconPath": "static/images/youxiang.png"
+      },
+      {
+        "pagePath": "pages/fenlei/main",
+        "text": "分类",
+        "iconPath": "static/images/youxiang.png",
+        "selectedIconPath": "static/images/youxiang.png"
+      },
+      {
+        "pagePath": "pages/news/main",
+        "text": "新闻",
+        "iconPath": "static/images/youxiang.png",
+        "selectedIconPath": "static/images/youxiang.png"
+      }
+    ]
+  }
 }

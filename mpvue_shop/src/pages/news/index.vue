@@ -28,14 +28,14 @@
     },
     // 结束
 
-    data() {
+    data () {
       return {
         newTitle: '新闻中心',
         news: [],
         url: 'https://www.easy-mock.com/mock/59e95287dd7e1a0a448c1102/example/news'
       }
     },
-    created() {
+    created () {
       var _this = this
 
       _this.$http.get(_this.url).then(
@@ -47,15 +47,12 @@
       )
     },
     methods: {
-      newsdetails(id) {
+      newsdetails (id) {
         wx.navigateTo({
-          url: 'pages/newsdetails/main?id=' + id
+          url: '/pages/newsdetails/main?id=' + id
         })
-      },
-      fanhui() {
-        console.log(this.$router)
-        this.$router.go(-1)
       }
+
     }
   }
 </script>
@@ -73,32 +70,32 @@
     left: 0;
     width: 98%;
   }
-  
+
   .spas {
     display: inline-block;
     padding-left: 0.2rem;
   }
-  
+
   .tool_item {
     margin-top: 0.3rem;
     background: #fff;
   }
-  
+
   .tool_lists {
     padding: 0 0.2rem 0.2rem 0.2rem;
     margin-top: 1rem;
   }
-  
+
   .tool_logo {
     width: 100%;
     height: 3rem;
   }
-  
+
   .tool_logo img {
     width: 100%;
     height: 100%;
   }
-  
+
   .tool_more {
     height: 0.88rem;
     line-height: 0.88rem;
@@ -108,7 +105,7 @@
     padding-right: 0.2rem;
     font-size: 0.4rem;
   }
-  
+
   .tool_item_top {
     height: 0.88rem;
     padding-left: 0.2rem;
@@ -117,7 +114,7 @@
     padding-top: 0.1rem;
     font-size: 0.4rem;
   }
-  
+
   .tool_item_date {
     height: 0.88rem;
     padding-left: 0.2rem;
@@ -125,4 +122,5 @@
     align-items: center;
     color: #cccccc;
   }
+
 </style>
