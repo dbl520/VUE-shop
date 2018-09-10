@@ -22,20 +22,20 @@
     "list": [{
         "pagePath": "pages/home/main",
         "text": "首页",
-        "iconPath": "static/images/youxiang.png",
-        "selectedIconPath": "static/images/youxiang.png"
+        "iconPath": "static/images/tab1.png",
+        "selectedIconPath": "static/images/tab_1.png"
       },
       {
         "pagePath": "pages/fenlei/main",
         "text": "分类",
-        "iconPath": "static/images/youxiang.png",
-        "selectedIconPath": "static/images/youxiang.png"
+        "iconPath": "static/images/tab.png",
+        "selectedIconPath": "static/images/tab_2.png"
       },
       {
         "pagePath": "pages/news/main",
         "text": "新闻",
-        "iconPath": "static/images/youxiang.png",
-        "selectedIconPath": "static/images/youxiang.png"
+        "iconPath": "static/images/tab5.png",
+        "selectedIconPath": "static/images/tab_5.png"
       }
     ]
   }

@@ -1,12 +1,11 @@
 <template>
   <div class="goodDetail">
-    <mptoast />
     <!-- 弹窗组件 -->
-    <div class="goodDetailHeader">
+    <!-- <div class="goodDetailHeader">
       <a href="#" @click="fanhui">
         <i class="iconfont icon-fanhui"></i>
       </a> {{goodDetailHeader}}
-    </div>
+    </div> -->
     <div class="goodDetailList">
       <ul style="background: white;">
         <li v-for="(goodDetail,index) in goodDetails" :key="goodDetail.id">
@@ -52,7 +51,7 @@
                     <mt-tab-container v-model="selected" swipeable>
                         <mt-tab-container-item id="tab-container1">
                             <div class="goodDetailImg">
-                                <p v-for="Image in goodDetail.Images" :key='Image'>
+                                <p v-for="(Image ,index) in goodDetail.Images" :key='index'>
                                     <img v-bind:src="Image.one" alt="详情图片">
                                 </p>
                             </div>
@@ -62,7 +61,7 @@
                             <div class="goodDetailPeizhi">
                                 <table style="width: 100%;border:1px solid #cccccc;margin-top: 5px;border-collapse: collapse;margin-bottom: 10px;" border="1">
                                     <tbody>
-                                        <tr v-for="Peizhi in goodDetail.Peizhis" :key='Peizhi' >
+                                        <tr v-for="(Peizhi,items) in goodDetail.Peizhis" :key='items' >
                                             <td style="width:26%;height:50px">{{Peizhi.left}}</td>
                                             <td style="width:80%;height:50px">{{Peizhi.right}}</td>
                                         </tr>
@@ -92,10 +91,8 @@
 </template>
 
 <script>
-  import mptoast from 'mptoast'
   export default {
     component: {
-      mptoast
     },
     name: 'goodDetail',
     data () {
@@ -244,7 +241,6 @@
 
   .goodDetaiSwipe {
     height: 11rem;
-    margin-top: 119rpx;
     background: white;
   }
 

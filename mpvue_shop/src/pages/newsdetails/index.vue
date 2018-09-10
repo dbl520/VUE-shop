@@ -75,7 +75,6 @@
   }
 
   .details_con {
-    margin-top: 1.2rem;
     padding: 0.2rem;
     background: #ffffff;
   }

@@ -83,7 +83,6 @@
 
   .tool_lists {
     padding: 0 0.2rem 0.2rem 0.2rem;
-    margin-top: 1rem;
   }
 
   .tool_logo {
