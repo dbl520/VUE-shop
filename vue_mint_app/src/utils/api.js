@@ -1,15 +1,7 @@
-import axios from 'axios';
-import {
-    MessageBox
-} from 'mint-ui';
-import {
-    Indicator
-} from 'mint-ui' //引入mint ui
-
+import axios from "axios";
+import { MessageBox, Indicator } from "mint-ui";
 axios.defaults.timeout = 50000;
-axios.defaults.baseURL = '';
-
-
+axios.defaults.baseURL = "";
 //http request 拦截器
 // axios.interceptors.request.use(
 //   config => {
@@ -28,7 +20,6 @@ axios.defaults.baseURL = '';
 //   }
 // );
 
-
 //http response 拦截器
 // axios.interceptors.response.use(
 //   response => {
@@ -45,7 +36,6 @@ axios.defaults.baseURL = '';
 //   }
 // )
 
-
 /**
  * 封装get方法
  * @param url
@@ -54,30 +44,28 @@ axios.defaults.baseURL = '';
  */
 
 export function getHttp(url, params = {}) {
-    // 创建动画mint-ui
-    Indicator.open({
-        text: '加载中...',
-        spinnerType: 'fading-circle'
-    })
-    return new Promise((resolve, reject) => {
+	// 创建动画mint-ui
+	Indicator.open({
+		text: "加载中...",
+		spinnerType: "fading-circle"
+	});
+	return new Promise((resolve, reject) => {
+		axios
+			.get(url, {
+				params: params
+			})
+			.then(response => {
+				resolve(response.data);
+				Indicator.close(); // // 关闭动画
+			})
+			.catch(err => {
+				reject(err);
+				Indicator.close(); // // 关闭动画
 
-        axios.get(url, {
-                params: params
-            })
-            .then(response => {
-                resolve(response.data);
-                Indicator.close() // // 关闭动画
-
-            })
-            .catch(err => {
-                reject(err)
-                Indicator.close() // // 关闭动画
-
-                MessageBox.alert('message', err);
-            })
-    })
+				MessageBox.alert("message", err);
+			});
+	});
 }
-
 
 /**
  * 封装post请求
@@ -87,24 +75,24 @@ export function getHttp(url, params = {}) {
  */
 
 export function postHttp(url, data = {}) {
-    // 创建动画mint-ui
-    Indicator.open({
-        text: '加载中...',
-        spinnerType: 'fading-circle'
-    })
-    return new Promise((resolve, reject) => {
-        axios.post(url, data)
-            .then(response => {
-                resolve(response.data);
-                Indicator.close() // // 关闭动画
-
-            }, err => {
-                reject(err)
-                MessageBox.alert('message', err);
-                Indicator.close() // // 关闭动画
-
-            })
-    })
+	// 创建动画mint-ui
+	Indicator.open({
+		text: "加载中...",
+		spinnerType: "fading-circle"
+	});
+	return new Promise((resolve, reject) => {
+		axios.post(url, data).then(
+			response => {
+				resolve(response.data);
+				Indicator.close(); // // 关闭动画
+			},
+			err => {
+				reject(err);
+				MessageBox.alert("message", err);
+				Indicator.close(); // // 关闭动画
+			}
+		);
+	});
 }
 
 /**
