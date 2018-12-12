@@ -1,79 +1,79 @@
 <template>
-  <div class="box">
-    <!-- 下拉刷新上拉加载组件 -->
-    <!-- 公共头部组件 -->
-    <header-two :title="newTitle"></header-two>
-    <mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" ref="loadmore">
-      <div class="main" style="min-height: 1134px">
-        <div class="lunbo">
-          <mt-swipe :auto="4000">
-            <mt-swipe-item v-for="(item,key,index) in swipers" :key="index">
-              <img v-bind:src="item">
-            </mt-swipe-item>
-          </mt-swipe>
-        </div>
-        <div class="items">
+    <div class="box">
+        <!-- 下拉刷新上拉加载组件 -->
+        <!-- 公共头部组件 -->
+        <header-two :title="newTitle"></header-two>
+        <mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" ref="loadmore">
+            <div class="main" style="min-height: 1134px">
+                <div class="lunbo">
+                    <mt-swipe :auto="4000">
+                        <mt-swipe-item v-for="(item,key,index) in swipers" :key="index">
+                            <img v-bind:src="item">
+                        </mt-swipe-item>
+                    </mt-swipe>
+                </div>
+                <div class="items">
 
-          <div class="item" @click="xuangou('choose','选购')">
-            <div class="item_img">
-              <img src="../../static/images/SELECT.png">
+                    <div class="item" @click="xuangou('choose','选购')">
+                        <div class="item_img">
+                            <img src="../../static/images/SELECT.png">
+                        </div>
+                        <span class="item_title">选购</span>
+                    </div>
+                    <div class="item" @click="xuangou('need','真心想要')">
+                        <div class="item_img">
+                            <img src="../../static/images/lipin.png">
+                        </div>
+                        <span class="item_title">真心想要</span>
+                    </div>
+                    <div class="item" @click="xuangou('qiangou','限时抢购')">
+                        <div class="item_img">
+                            <img src="../../static/images/xianshi.png">
+                        </div>
+                        <span class="item_title">限时抢购</span>
+                    </div>
+                    <div class="item" @click="xuangou('fabu','新品发布')">
+                        <div class="item_img">
+                            <img src="../../static/images/news.png">
+                        </div>
+                        <span class="item_title">新品发布</span>
+                    </div>
+                    <div class="item" @click="xuangou('mifenka','米粉卡')">
+                        <div class="item_img">
+                            <img src="../../static/images/ka.png">
+                        </div>
+                        <span class="item_title">米粉卡</span>
+                    </div>
+                </div>
+                <div class="shop_mall">
+                    <div class="mall_item" @click="godetails(item.id)" v-for="(item,index) in items" :id="item.id" :key="index">
+                        <img v-bind:src="item.img" v-lazy="item.img" />
+                        <!-- 懒加载图片 -->
+                        <!-- <img v-lazy="item.img" /> -->
+                        <p class="mall_title">
+                            {{item.name}}
+                        </p>
+                        <div class="mall_item_all">
+                            <div class="mall_item_all_left">
+                                ￥
+                                <span class="price">{{item.Price}}</span>
+                            </div>
+                            <div class="mall_item_all_right">
+                                1人喜欢
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <span class="item_title">选购</span>
-          </div>
-          <div class="item" @click="xuangou('need','真心想要')">
-            <div class="item_img">
-              <img src="../../static/images/lipin.png">
-            </div>
-            <span class="item_title">真心想要</span>
-          </div>
-          <div class="item" @click="xuangou('qiangou','限时抢购')">
-            <div class="item_img">
-              <img src="../../static/images/xianshi.png">
-            </div>
-            <span class="item_title">限时抢购</span>
-          </div>
-          <div class="item" @click="xuangou('fabu','新品发布')">
-            <div class="item_img">
-              <img src="../../static/images/news.png">
-            </div>
-            <span class="item_title">新品发布</span>
-          </div>
-          <div class="item" @click="xuangou('mifenka','米粉卡')">
-            <div class="item_img">
-              <img src="../../static/images/ka.png">
-            </div>
-            <span class="item_title">米粉卡</span>
-          </div>
+        </mt-loadmore>
+        <!-- 上滑 -->
+        <div class="tops" v-if="showtop" @click="top" id="btn">
+            <i class="iconfont icon-tubiao02  tops_size"></i>
         </div>
-        <div class="shop_mall">
-          <div class="mall_item" @click="godetails(item.id)" v-for="(item,index) in items" :id="item.id" :key="index">
-            <img v-bind:src="item.img" v-lazy="item.img" />
-            <!-- 懒加载图片 -->
-            <!-- <img v-lazy="item.img" /> -->
-            <p class="mall_title">
-              {{item.name}}
-            </p>
-            <div class="mall_item_all">
-              <div class="mall_item_all_left">
-                ￥
-                <span class="price">{{item.Price}}</span>
-              </div>
-              <div class="mall_item_all_right">
-                1人喜欢
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </mt-loadmore>
-    <!-- 上滑 -->
-    <div class="tops" v-if="showtop" @click="top" id="btn">
-      <i class="iconfont icon-tubiao02  tops_size"></i>
+        <!-- 底部组件 -->
+        <footer-bar class="footer"></footer-bar>
+
     </div>
-    <!-- 底部组件 -->
-    <footer-bar class="footer"></footer-bar>
-
-  </div>
 </template>
 
 <!-- <footer-bar class="footer"></footer-bar> -->
@@ -116,39 +116,14 @@
         props: [],
         watch: {},
         computed: {},
-        created: function() {
+        created: function () {
             console.log('created', global_)
-            var _this = this
-                // 创建动画mint-ui
-                // Indicator.open({
-                //     text: '加载中...',
-                //     spinnerType: 'fading-circle'
-                // })
-            _this.$http
-                .get(_this.url, {
-                    params: {
-                        // 请求参数
-                    }
-                })
-                .then(function(response) {
-                    console.log(response)
-                    _this.items = response.data
-                        // Indicator.close() // // 关闭动画
-                })
-                .catch(function(err) {
-                    console.log(err)
-                })
+            this.getData();
         },
         beforeMount() {
-            console.log('beforeMount')
         },
-        mounted: function() {
+        mounted: function () {
             var _this = this
-                //       _this.$getHttp('https://www.easy-mock.com/mock/59e95287dd7e1a0a448c1102/example/todos',)
-                // .then((response) => {
-                //      _this.items = response
-                //   console.log(response,'gggg')
-                // })
             _this.$postHttp('https://www.easy-mock.com/mock/59e95287dd7e1a0a448c1102/example/demo', {})
                 .then((response) => {
                     console.log(response, 'gggg')
@@ -156,7 +131,7 @@
 
             var obtn = document.getElementById('btn'); //获取回到顶部按钮的ID
             var clientHeight = document.documentElement.clientHeight; //获取可视区域的高度
-            window.onscroll = function() { //监听事件内容
+            window.onscroll = function () { //监听事件内容
                 //获取滚动条的滚动高度
                 var osTop = document.documentElement.scrollTop || document.body.scrollTop;
                 if (osTop >= clientHeight) { //如果滚动高度大于可视区域高度，则显示回到顶部按钮
@@ -210,7 +185,7 @@
             //   }
             // }
         },
-        beforeUpdate: function() {
+        beforeUpdate: function () {
             console.log('beforeUpdate')
         },
         updated() {
@@ -223,12 +198,16 @@
             console.log('destroyed')
         },
         methods: {
+          async  getData(){
+            let  response = await this.$getHttp(this.url, {})
+                this.items = response
+            },
             // top
             loadTop() {
                 console.log('top更多数据')
                 var _this = this;
                 // 加载更多数据
-                setTimeout(function() {
+                setTimeout(function () {
                     // 假设数据加载完
                     _this.$refs.loadmore.onTopLoaded()
                 }, 2000)
@@ -238,15 +217,15 @@
             loadBottom() {
                 var _this = this;
                 console.log('bottom加载更多数据')
-                    // 加载更多数据
-                setTimeout(function() {
+                // 加载更多数据
+                setTimeout(function () {
                     // 假设数据加载完
                     //  _this.allLoaded = true // 若数据已全部获取完毕
                     // _this.$refs.loadmore.onBottomLoaded()
                 }, 2000)
 
             },
-            godetails: function(id) {
+            godetails: function (id) {
                 this.$router.push({
                     path: 'details',
                     query: {
@@ -254,7 +233,7 @@
                     }
                 })
             },
-            xuangou: function(path, name) {
+            xuangou: function (path, name) {
                 this.$router.push({
                     path: path,
                     query: {
@@ -273,10 +252,10 @@
             // },
 
             // 滑到顶部事件
-            top: function() {
+            top: function () {
                 console.log("滑到顶部事件")
                 let this_ = this
-                this_.timer = setInterval(function() { //获取滚动条的滚动高度
+                this_.timer = setInterval(function () { //获取滚动条的滚动高度
                     var osTop = document.documentElement.scrollTop || document.body.scrollTop;
                     //用于设置速度差，产生缓动的效果
                     var speed = Math.floor(-osTop / 6);
@@ -299,7 +278,7 @@
     .box {
         padding-bottom: 0.2rem;
     }
-    
+
     .tops {
         position: fixed;
         bottom: 1.2rem;
@@ -308,28 +287,28 @@
         width: 0.88rem;
         height: 0.88rem;
     }
-    
+
     .tops i {
         font-size: 0.65rem !important;
         color: #fe498f;
     }
-    
+
     .lunbo {
         height: 5rem;
         margin-top: 0.2rem;
     }
-    
+
     .mint-swipe-indicator {
         background: deeppink !important;
         opacity: 0.6 !important;
     }
-    
+
     image[lazy="loading"] {
         width: 100%;
         height: 3.2rem;
         margin: auto;
     }
-    
+
     .items {
         display: flex;
         justify-content: space-between;
@@ -337,58 +316,58 @@
         align-items: center;
         background: #fff;
     }
-    
+
     .mint-swipe-item {
         width: 100%;
         height: 5rem;
     }
-    
+
     .mint-swipe-item img {
         width: 100%;
         height: 100%;
     }
-    
+
     .item_title {
         display: inline-block;
         margin-top: 0.2rem;
         font-size: 0.3rem;
         text-align: center;
     }
-    
+
     .item_img img {
         width: 100%;
         height: 100%;
     }
-    
+
     .item_img {
         width: 0.8rem;
         text-align: center;
     }
-    
+
     .mall_item {
         width: 3.5rem;
         margin-top: 0.2rem;
         background: #fff;
     }
-    
+
     .mall_item img {
         width: 100%;
         height: 3.2rem;
     }
-    
+
     .shop_mall {
         display: flex;
         align-items: center;
         justify-content: space-between;
         flex-wrap: wrap;
     }
-    
+
     .mall_title {
         text-align: center;
         font-size: 0.3rem;
         margin-top: 0.2rem;
     }
-    
+
     .mall_item_all {
         display: flex;
         align-items: center;
@@ -396,23 +375,23 @@
         margin-top: 0.2rem;
         padding: 0.2rem 0.1rem;
     }
-    
+
     .mall_item_all_left {
         font-size: 0.4rem;
         color: red;
     }
-    
+
     .price {
         font-size: 0.4rem;
     }
-    
+
     .item {
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
     }
-    
+
     .mall_item_all_right {
         font-size: 0.4rem;
     }
