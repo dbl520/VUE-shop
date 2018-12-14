@@ -3,8 +3,8 @@
         <!-- 下拉刷新上拉加载组件 -->
         <!-- 公共头部组件 -->
         <header-two :title="newTitle"></header-two>
-        <mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" ref="loadmore">
-            <div class="main" style="min-height: 1134px">
+        <mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" ref="loadmore"   :distance-index='1'>
+            <div class="main">
                 <div class="lunbo">
                     <mt-swipe :auto="4000">
                         <mt-swipe-item v-for="(item,key,index) in swipers" :key="index">
@@ -204,7 +204,7 @@
             },
             // top
             loadTop() {
-                console.log('top更多数据')
+                console.log('刷新')
                 var _this = this;
                 // 加载更多数据
                 setTimeout(function () {
@@ -220,8 +220,8 @@
                 // 加载更多数据
                 setTimeout(function () {
                     // 假设数据加载完
-                    //  _this.allLoaded = true // 若数据已全部获取完毕
-                    // _this.$refs.loadmore.onBottomLoaded()
+                     _this.allLoaded = true // 如果为true则不会在执行loadBottom（）方法,
+                    _this.$refs.loadmore.onBottomLoaded()
                 }, 2000)
 
             },
@@ -253,7 +253,6 @@
 
             // 滑到顶部事件
             top: function () {
-                console.log("滑到顶部事件")
                 let this_ = this
                 this_.timer = setInterval(function () { //获取滚动条的滚动高度
                     var osTop = document.documentElement.scrollTop || document.body.scrollTop;
@@ -262,7 +261,6 @@
                     document.documentElement.scrollTop = document.body.scrollTop = osTop + speed;
                     this_.isTop = true; //用于阻止滚动事件清除定时器
                     if (osTop == 0) {
-                        console.log('ggg')
                         clearInterval(this_.timer);
                     }
                 }, 30);
@@ -276,7 +274,7 @@
 
 <style lang="css" scoped>
     .box {
-        padding-bottom: 0.2rem;
+        padding-bottom: 0.8rem;
     }
 
     .tops {

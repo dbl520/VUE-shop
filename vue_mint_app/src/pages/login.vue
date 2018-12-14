@@ -81,7 +81,7 @@
                     // 这里改变vuex里的状态管理
                     this.$store.commit("setData");
                     alert(this.$router)
-                    this.$router.push({path:"/main"});
+                    this.$router.push({path:"/"});
                 }
             }
         }
