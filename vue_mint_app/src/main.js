@@ -1,14 +1,14 @@
-import Vue from "vue";
-import App from "./App";
-import router from "./router";
-import store from "./store";
-import Vuex from "vuex";
+import Vue from "vue"
+import App from "./App"
+import router from "./router"
+import store from "./store"
+import Vuex from "vuex"
 // import "./utils/rem.js";
-import { getHttp, postHttp } from "./utils/api";
+import { getHttp, postHttp } from "./utils/api"
 //定义全局变量
-Vue.prototype.$getHttp = getHttp;
-Vue.prototype.$postHttp = postHttp;
-import "babel-polyfill";
+Vue.prototype.$getHttp = getHttp
+Vue.prototype.$postHttp = postHttp
+import "babel-polyfill"
 import { Lazyload } from "mint-ui"; //懒加载
 Vue.use(Lazyload, {
 	//懒加载声明错误图和占位图
