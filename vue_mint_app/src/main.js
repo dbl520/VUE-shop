@@ -30,9 +30,9 @@ Vue.config.productionTip = true;
 import axios from "axios";
 Vue.prototype.$http = axios;
 /*vConsole */
-// import Vconsole from "vconsole";
-// let vConsole = new Vconsole();
-// export default vConsole;
+import Vconsole from "vconsole";
+let vConsole = new Vconsole();
+export default vConsole;
 /* eslint-disable no-new */
 new Vue({
 	el: "#app",
