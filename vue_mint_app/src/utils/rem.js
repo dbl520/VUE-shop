@@ -10,4 +10,3 @@
 // 	setRem();
 // })(); // 用法psd量出来的像素距离 除以100  比如psd: 100px 转换后 1rem;
 
-function add(){}
