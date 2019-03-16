@@ -14,9 +14,9 @@ Vue.use(Lazyload, {
 	//懒加载声明错误图和占位图
 	preLoad: 1,
 	error:
-    "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1519390533134&di=8fffb0fa229df0c0a2c1baf625353498&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01067e58edf49da8012049efa65a00.gif",
+		"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1519390533134&di=8fffb0fa229df0c0a2c1baf625353498&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01067e58edf49da8012049efa65a00.gif",
 	loading:
-    "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1519390533134&di=8fffb0fa229df0c0a2c1baf625353498&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01067e58edf49da8012049efa65a00.gif"
+		"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1519390533134&di=8fffb0fa229df0c0a2c1baf625353498&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01067e58edf49da8012049efa65a00.gif"
 });
 Vue.use(Vuex);
 import Mint from "mint-ui";
