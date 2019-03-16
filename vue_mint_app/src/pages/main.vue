@@ -10,9 +10,17 @@
       ref="loadmore"
       :distance-index="1"
     > -->
-    <scroller :on-infinite="infinite"
-            :on-refresh="refresh"
-　　         ref="my_scroller">
+    <div style="height:100vh">
+
+ <vue-better-scroll class="wrapper"
+                         ref="scroll"
+                         :scrollbar="scrollbarObj"
+                         :pullDownRefresh="pullDownRefreshObj"
+                         :pullUpLoad="pullUpLoadObj"
+                         :startY="parseInt(startY)"
+                         @pullingDown="onPullingDown"
+                         @pullingUp="onPullingUp">
+
 
 
         <div class="main">
@@ -77,7 +85,9 @@
             </div>
             </div>
         </div>
-    </scroller>
+  </vue-better-scroll>
+    </div>
+  
     <!-- </mt-loadmore> -->
     <!-- 上滑 -->
     <div class="tops" v-if="showtop" @click="top" id="btn">
@@ -95,18 +105,43 @@ import Vue from "vue";
 import Footer from "../components/FooterBar";
 import headerTwo from "../components/headerTwo.vue";
 import global_ from "./Globaldata";
-
 import { Indicator } from "mint-ui"; //引入mint ui
-
+import VueBetterScroll  from 'vue2-better-scroll'  //上拉下拉组件
+let count = 1
 export default {
   // 组件开始
   components: {
+    "vue-better-scroll": VueBetterScroll,
     "footer-bar": Footer,
     "header-two": headerTwo
   },
   // 组件结束
   data() {
     return {
+         // 这个配置可以开启滚动条，默认为 false。当设置为 true 或者是一个 Object 的时候，都会开启滚动条，默认是会 fade 的
+        scrollbarObj: {
+          fade: true
+        },
+        // 这个配置用于做下拉刷新功能，默认为 false。当设置为 true 或者是一个 Object 的时候，可以开启下拉刷新，可以配置顶部下拉的距离（threshold） 来决定刷新时机以及回弹停留的距离（stop）
+        pullDownRefreshObj: {
+          threshold: 90,
+          stop: 40
+        },
+        // 这个配置用于做上拉加载功能，默认为 false。当设置为 true 或者是一个 Object 的时候，可以开启上拉加载，可以配置离底部距离阈值（threshold）来决定开始加载的时机
+        pullUpLoadObj: {
+          threshold: 0,
+          txt: {
+            more: '加载更多',
+            noMore: '没有更多数据了'
+          }
+        },
+        startY: 0, // 纵轴方向初始化位置
+        scrollToX: 0,
+        scrollToY: 0,
+        scrollToTime: 700,
+        list: [],
+
+
       newTitle: "首页",
       allLoaded: false,
       scrollMode: "touch", //移动端弹性滚动效果，touch为弹性滚动，auto是非弹性滚动
@@ -133,6 +168,8 @@ export default {
   beforeMount() {},
   mounted: function() {
     var _this = this;
+    _this.onPullingDown()
+
     _this.$postHttp("https://www.easy-mock.com/mock/59e95287dd7e1a0a448c1102/example/demo", {} ).then(response => {
         console.log(response, "gggg");
       });
@@ -240,36 +277,39 @@ export default {
       // console.log("this", _this.$store.commit("checkoutData"))
       // _this.$store.commit("checkoutData");
     },
-    infinite(done) {   //上拉加载
-　　　　　　　　if(this.noData) {
-　　　　　　　　　　setTimeout(()=>{
-　　　　　　　　　　　　this.$refs.my_scroller.finishInfinite(2);
-　　　　　　　　　　})
-　　　　　　　　　　return;
-　　　　　　　　}
-　　　　　　　　let self = this;
-　　　　　　　　let i=1;
- 
-　　　　　　　　let start = this.list.length;
-　　　　　　　　setTimeout(() => {
-　　　　　　　　　　for(var k=0;k<9;k++){
-                    self.list.push(k)
-　　　　　　　　　　}
-　　　　　　　　　　i++;
-　　　　　　　　　　if(start/i < 9) {
-　　　　　　　　　　　　self.noData = "没有更多数据"
-　　　　　　　　　　}
-　　　　　　　　　　self.$refs.my_scroller.resize();
-　　　　　　　　　　done()
-　　　　　　　　}, 1500)
-　　　　　　},
-　　　　　　refresh:function(){         //下拉刷新
-　　　　　　　　console.log('refresh')
-　　　　　　　　this.timeout = setTimeout(()=>{
-　　　　　　　     　this.$refs.my_scroller.finishPullToRefresh()
-　　　　　　　　}, 1500)
-　　　　　　}
- 
+     // 模拟数据请求
+      getDatas() {
+        return new Promise(resolve => {
+          setTimeout(() => {
+            const arr = []
+            for (let i = 0; i < 10; i++) {
+              arr.push(count++)
+            }
+            resolve(arr)
+          }, 1000)
+        })
+      },
+      onPullingDown() {
+        // 模拟下拉刷新
+        console.log('下拉刷新')
+        count = 0
+        this.getDatas().then(res => {
+          this.list = res
+          this.$refs.scroll.forceUpdate(true)
+        })
+      },
+      onPullingUp() {
+        // 模拟上拉 加载更多数据
+        console.log('上拉加载')
+        this.getDatas().then(res => {
+          this.list = this.list.concat(res)
+          if (count < 30) {
+            this.$refs.scroll.forceUpdate(true)
+          } else {
+            this.$refs.scroll.forceUpdate(false)
+          }
+        })
+      }
   }
 };
 </script>
