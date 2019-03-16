@@ -4,7 +4,7 @@
       <router-link to="/main" tag="div" style="width:20%;text-align: center" 
   exact
 >
-          <img src="../../static/images/tab_1.png" v-if="active ==='main'" class="img">
+          <img src="../../static/images/tab_1.png" v-if="active ==='main' || active ==='' " class="img">
           <!-- <i class="iconfont icon-shouye_xuanzhong" style="color:#179dfe" v-if="active ==='main'"></i> -->
           <!-- <i class="iconfont icon-shouye2" v-else></i> -->
           <img src="../../static/images/tab1.png" class="img" v-else />
