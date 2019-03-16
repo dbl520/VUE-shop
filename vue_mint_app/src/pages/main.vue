@@ -3,76 +3,82 @@
     <!-- 下拉刷新上拉加载组件 -->
     <!-- 公共头部组件 -->
     <header-two :title="newTitle"></header-two>
-    <mt-loadmore
+    <!-- <mt-loadmore
       :top-method="loadTop"
       :bottom-method="loadBottom"
       :bottom-all-loaded="allLoaded"
       ref="loadmore"
       :distance-index="1"
-    >
-      <div class="main">
-        <div class="lunbo">
-          <mt-swipe :auto="4000">
-            <mt-swipe-item v-for="(item,key,index) in swipers" :key="index">
-              <img v-bind:src="item">
-            </mt-swipe-item>
-          </mt-swipe>
+    > -->
+    <scroller :on-infinite="infinite"
+            :on-refresh="refresh"
+　　         ref="my_scroller">
+
+
+        <div class="main">
+            <div class="lunbo">
+            <mt-swipe :auto="4000">
+                <mt-swipe-item v-for="(item,key,index) in swipers" :key="index">
+                <img v-bind:src="item">
+                </mt-swipe-item>
+            </mt-swipe>
+            </div>
+            <div class="items">
+            <div class="item" @click="xuangou('choose','选购')">
+                <div class="item_img">
+                <img src="../../static/images/SELECT.png">
+                </div>
+                <span class="item_title">选购</span>
+            </div>
+            <div class="item" @click="xuangou('need','真心想要')">
+                <div class="item_img">
+                <img src="../../static/images/lipin.png">
+                </div>
+                <span class="item_title">真心想要</span>
+            </div>
+            <div class="item" @click="xuangou('qiangou','限时抢购')">
+                <div class="item_img">
+                <img src="../../static/images/xianshi.png">
+                </div>
+                <span class="item_title">限时抢购</span>
+            </div>
+            <div class="item" @click="xuangou('fabu','新品发布')">
+                <div class="item_img">
+                <img src="../../static/images/news.png">
+                </div>
+                <span class="item_title">新品发布</span>
+            </div>
+            <div class="item" @click="xuangou('mifenka','米粉卡')">
+                <div class="item_img">
+                <img src="../../static/images/ka.png">
+                </div>
+                <span class="item_title">米粉卡</span>
+            </div>
+            </div>
+            <div class="shop_mall">
+            <div
+                class="mall_item"
+                @click="godetails(item.id)"
+                v-for="(item,index) in items"
+                :id="item.id"
+                :key="index"
+            >
+                <img v-bind:src="item.img" v-lazy="item.img">
+                <!-- 懒加载图片 -->
+                <!-- <img v-lazy="item.img" /> -->
+                <p class="mall_title">{{item.name}}</p>
+                <div class="mall_item_all">
+                <div class="mall_item_all_left">
+                    ￥
+                    <span class="price">{{item.Price}}</span>
+                </div>
+                <div class="mall_item_all_right">1人喜欢</div>
+                </div>
+            </div>
+            </div>
         </div>
-        <div class="items">
-          <div class="item" @click="xuangou('choose','选购')">
-            <div class="item_img">
-              <img src="../../static/images/SELECT.png">
-            </div>
-            <span class="item_title">选购</span>
-          </div>
-          <div class="item" @click="xuangou('need','真心想要')">
-            <div class="item_img">
-              <img src="../../static/images/lipin.png">
-            </div>
-            <span class="item_title">真心想要</span>
-          </div>
-          <div class="item" @click="xuangou('qiangou','限时抢购')">
-            <div class="item_img">
-              <img src="../../static/images/xianshi.png">
-            </div>
-            <span class="item_title">限时抢购</span>
-          </div>
-          <div class="item" @click="xuangou('fabu','新品发布')">
-            <div class="item_img">
-              <img src="../../static/images/news.png">
-            </div>
-            <span class="item_title">新品发布</span>
-          </div>
-          <div class="item" @click="xuangou('mifenka','米粉卡')">
-            <div class="item_img">
-              <img src="../../static/images/ka.png">
-            </div>
-            <span class="item_title">米粉卡</span>
-          </div>
-        </div>
-        <div class="shop_mall">
-          <div
-            class="mall_item"
-            @click="godetails(item.id)"
-            v-for="(item,index) in items"
-            :id="item.id"
-            :key="index"
-          >
-            <img v-bind:src="item.img" v-lazy="item.img">
-            <!-- 懒加载图片 -->
-            <!-- <img v-lazy="item.img" /> -->
-            <p class="mall_title">{{item.name}}</p>
-            <div class="mall_item_all">
-              <div class="mall_item_all_left">
-                ￥
-                <span class="price">{{item.Price}}</span>
-              </div>
-              <div class="mall_item_all_right">1人喜欢</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </mt-loadmore>
+    </scroller>
+    <!-- </mt-loadmore> -->
     <!-- 上滑 -->
     <div class="tops" v-if="showtop" @click="top" id="btn">
       <i class="iconfont icon-tubiao02 tops_size"></i>
@@ -118,7 +124,6 @@ export default {
       isTop: true //定义一个布尔值，用于判断是否到达顶部
     };
   },
-  props: [],
   watch: {},
   computed: {},
   created: function() {
@@ -234,7 +239,37 @@ export default {
 
       // console.log("this", _this.$store.commit("checkoutData"))
       // _this.$store.commit("checkoutData");
-    }
+    },
+    infinite(done) {   //上拉加载
+　　　　　　　　if(this.noData) {
+　　　　　　　　　　setTimeout(()=>{
+　　　　　　　　　　　　this.$refs.my_scroller.finishInfinite(2);
+　　　　　　　　　　})
+　　　　　　　　　　return;
+　　　　　　　　}
+　　　　　　　　let self = this;
+　　　　　　　　let i=1;
+ 
+　　　　　　　　let start = this.list.length;
+　　　　　　　　setTimeout(() => {
+　　　　　　　　　　for(var k=0;k<9;k++){
+                    self.list.push(k)
+　　　　　　　　　　}
+　　　　　　　　　　i++;
+　　　　　　　　　　if(start/i < 9) {
+　　　　　　　　　　　　self.noData = "没有更多数据"
+　　　　　　　　　　}
+　　　　　　　　　　self.$refs.my_scroller.resize();
+　　　　　　　　　　done()
+　　　　　　　　}, 1500)
+　　　　　　},
+　　　　　　refresh:function(){         //下拉刷新
+　　　　　　　　console.log('refresh')
+　　　　　　　　this.timeout = setTimeout(()=>{
+　　　　　　　     　this.$refs.my_scroller.finishPullToRefresh()
+　　　　　　　　}, 1500)
+　　　　　　}
+ 
   }
 };
 </script>
