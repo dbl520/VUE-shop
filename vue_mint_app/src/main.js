@@ -22,6 +22,9 @@ Vue.use(Vuex);
 import Mint from "mint-ui";
 import "mint-ui/lib/style.css";
 Vue.use(Mint);
+// 滴滴ui
+// import Cube from 'cube-ui'
+// Vue.use(Cube)
 // 解决移动端300s延迟
 import fastclick from "fastclick";
 fastclick.attach(document.body); //解决移动端点击事件200ms延迟

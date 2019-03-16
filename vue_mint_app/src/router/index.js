@@ -1,22 +1,25 @@
 import Vue from "vue";
 import Router from "vue-router";
 import FooterBar from "@/components/FooterBar";
-import main from "../pages/main.vue";
-import tool from "../pages/tool.vue";
-import my from "../pages/my.vue";
-import details from "../pages/details.vue";
-import choose from "../pages/choose.vue";
-import cart from "../pages/cart.vue";
-import all_order from "../pages/all_order.vue";
-import news from "../pages/news.vue";
-import need from "../pages/need.vue";
-import qiangou from "../pages/qiangou.vue";
-import fabu from "../pages/fabu.vue";
-import mifenka from "../pages/mifenka.vue";
-import fenlei from "../pages/fenlei.vue";
-import login from "../pages/login.vue";
-import notfound from "../pages/404.vue";
-import load from "../pages/load.vue";
+const main = resolve => require(['../pages/main.vue'], resolve);
+const tool = resolve => require(['../pages/tool.vue'], resolve);
+const my = resolve => require(['../pages/my.vue'], resolve);
+const details = resolve => require(['../pages/details.vue'], resolve);
+const choose = resolve => require(['../pages/choose.vue'], resolve);
+const cart = resolve => require(['../pages/cart.vue'], resolve);
+const all_order = resolve => require(['../pages/all_order.vue'], resolve);
+const news = resolve => require(['../pages/news.vue'], resolve);
+const need = resolve => require(['../pages/need.vue'], resolve);
+const qiangou = resolve => require(['../pages/qiangou.vue'], resolve);
+const fabu = resolve => require(['../pages/fabu.vue'], resolve);
+const mifenka = resolve => require(['../pages/mifenka.vue'], resolve);
+const fenlei = resolve => require(['../pages/fenlei.vue'], resolve);
+
+const login = resolve => require(['../pages/login.vue'], resolve);
+const notfound = resolve => require(['../pages/404.vue'], resolve);
+const scrolldrop = resolve => require(['../pages/scrolldrop.vue'], resolve);
+// import load from "../pages/load.vue";
+const load = resolve => require(['../pages/load.vue'], resolve);
 Vue.use(Router);
 export default new Router({
 	// mode: "history", //改为history.路由中没有#号
@@ -107,6 +110,11 @@ export default new Router({
 			path: "/load",
 			name: "load",
 			component: load
+		},
+		{
+			path: "/scrolldrop",
+			name: "scrolldrop",
+			component: scrolldrop
 		},
 		{
 			path: "*",
