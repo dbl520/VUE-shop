@@ -87,6 +87,7 @@
     "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-server": "^2.9.1",
     "webpack-merge": "^4.1.0",
+    "webpack-parallel-uglify-plugin": "^1.1.0",
     "webpack-post-compile-plugin": "^0.4.1",
     "webpack-transform-modules-plugin": "^0.3.5"
   },

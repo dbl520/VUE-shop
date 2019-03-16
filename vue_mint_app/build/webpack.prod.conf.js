@@ -9,7 +9,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+// const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
 
 const env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
@@ -34,15 +35,34 @@ const webpackConfig = merge(baseWebpackConfig, {
     new webpack.DefinePlugin({
       'process.env': env
     }),
-    new UglifyJsPlugin({
-      uglifyOptions: {
+    // new UglifyJsPlugin({
+    //   uglifyOptions: {
+    //     compress: {
+    //       warnings: false
+    //     }
+    //   },
+    //   sourceMap: config.build.productionSourceMap,
+    //   parallel: true
+    // }),
+    // 新增增加 webpack - parallel - uglify - plugin来替换
+    new ParallelUglifyPlugin({
+      cacheDir: '.cache/',
+      uglifyJS: {
+        output: {
+          comments: false
+        },
         compress: {
-          warnings: false
+          warnings: false,
+          drop_debugger: true, // 去除生产环境的 debugger 和 console.log
+          drop_console: true
         }
-      },
-      sourceMap: config.build.productionSourceMap,
-      parallel: true
+      }
     }),
+    // vue打包优化
+//     作者：huangjincq
+// 链接：https://juejin.im/post/5bd2b60e6fb9a05d27794c5e
+//     来源：掘金
+// 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
     // extract css into its own file
     new ExtractTextPlugin({
       filename: utils.assetsPath('css/[name].[contenthash].css'),
