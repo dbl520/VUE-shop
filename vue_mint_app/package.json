@@ -17,7 +17,7 @@
     }
   },
   "dependencies": {
-    "axios": "^0.17.1",
+    "axios": "^0.21.1",
     "babel-polyfill": "^6.26.0",
     "compression-webpack-plugin": "^1.1.11",
     "cube-ui": "^1.12.13",
